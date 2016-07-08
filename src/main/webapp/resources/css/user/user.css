@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+#user-mgt {
+	margin-left: 100px;
+	margin-top: 50px;
+}
+#user-mgt .user-box {
+	margin-bottom: 5px;
+}
+#user-mgt .user-box span{
+	width: 150px;
+	display: inline-block;
+}
+.w700 {
+	font-weight: 700;
+}
+
+.float-right {
+	float: right;
+}
+.user-mgtbox {
+	width: 660px;
+	border: 1px solid rgb(158, 158, 158);
+	padding: 20px;
+}
+.user-mgtbox .tools-bar {
+	margin-bottom: 10px;
+}

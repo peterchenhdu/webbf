@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.hdu.webbf.dao.user">
+    
+	<sql id="userColumns">
+		id,
+		name,
+		address
+	</sql>
+	
+	<select id="selectUsers" parameterType="java.util.Map" resultType="cn.edu.hdu.webbf.model.User">
+	    SELECT 
+			<include refid="userColumns"/>
+		FROM
+			user
+		WHERE
+			1=1
+			<if test="id != null">
+				and id=#{id}
+			</if>
+			<if test="name != null">
+				and name=#{name}
+			</if>
+			<if test="content != null">
+				and address=#{address}
+			</if>		
+		ORDER BY id asc limit #{pageNo} , #{pageSize}
+	</select>
+	
+   <insert id="saveUser" parameterType="java.util.Map" flushCache="false">
+       insert into user (
+           name,
+           address
+       ) values (
+           #{name},
+           #{address}
+       )
+   </insert>
+
+    <delete id="deleteUser" parameterType="java.util.Map" flushCache="false">
+        delete from user
+        where 
+            id = #{userId}
+    </delete>
+	
+</mapper>
