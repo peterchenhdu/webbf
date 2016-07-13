@@ -6,6 +6,7 @@ module.exports = {
     entry: {
         user:path.join(__dirname, 'resources/js/user.js'),
         chartdemo:path.join(__dirname, 'resources/js/chartdemo.js'),
+        antddemo:path.join(__dirname, 'resources/js/antddemo.js'),
         vendors: ['react','reflux','react-mixin']
     },
     output: {

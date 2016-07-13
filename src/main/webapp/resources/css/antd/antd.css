@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+.antd-calendar {
+  width: 600px;
+  height:400px;
+  display: inline-block;
+}
+.antd-ib {
+  display: inline-block;
+}

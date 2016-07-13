@@ -26,6 +26,9 @@ public class RelativeUrl
     private static final String CHART = "chart";
     private static final String CHART_URL = "chartdemo.html";
     
+    private static final String ANTDDEMO = "antddemo";
+    private static final String ANTDDEMO_URL = "antddemo.html";
+    
     /**
      * 
      * @param page
@@ -43,6 +46,8 @@ public class RelativeUrl
         	return USER_URL;
         }else if(page.equals(CHART)){
         	return CHART_URL;
+        }else if(page.equals(ANTDDEMO)){
+        	return ANTDDEMO_URL;
         }else{
         	return INDEX_URL;
         }
