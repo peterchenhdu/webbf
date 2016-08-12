@@ -24,75 +24,12 @@
     
     <context:property-placeholder location="classpath:config.properties" />
 
-    <!-- 阿里 druid数据库连接池 -->
-    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">  
-         <!-- 数据库基本信息配置 -->
-         <property name="url" value="${url}" />  
-         <property name="username" value="${jdbc_username}" />  
-         <property name="password" value="${jdbc_password}" />  
-         <property name="driverClassName" value="${driverClassName}" />  
-         <property name="filters" value="${filters}" />  
-         <!-- 最大并发连接数 -->
-         <property name="maxActive" value="${maxActive}" />
-         <!-- 初始化连接数量 -->
-         <property name="initialSize" value="${initialSize}" />
-         <!-- 配置获取连接等待超时的时间 -->
-         <property name="maxWait" value="${maxWait}" />
-         <!-- 最小空闲连接数 -->
-         <property name="minIdle" value="${minIdle}" />  
-         <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
-         <property name="timeBetweenEvictionRunsMillis" value="${timeBetweenEvictionRunsMillis}" />
-         <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
-         <property name="minEvictableIdleTimeMillis" value="${minEvictableIdleTimeMillis}" />  
-         <property name="validationQuery" value="${validationQuery}" />  
-         <property name="testWhileIdle" value="${testWhileIdle}" />  
-         <property name="testOnBorrow" value="${testOnBorrow}" />  
-         <property name="testOnReturn" value="${testOnReturn}" />  
-         <property name="maxOpenPreparedStatements" value="${maxOpenPreparedStatements}" />
-         <!-- 打开removeAbandoned功能 -->
-         <property name="removeAbandoned" value="${removeAbandoned}" />
-         <!-- 1800秒，也就是30分钟 -->
-         <property name="removeAbandonedTimeout" value="${removeAbandonedTimeout}" />
-         <!-- 关闭abanded连接时输出错误日志 -->   
-         <property name="logAbandoned" value="${logAbandoned}" />
-    </bean>  
+    <!-- CAS配置相关 -->
+    <!--<import resource="cas.xml" />-->
     
-    <!-- 配置mybatis -->
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource" />
-        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"></property>
-        <!-- mapper扫描 -->
-        <property name="mapperLocations" value="classpath:mybatis/*/*.xml"></property>
-    </bean>
+    <import resource="dao.xml" />
+    <import resource="transaction.xml" />
     
-    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
-        <constructor-arg ref="sqlSessionFactory" />
-    </bean>    
     
-    <bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">   
-        <property name="dataSource" ref="dataSource"></property>
-    </bean>
-    
-    <tx:advice id="txAdvice" transaction-manager="transactionManager">
-        <tx:attributes>
-            <tx:method name="delete*" propagation="REQUIRED" read-only="false" 
-                       rollback-for="java.lang.Exception"/>
-            <tx:method name="insert*" propagation="REQUIRED" read-only="false" 
-                       rollback-for="java.lang.Exception" />
-            <tx:method name="update*" propagation="REQUIRED" read-only="false" 
-                       rollback-for="java.lang.Exception" />
-            <tx:method name="save*" propagation="REQUIRED" read-only="false" 
-                       rollback-for="java.lang.Exception" />
-             
-        </tx:attributes>
-    </tx:advice>
-    
-    <aop:aspectj-autoproxy proxy-target-class="true"/>
-    
-    <!-- 事物处理 -->
-    <aop:config>
-        <aop:pointcut id="pc" expression="execution(* cn.edu.hdu.webbf.service..*(..))" />
-        <aop:advisor pointcut-ref="pc" advice-ref="txAdvice" />
-    </aop:config>
     
 </beans>

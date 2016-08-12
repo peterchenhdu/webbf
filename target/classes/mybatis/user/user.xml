@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.edu.hdu.webbf.dao.user">
+<mapper namespace="cn.edu.hdu.webbf.dao.IUserDao">
     
 	<sql id="userColumns">
 		id,
@@ -8,7 +8,7 @@
 		address
 	</sql>
 	
-	<select id="selectUsers" parameterType="java.util.Map" resultType="cn.edu.hdu.webbf.model.User">
+	<select id="queryAll" parameterType="java.util.Map" resultType="cn.edu.hdu.webbf.model.User">
 	    SELECT 
 			<include refid="userColumns"/>
 		FROM

@@ -2,14 +2,14 @@
  * File Name: LifeService.java
  * Copyright: Copyright 2016-2016 hdu All Rights Reserved.
 
- * Description: 
+ * Description:
  * Author: Pi Chen
  * Create Date: 2016年5月23日
 
  * Modifier: Pi Chen
  * Modify Date: 2016年5月23日
- * Bugzilla Id: 
- * Modify Content: 
+ * Bugzilla Id:
+ * Modify Content:
  */
 package cn.edu.hdu.webbf.controller.user;
 
@@ -29,7 +29,7 @@ import cn.edu.hdu.webbf.service.user.IUserService;
 import com.google.gson.Gson;
 
 /**
- * 
+ *
  * @author Pi Chen
  * @version webbf V1.0.0, 2016年5月23日
  * @see
@@ -67,7 +67,7 @@ public class UserController extends BaseController
 
     @RequestMapping(value = "/deleteUser", produces = "application/json; charset=utf-8")
     @ResponseBody
-    public String getUserList(int userId)
+    public String deleteUser(int userId)
     {
         Gson gson = new Gson();
         try
