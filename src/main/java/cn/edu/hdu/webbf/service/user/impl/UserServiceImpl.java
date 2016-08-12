@@ -25,57 +25,64 @@ import cn.edu.hdu.webbf.service.user.IUserService;
 
 /**
  * 
- * @author    Pi Chen
- * @version   webbf V1.0.0, 2016年5月24日
- * @see       
- * @since     webbf V1.0.0
+ * @author Pi Chen
+ * @version webbf V1.0.0, 2016年5月24日
+ * @see
+ * @since webbf V1.0.0
  */
 @Service
-public class UserServiceImpl implements IUserService {
+public class UserServiceImpl implements IUserService
+{
 
-	@Autowired
-	private IDAOSupport<User> daoSupport;
-	/**
-	 * 
-	 * @see cn.edu.hdu.webbf.service.user.IUserService#queryAll()
-	 * @return
-	 * @throws Exception 
-	 */
-	@Override
-	public List<User> queryAll(Map<String, Object> param) throws Exception {
+    @Autowired
+    private IDAOSupport<User> daoSupport;
 
-		
-		List<User> userList =  daoSupport.findForList("cn.edu.hdu.webbf.dao.user.selectUsers", param);
-		return userList;
-	}
-	/**
-	 * 
-	 * @see cn.edu.hdu.webbf.service.user.IUserService#saveUser(java.util.Map)
-	 * @param param
-	 * @throws Exception
-	 */
-	@Override
-	public void saveUser(Map<String, Object> param) throws Exception {
-		daoSupport.save("cn.edu.hdu.webbf.dao.user.saveUser", param);
-		/* test transaction */
-//		User user = null;
-//		@SuppressWarnings({ "unused", "null" })
-//		String name = user.getName();
-//		
-//		param.put("name", "cp222");
-//		param.put("address", "hz222");
-//		daoSupport.save("cn.edu.hdu.webbf.dao.user.saveUser", param);
-		
-	}
-	/**
-	 * 
-	 * @see cn.edu.hdu.webbf.service.user.IUserService#deleteUser(java.util.Map)
-	 * @param param
-	 * @throws Exception
-	 */
-	@Override
-	public void deleteUser(Map<String, Object> param) throws Exception {
-		daoSupport.delete("cn.edu.hdu.webbf.dao.user.deleteUser", param);
-	}
+    /**
+     * 
+     * @see cn.edu.hdu.webbf.service.user.IUserService#queryAll()
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public List<User> queryAll(Map<String, Object> param) throws Exception
+    {
+
+        List<User> userList = daoSupport
+            .findForList("cn.edu.hdu.webbf.dao.user.selectUsers", param);
+        return userList;
+    }
+
+    /**
+     * 
+     * @see cn.edu.hdu.webbf.service.user.IUserService#saveUser(java.util.Map)
+     * @param param
+     * @throws Exception
+     */
+    @Override
+    public void saveUser(Map<String, Object> param) throws Exception
+    {
+        daoSupport.save("cn.edu.hdu.webbf.dao.user.saveUser", param);
+        /* test transaction */
+        // User user = null;
+        // @SuppressWarnings({ "unused", "null" })
+        // String name = user.getName();
+        //
+        // param.put("name", "cp222");
+        // param.put("address", "hz222");
+        // daoSupport.save("cn.edu.hdu.webbf.dao.user.saveUser", param);
+
+    }
+
+    /**
+     * 
+     * @see cn.edu.hdu.webbf.service.user.IUserService#deleteUser(java.util.Map)
+     * @param param
+     * @throws Exception
+     */
+    @Override
+    public void deleteUser(Map<String, Object> param) throws Exception
+    {
+        daoSupport.delete("cn.edu.hdu.webbf.dao.user.deleteUser", param);
+    }
 
 }

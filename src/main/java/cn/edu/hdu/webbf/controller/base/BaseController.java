@@ -15,19 +15,18 @@ package cn.edu.hdu.webbf.controller.base;
 
 import cn.edu.hdu.webbf.common.log.Logger;
 
-
-
 /**
  * 
- * @author    Pi Chen
- * @version   webbf V1.0.0, 2016年5月23日
- * @see       
- * @since     webbf V1.0.0
+ * @author Pi Chen
+ * @version webbf V1.0.0, 2016年5月23日
+ * @see
+ * @since webbf V1.0.0
  */
 
-public class BaseController {
-	/**
-	 * 日志
-	 */
-	protected Logger logger = Logger.getLogger(this.getClass());
+public class BaseController
+{
+    /**
+     * 日志
+     */
+    protected Logger logger = Logger.getLogger(this.getClass());
 }

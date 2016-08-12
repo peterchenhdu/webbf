@@ -1,8 +1,8 @@
-
 package cn.edu.hdu.webbf.common.log;
 
 import org.slf4j.LoggerFactory;
 import org.slf4j.helpers.MessageFormatter;
+
 /**
  * Facade for SLF4J's logger.
  */
@@ -14,8 +14,7 @@ public class Logger
     /**
      * Default constructor
      * 
-     * @param clazz
-     *            Name of the class to log.
+     * @param clazz Name of the class to log.
      */
     public Logger(Class<?> clazz)
     {
@@ -33,8 +32,7 @@ public class Logger
     /**
      * Return a logger for a given class.
      * 
-     * @param clazz
-     *            Class.
+     * @param clazz Class.
      * 
      * @return Logger for a class.
      */
@@ -75,8 +73,7 @@ public class Logger
     /**
      * Print a trace message to the logs.
      * 
-     * @param message
-     *            Message to be logged.
+     * @param message Message to be logged.
      */
     public void trace(String message)
     {
@@ -86,10 +83,8 @@ public class Logger
     /**
      * Print a formatted trace message to the logs, with one parameter.
      * 
-     * @param message
-     *            Message to be logged.
-     * @param parameter
-     *            Message parameter.
+     * @param message Message to be logged.
+     * @param parameter Message parameter.
      */
     public void trace(String message, Object parameter)
     {
@@ -100,10 +95,8 @@ public class Logger
      * Print a formatted trace message to the logs, with an arbitrary number of
      * parameters.
      * 
-     * @param message
-     *            Message to be logged.
-     * @param parameters
-     *            Array of parameters.
+     * @param message Message to be logged.
+     * @param parameters Array of parameters.
      */
     public void trace(String message, Object... parameters)
     {
@@ -116,10 +109,8 @@ public class Logger
     /**
      * Print a trace message with an exception.
      * 
-     * @param message
-     *            Message to be logged.
-     * @param throwable
-     *            Throwable to be logged.
+     * @param message Message to be logged.
+     * @param throwable Throwable to be logged.
      */
     public void trace(String message, Throwable throwable)
     {
@@ -143,19 +134,16 @@ public class Logger
      * language limitations, but the exception always shows up AFTER the
      * formatted message.
      * 
-     * @param message
-     *            Message to be formatted.
-     * @param throwable
-     *            Throwable to be logged.
-     * @param parameters
-     *            Parameters to format the message.
+     * @param message Message to be formatted.
+     * @param throwable Throwable to be logged.
+     * @param parameters Parameters to format the message.
      */
     public void trace(String message, Throwable throwable, Object... parameters)
     {
         if (this.logger.isTraceEnabled())
         {
-            this.logger.trace(MessageFormatter.arrayFormat(message, parameters)
-                    .getMessage(), throwable);
+            this.logger.trace(MessageFormatter.arrayFormat(message, parameters).getMessage(),
+                throwable);
         }
     }
 
@@ -173,8 +161,7 @@ public class Logger
     /**
      * Print a debug message to the logs.
      * 
-     * @param message
-     *            Message to be logged.
+     * @param message Message to be logged.
      */
     public void debug(String message)
     {
@@ -184,10 +171,8 @@ public class Logger
     /**
      * Print a formatted debug message to the logs, with one parameter.
      * 
-     * @param message
-     *            Message to be logged.
-     * @param parameter
-     *            Message parameter.
+     * @param message Message to be logged.
+     * @param parameter Message parameter.
      */
     public void debug(String message, Object parameter)
     {
@@ -198,10 +183,8 @@ public class Logger
      * Print a formatted debug message to the logs, with an arbitrary number of
      * parameters.
      * 
-     * @param message
-     *            Message to be logged.
-     * @param parameters
-     *            Array of parameters.
+     * @param message Message to be logged.
+     * @param parameters Array of parameters.
      */
     public void debug(String message, Object... parameters)
     {
@@ -211,10 +194,8 @@ public class Logger
     /**
      * Print a debug message with an exception.
      * 
-     * @param message
-     *            Message to be logged.
-     * @param throwable
-     *            Throwable to be logged.
+     * @param message Message to be logged.
+     * @param throwable Throwable to be logged.
      */
     public void debug(String message, Throwable throwable)
     {
@@ -238,19 +219,16 @@ public class Logger
      * language limitations, but the exception always shows up AFTER the
      * formatted message.
      * 
-     * @param message
-     *            Message to be formatted.
-     * @param throwable
-     *            Throwable to be logged.
-     * @param parameters
-     *            Parameters to format the message.
+     * @param message Message to be formatted.
+     * @param throwable Throwable to be logged.
+     * @param parameters Parameters to format the message.
      */
     public void debug(String message, Throwable throwable, Object... parameters)
     {
         if (this.logger.isDebugEnabled())
         {
-            this.logger.debug(MessageFormatter.arrayFormat(message, parameters)
-                    .getMessage(), throwable);
+            this.logger.debug(MessageFormatter.arrayFormat(message, parameters).getMessage(),
+                throwable);
         }
     }
 
@@ -268,8 +246,7 @@ public class Logger
     /**
      * Print a info message to the logs.
      * 
-     * @param message
-     *            Message to be logged.
+     * @param message Message to be logged.
      */
     public void info(String message)
     {
@@ -279,10 +256,8 @@ public class Logger
     /**
      * Print a formatted info message to the logs, with one parameter.
      * 
-     * @param message
-     *            Message to be logged.
-     * @param parameter
-     *            Message parameter.
+     * @param message Message to be logged.
+     * @param parameter Message parameter.
      */
     public void info(String message, Object parameter)
     {
@@ -293,10 +268,8 @@ public class Logger
      * Print a formatted info message to the logs, with an arbitrary number of
      * parameters.
      * 
-     * @param message
-     *            Message to be logged.
-     * @param parameters
-     *            Array of parameters.
+     * @param message Message to be logged.
+     * @param parameters Array of parameters.
      */
     public void info(String message, Object... parameters)
     {
@@ -306,10 +279,8 @@ public class Logger
     /**
      * Print an info message with an exception.
      * 
-     * @param message
-     *            Message to be logged.
-     * @param throwable
-     *            Throwable to be logged.
+     * @param message Message to be logged.
+     * @param throwable Throwable to be logged.
      */
     public void info(String message, Throwable throwable)
     {
@@ -333,19 +304,16 @@ public class Logger
      * language limitations, but the exception always shows up AFTER the
      * formatted message.
      * 
-     * @param message
-     *            Message to be formatted.
-     * @param throwable
-     *            Throwable to be logged.
-     * @param parameters
-     *            Parameters to format the message.
+     * @param message Message to be formatted.
+     * @param throwable Throwable to be logged.
+     * @param parameters Parameters to format the message.
      */
     public void info(String message, Throwable throwable, Object... parameters)
     {
         if (this.logger.isInfoEnabled())
         {
-            this.logger.info(MessageFormatter.arrayFormat(message, parameters)
-                    .getMessage(), throwable);
+            this.logger.info(MessageFormatter.arrayFormat(message, parameters).getMessage(),
+                throwable);
         }
     }
 
@@ -363,8 +331,7 @@ public class Logger
     /**
      * Print a warning message to the logs.
      * 
-     * @param message
-     *            Message to be logged.
+     * @param message Message to be logged.
      */
     public void warn(String message)
     {
@@ -374,10 +341,8 @@ public class Logger
     /**
      * Print a formatted warning message to the logs, with one parameter.
      * 
-     * @param message
-     *            Message to be logged.
-     * @param parameter
-     *            Message parameter.
+     * @param message Message to be logged.
+     * @param parameter Message parameter.
      */
     public void warn(String message, Object parameter)
     {
@@ -388,10 +353,8 @@ public class Logger
      * Print a formatted warning message to the logs, with an arbitrary number
      * of parameters.
      * 
-     * @param message
-     *            Message to be logged.
-     * @param parameters
-     *            Array of parameters.
+     * @param message Message to be logged.
+     * @param parameters Array of parameters.
      */
     public void warn(String message, Object... parameters)
     {
@@ -401,10 +364,8 @@ public class Logger
     /**
      * Print a warning message with an exception.
      * 
-     * @param message
-     *            Message to be logged.
-     * @param throwable
-     *            Throwable to be logged.
+     * @param message Message to be logged.
+     * @param throwable Throwable to be logged.
      */
     public void warn(String message, Throwable throwable)
     {
@@ -428,19 +389,16 @@ public class Logger
      * language limitations, but the exception always shows up AFTER the
      * formatted message.
      * 
-     * @param message
-     *            Message to be formatted.
-     * @param throwable
-     *            Throwable to be logged.
-     * @param parameters
-     *            Parameters to format the message.
+     * @param message Message to be formatted.
+     * @param throwable Throwable to be logged.
+     * @param parameters Parameters to format the message.
      */
     public void warn(String message, Throwable throwable, Object... parameters)
     {
         if (this.logger.isWarnEnabled())
         {
-            this.logger.warn(MessageFormatter.arrayFormat(message, parameters)
-                    .getMessage(), throwable);
+            this.logger.warn(MessageFormatter.arrayFormat(message, parameters).getMessage(),
+                throwable);
         }
     }
 
@@ -458,8 +416,7 @@ public class Logger
     /**
      * Print an error message to the logs.
      * 
-     * @param message
-     *            Message to be logged.
+     * @param message Message to be logged.
      */
     public void error(String message)
     {
@@ -469,10 +426,8 @@ public class Logger
     /**
      * Print a formatted error message to the logs, with one parameter.
      * 
-     * @param message
-     *            Message to be logged.
-     * @param parameter
-     *            Message parameter.
+     * @param message Message to be logged.
+     * @param parameter Message parameter.
      */
     public void error(String message, Object parameter)
     {
@@ -483,10 +438,8 @@ public class Logger
      * Print a formatted error message to the logs, with an arbitrary number of
      * parameters.
      * 
-     * @param message
-     *            Message to be logged.
-     * @param parameters
-     *            Array of parameters.
+     * @param message Message to be logged.
+     * @param parameters Array of parameters.
      */
     public void error(String message, Object... parameters)
     {
@@ -496,10 +449,8 @@ public class Logger
     /**
      * Print an error message with an exception.
      * 
-     * @param message
-     *            Message to be logged.
-     * @param throwable
-     *            Throwable to be logged.
+     * @param message Message to be logged.
+     * @param throwable Throwable to be logged.
      */
     public void error(String message, Throwable throwable)
     {
@@ -523,19 +474,16 @@ public class Logger
      * language limitations, but the exception always shows up AFTER the
      * formatted message.
      * 
-     * @param message
-     *            Message to be formatted.
-     * @param throwable
-     *            Throwable to be logged.
-     * @param parameters
-     *            Parameters to format the message.
+     * @param message Message to be formatted.
+     * @param throwable Throwable to be logged.
+     * @param parameters Parameters to format the message.
      */
     public void error(String message, Throwable throwable, Object... parameters)
     {
         if (this.logger.isErrorEnabled())
         {
-            this.logger.error(MessageFormatter.arrayFormat(message, parameters)
-                    .getMessage(), throwable);
+            this.logger.error(MessageFormatter.arrayFormat(message, parameters).getMessage(),
+                throwable);
         }
     }
 }

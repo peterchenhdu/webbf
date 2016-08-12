@@ -20,17 +20,18 @@ import cn.edu.hdu.webbf.model.User;
 
 /**
  * 
- * @author    Pi Chen
- * @version   webbf V1.0.0, 2016年5月24日
- * @see       
- * @since     webbf V1.0.0
+ * @author Pi Chen
+ * @version webbf V1.0.0, 2016年5月24日
+ * @see
+ * @since webbf V1.0.0
  */
 
-public interface IUserService {
+public interface IUserService
+{
 
-	public List<User> queryAll(Map<String, Object> param) throws Exception;
-	
-	public void saveUser(Map<String, Object> param) throws Exception;
-	
-	public void deleteUser(Map<String, Object> param) throws Exception;
+    public List<User> queryAll(Map<String, Object> param) throws Exception;
+
+    public void saveUser(Map<String, Object> param) throws Exception;
+
+    public void deleteUser(Map<String, Object> param) throws Exception;
 }
