@@ -2,6 +2,12 @@ var path = require('path');
 var webpack = require('webpack');
 var CSS_PATH = path.resolve(__dirname, 'css');
 
+var options = {
+  style: true,
+  libraryDirectory: 'lib',       // default: lib
+  libraryName: 'antd'            // default: antd
+};
+
 module.exports = {
     entry: {
         user:path.join(__dirname, 'resources/js/user.js'),
@@ -23,6 +29,10 @@ module.exports = {
                     presets:['react','es2015']
                 }
             },
+            {
+            test: /.less/, 
+            loader: 'style-loader!css-loader!less-loader'
+            },
            { test: /\.css$/, loader: "style!css" },
            { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file' },
            { test: /\.(woff|woff2)$/, loader: 'url?prefix=font/&limit=5000' },
@@ -30,11 +40,9 @@ module.exports = {
            { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml' }
         ]
     },
-devServer: { hot: true, inline: true, //其实很简单的，只要配置这个参数就可以了
-proxy: {
-    '/ajax/*': 'http://your.backend/'
-}
- },
+    babel: {
+        plugins: [['antd', options]]
+    },
 
 
     plugins: [
