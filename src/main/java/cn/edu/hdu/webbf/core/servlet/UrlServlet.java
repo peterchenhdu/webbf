@@ -35,8 +35,8 @@ public class UrlServlet extends HttpServlet
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException
     {
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/html/"
-            + RelativeUrl.getPageUrl("index"));
+        RequestDispatcher rd = request
+            .getRequestDispatcher("/WEB-INF/html/" + RelativeUrl.getPageUrl("index"));
 
         /*
          * 这里做权限控制

@@ -1,0 +1,12 @@
+.main-div .main-top {
+  border: 1px solid #000;
+  height: 90px;
+  text-align: center;
+  line-height: 90px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.main-div .content-div {
+  margin-left: 240px;
+}

@@ -40,8 +40,10 @@ public class ProjectConfigUtil
         String path = fileUrl.getPath();
         return path;
     }
+
     /**
      * 获取配置文件信息
+     * 
      * @param relativePath
      * @return
      */

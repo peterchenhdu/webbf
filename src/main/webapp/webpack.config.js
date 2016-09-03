@@ -13,11 +13,19 @@ module.exports = {
         user:path.join(__dirname, 'resources/js/user.js'),
         chartdemo:path.join(__dirname, 'resources/js/chartdemo.js'),
         antddemo:path.join(__dirname, 'resources/js/antddemo.js'),
+        index:path.join(__dirname, 'resources/js/index.js'),
         vendors: ['react','reflux','react-mixin']
     },
     output: {
         path: path.join(__dirname, 'build'),
         filename: '[name].js'
+    },
+    //fix problem http://stackoverflow.com/questions/28519287/what-does-only-a-reactowner-can-have-refs-mean#
+    resolve: {
+        alias: {
+          'react': path.join(__dirname, 'node_modules', 'react')
+        },
+        extensions: ['', '.js']
     },
     module: {
         loaders: [
@@ -30,7 +38,7 @@ module.exports = {
                 }
             },
             {
-            test: /.less/, 
+            test: /.less/,
             loader: 'style-loader!css-loader!less-loader'
             },
            { test: /\.css$/, loader: "style!css" },
@@ -43,7 +51,6 @@ module.exports = {
     babel: {
         plugins: [['antd', options]]
     },
-
 
     plugins: [
         // kills the compilation upon an error.
