@@ -34,7 +34,7 @@ export default class ChartDemo extends React.Component{
     });
   }
   change(){
-    
+
   }
 
   render() {

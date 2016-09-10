@@ -5,25 +5,15 @@ const SubMenu = Menu.SubMenu;
 export default class SiderMenu extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      current: '1',
-      theme: 'dark'
-    };
-  }
-  handleClick(e) {
-    console.log('click ', e);
-    this.setState({
-      current: e.key
-    });
   }
 
   render() {
     return (
-      <Menu onClick={this.handleClick.bind(this)}
+      <Menu onClick={this.props.clickEvent}
         style={{ width: '100%' }}
-        theme={this.state.theme}
+        theme={'dark'}
         defaultOpenKeys={['sub2','sub4']}
-        selectedKeys={[this.state.current]}
+        selectedKeys={[this.props.current]}
         mode="inline"
       >
         <SubMenu key="sub1" title={<span><Icon type="mail" /><span>导航一</span></span>}>
@@ -33,8 +23,8 @@ export default class SiderMenu extends React.Component {
           <Menu.Item key="4">选项4</Menu.Item>
         </SubMenu>
         <SubMenu key="sub2" title={<span><Icon type="appstore" /><span>Echarts图表示例</span></span>}>
-          <Menu.Item key="5">选项5</Menu.Item>
-          <Menu.Item key="6">选项6</Menu.Item>
+          <Menu.Item key="AreaStack">折线图</Menu.Item>
+          <Menu.Item key="HeatmapCartesian">热力图</Menu.Item>
         </SubMenu>
         <SubMenu key="sub4" title={<span><Icon type="setting" /><span>增删改查</span></span>}>
           <Menu.Item key="9">选项9</Menu.Item>
