@@ -1,9 +1,13 @@
 # webbf</br>
-Java Web工程demo，使用maven构建</br>
-后端：spring + spring mvc + mybatis；</br>
-前端：react + reflux + webpack，使用ES6语法进行代码编写；还用了jquery，react-bootstrap，ant design等组件</br>
+Java Web工程demo</br>
+后端：spring + spring mvc + mybatis + maven；</br>
+前端：react + reflux + webpack，还涉及ES6、jquery、react-bootstrap、ant design等内容</br>
 初版，还需不断完善。</br>
 
+没想到挺多人关注的，多谢支持，最近工作事比较多，有时间会更新，我也是尝试，网上相关内容较少，大家可以多交流改进。
+
+<h3>index<h3>
+<img src="https://github.com/peterchenhdu/webbf/blob/master/doc/index.jpg">
 <h3>用户管理例子(react-bootstrap、jqury、ajax)<h3>
 <img src="https://github.com/peterchenhdu/webbf/blob/master/doc/usermgt.jpg">
 <h3>图表 echarts<h3>
