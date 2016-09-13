@@ -8,14 +8,14 @@ export default class HeatmapCartesian extends React.Component{
   }
   autoResize() {
     var chartdiv = document.getElementById('heatmap-chart');
-    chartdiv.style.width = (window.innerWidth/6 - 240)+'px';
+    chartdiv.style.width = (5*window.innerWidth/6 - 240)+'px';
     chartdiv.style.height = (window.innerHeight - 90)+'px';
   }
   componentDidMount() {
     this.autoResize();
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('heatmap-chart'));
-    
+
     var hours = ['12a', '1a', '2a', '3a', '4a', '5a', '6a',
             '7a', '8a', '9a','10a','11a',
             '12p', '1p', '2p', '3p', '4p', '5p',
