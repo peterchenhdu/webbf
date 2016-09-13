@@ -30,7 +30,7 @@ import cn.edu.hdu.webbf.service.user.IUserService;
  * @see
  * @since webbf V1.0.0
  */
-@Service
+@Service("userService")
 public class UserServiceImpl implements IUserService
 {
 

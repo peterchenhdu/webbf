@@ -13,7 +13,9 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd" default-lazy-init="true">
-	
+    <!-- 主要用于获取applicationContext -->
+    <bean id="beanUtils" lazy-init="false" class="cn.edu.hdu.webbf.util.BeanUtil" />
+    
     <!-- 启用注解 -->
     <context:annotation-config />
     
@@ -29,7 +31,7 @@
     
     <import resource="dao.xml" />
     <import resource="transaction.xml" />
-    
+    <import resource="quartz.xml" />
     
     
 </beans>
