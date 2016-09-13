@@ -1,5 +1,5 @@
 # webbf</br>
-Java Web工程demo</br>
+Java Web工程demo, 仅供参考</br>
 后端：spring + spring mvc + mybatis + maven；</br>
 前端：react + reflux + webpack，还涉及ES6、jquery、react-bootstrap、ant design等内容</br>
 初版，还需不断完善。</br>
