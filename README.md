@@ -4,7 +4,7 @@ Java Web工程demo, 仅供参考</br>
 前端：react + reflux + webpack，还涉及ES6、jquery、react-bootstrap、ant design等内容</br>
 初版，还需不断完善。</br>
 
-没想到挺多人关注的，多谢支持，最近工作事比较多，有时间会更新，我也是尝试，网上相关内容较少，大家可以多交流改进。
+PS:有时间会更新，我也是尝试，大家可以多交流改进。
 
 <h3>index<h3>
 <img src="https://github.com/peterchenhdu/webbf/blob/master/doc/index.jpg">
