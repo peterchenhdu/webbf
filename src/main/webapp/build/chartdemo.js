@@ -4,7 +4,7 @@ webpackJsonp([1],[
 
 	'use strict';
 
-	__webpack_require__(413);
+	__webpack_require__(419);
 
 	var _react = __webpack_require__(28);
 
@@ -14,7 +14,7 @@ webpackJsonp([1],[
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _chartDemo = __webpack_require__(415);
+	var _chartDemo = __webpack_require__(421);
 
 	var _chartDemo2 = _interopRequireDefault(_chartDemo);
 
@@ -26,7 +26,7 @@ webpackJsonp([1],[
 	  _react2.default.createElement(
 	    'h1',
 	    null,
-	    '图表示例'
+	    '\u56FE\u8868\u793A\u4F8B'
 	  ),
 	  _react2.default.createElement(_chartDemo2.default, null)
 	), document.getElementById('chart-div'));
@@ -444,13 +444,19 @@ webpackJsonp([1],[
 /* 410 */,
 /* 411 */,
 /* 412 */,
-/* 413 */
+/* 413 */,
+/* 414 */,
+/* 415 */,
+/* 416 */,
+/* 417 */,
+/* 418 */,
+/* 419 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(414);
+	var content = __webpack_require__(420);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(27)(content, {});
@@ -470,7 +476,7 @@ webpackJsonp([1],[
 	}
 
 /***/ },
-/* 414 */
+/* 420 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(26)();
@@ -484,7 +490,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 415 */
+/* 421 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -508,12 +514,12 @@ webpackJsonp([1],[
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	// 引入 ECharts 主模块
-	var echarts = __webpack_require__(416);
+	var echarts = __webpack_require__(422);
 	// 引入柱状图
-	__webpack_require__(514);
+	__webpack_require__(520);
 	// 引入提示框和标题组件
-	__webpack_require__(542);
-	__webpack_require__(546);
+	__webpack_require__(549);
+	__webpack_require__(553);
 
 	var ChartDemo = function (_React$Component) {
 	  _inherits(ChartDemo, _React$Component);
@@ -568,7 +574,7 @@ webpackJsonp([1],[
 	exports.default = ChartDemo;
 
 /***/ },
-/* 416 */
+/* 422 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {// Enable DEV mode when using source code without build. which has no __DEV__ variable
@@ -600,25 +606,26 @@ webpackJsonp([1],[
 	 */
 
 
-	    var env = __webpack_require__(417);
+	    var env = __webpack_require__(423);
 
-	    var GlobalModel = __webpack_require__(418);
-	    var ExtensionAPI = __webpack_require__(440);
-	    var CoordinateSystemManager = __webpack_require__(441);
-	    var OptionManager = __webpack_require__(442);
+	    var GlobalModel = __webpack_require__(424);
+	    var ExtensionAPI = __webpack_require__(446);
+	    var CoordinateSystemManager = __webpack_require__(447);
+	    var OptionManager = __webpack_require__(448);
 
-	    var ComponentModel = __webpack_require__(434);
-	    var SeriesModel = __webpack_require__(443);
+	    var ComponentModel = __webpack_require__(440);
+	    var SeriesModel = __webpack_require__(449);
 
-	    var ComponentView = __webpack_require__(444);
-	    var ChartView = __webpack_require__(457);
-	    var graphic = __webpack_require__(458);
+	    var ComponentView = __webpack_require__(450);
+	    var ChartView = __webpack_require__(463);
+	    var graphic = __webpack_require__(464);
+	    var modelUtil = __webpack_require__(426);
 
-	    var zrender = __webpack_require__(496);
-	    var zrUtil = __webpack_require__(419);
-	    var colorTool = __webpack_require__(454);
-	    var Eventful = __webpack_require__(448);
-	    var timsort = __webpack_require__(500);
+	    var zrender = __webpack_require__(502);
+	    var zrUtil = __webpack_require__(425);
+	    var colorTool = __webpack_require__(460);
+	    var Eventful = __webpack_require__(454);
+	    var timsort = __webpack_require__(506);
 
 	    var each = zrUtil.each;
 
@@ -650,6 +657,7 @@ webpackJsonp([1],[
 	            Eventful.prototype[method].call(this, eventName, handler, context);
 	        };
 	    }
+
 	    /**
 	     * @module echarts~MessageCenter
 	     */
@@ -660,6 +668,7 @@ webpackJsonp([1],[
 	    MessageCenter.prototype.off = createRegisterEventWithLowercaseName('off');
 	    MessageCenter.prototype.one = createRegisterEventWithLowercaseName('one');
 	    zrUtil.mixin(MessageCenter, Eventful);
+
 	    /**
 	     * @module echarts~ECharts
 	     */
@@ -691,7 +700,9 @@ webpackJsonp([1],[
 	         */
 	        this._zr = zrender.init(dom, {
 	            renderer: opts.renderer || 'canvas',
-	            devicePixelRatio: opts.devicePixelRatio
+	            devicePixelRatio: opts.devicePixelRatio,
+	            width: opts.width,
+	            height: opts.height
 	        });
 
 	        /**
@@ -941,8 +952,8 @@ webpackJsonp([1],[
 	            var bottom = -MAX_NUMBER;
 	            var canvasList = [];
 	            var dpr = (opts && opts.pixelRatio) || 1;
-	            for (var id in instances) {
-	                var chart = instances[id];
+
+	            zrUtil.each(instances, function (chart, id) {
 	                if (chart.group === groupId) {
 	                    var canvas = chart.getRenderedCanvas(
 	                        zrUtil.clone(opts)
@@ -958,7 +969,7 @@ webpackJsonp([1],[
 	                        top: boundingRect.top
 	                    });
 	                }
-	            }
+	            });
 
 	            left *= dpr;
 	            top *= dpr;
@@ -990,8 +1001,166 @@ webpackJsonp([1],[
 	        }
 	    };
 
-	    var updateMethods = {
+	    /**
+	     * Convert from logical coordinate system to pixel coordinate system.
+	     * See CoordinateSystem#convertToPixel.
+	     * @param {string|Object} finder
+	     *        If string, e.g., 'geo', means {geoIndex: 0}.
+	     *        If Object, could contain some of these properties below:
+	     *        {
+	     *            seriesIndex / seriesId / seriesName,
+	     *            geoIndex / geoId, geoName,
+	     *            bmapIndex / bmapId / bmapName,
+	     *            xAxisIndex / xAxisId / xAxisName,
+	     *            yAxisIndex / yAxisId / yAxisName,
+	     *            gridIndex / gridId / gridName,
+	     *            ... (can be extended)
+	     *        }
+	     * @param {Array|number} value
+	     * @return {Array|number} result
+	     */
+	    echartsProto.convertToPixel = zrUtil.curry(doConvertPixel, 'convertToPixel');
 
+	    /**
+	     * Convert from pixel coordinate system to logical coordinate system.
+	     * See CoordinateSystem#convertFromPixel.
+	     * @param {string|Object} finder
+	     *        If string, e.g., 'geo', means {geoIndex: 0}.
+	     *        If Object, could contain some of these properties below:
+	     *        {
+	     *            seriesIndex / seriesId / seriesName,
+	     *            geoIndex / geoId / geoName,
+	     *            bmapIndex / bmapId / bmapName,
+	     *            xAxisIndex / xAxisId / xAxisName,
+	     *            yAxisIndex / yAxisId / yAxisName
+	     *            gridIndex / gridId / gridName,
+	     *            ... (can be extended)
+	     *        }
+	     * @param {Array|number} value
+	     * @return {Array|number} result
+	     */
+	    echartsProto.convertFromPixel = zrUtil.curry(doConvertPixel, 'convertFromPixel');
+
+	    function doConvertPixel(methodName, finder, value) {
+	        var ecModel = this._model;
+	        var coordSysList = this._coordSysMgr.getCoordinateSystems();
+	        var result;
+
+	        finder = modelUtil.parseFinder(ecModel, finder);
+
+	        for (var i = 0; i < coordSysList.length; i++) {
+	            var coordSys = coordSysList[i];
+	            if (coordSys[methodName]
+	                && (result = coordSys[methodName](ecModel, finder, value)) != null
+	            ) {
+	                return result;
+	            }
+	        }
+
+	        if (__DEV__) {
+	            console.warn(
+	                'No coordinate system that supports ' + methodName + ' found by the given finder.'
+	            );
+	        }
+	    }
+
+	    /**
+	     * Is the specified coordinate systems or components contain the given pixel point.
+	     * @param {string|Object} finder
+	     *        If string, e.g., 'geo', means {geoIndex: 0}.
+	     *        If Object, could contain some of these properties below:
+	     *        {
+	     *            seriesIndex / seriesId / seriesName,
+	     *            geoIndex / geoId / geoName,
+	     *            bmapIndex / bmapId / bmapName,
+	     *            xAxisIndex / xAxisId / xAxisName,
+	     *            yAxisIndex / yAxisId / yAxisName
+	     *            gridIndex / gridId / gridName,
+	     *            ... (can be extended)
+	     *        }
+	     * @param {Array|number} value
+	     * @return {boolean} result
+	     */
+	    echartsProto.containPixel = function (finder, value) {
+	        var ecModel = this._model;
+	        var result;
+
+	        finder = modelUtil.parseFinder(ecModel, finder);
+
+	        zrUtil.each(finder, function (models, key) {
+	            key.indexOf('Models') >= 0 && zrUtil.each(models, function (model) {
+	                var coordSys = model.coordinateSystem;
+	                if (coordSys && coordSys.containPoint) {
+	                    result |= !!coordSys.containPoint(value);
+	                }
+	                else if (key === 'seriesModels') {
+	                    var view = this._chartsMap[model.__viewId];
+	                    if (view && view.containPoint) {
+	                        result |= view.containPoint(value, model);
+	                    }
+	                    else {
+	                        if (__DEV__) {
+	                            console.warn(key + ': ' + (view
+	                                ? 'The found component do not support containPoint.'
+	                                : 'No view mapping to the found component.'
+	                            ));
+	                        }
+	                    }
+	                }
+	                else {
+	                    if (__DEV__) {
+	                        console.warn(key + ': containPoint is not supported');
+	                    }
+	                }
+	            }, this);
+	        }, this);
+
+	        return !!result;
+	    };
+
+	    /**
+	     * Get visual from series or data.
+	     * @param {string|Object} finder
+	     *        If string, e.g., 'series', means {seriesIndex: 0}.
+	     *        If Object, could contain some of these properties below:
+	     *        {
+	     *            seriesIndex / seriesId / seriesName,
+	     *            dataIndex / dataIndexInside
+	     *        }
+	     *        If dataIndex is not specified, series visual will be fetched,
+	     *        but not data item visual.
+	     *        If all of seriesIndex, seriesId, seriesName are not specified,
+	     *        visual will be fetched from first series.
+	     * @param {string} visualType 'color', 'symbol', 'symbolSize'
+	     */
+	    echartsProto.getVisual = function (finder, visualType) {
+	        var ecModel = this._model;
+
+	        finder = modelUtil.parseFinder(ecModel, finder, {defaultMainType: 'series'});
+
+	        var seriesModel = finder.seriesModel;
+
+	        if (__DEV__) {
+	            if (!seriesModel) {
+	                console.warn('There is no specified seires model');
+	            }
+	        }
+
+	        var data = seriesModel.getData();
+
+	        var dataIndexInside = finder.hasOwnProperty('dataIndexInside')
+	            ? finder.dataIndexInside
+	            : finder.hasOwnProperty('dataIndex')
+	            ? data.indexOfRawIndex(finder.dataIndex)
+	            : null;
+
+	        return dataIndexInside != null
+	            ? data.getItemVisual(dataIndexInside, visualType)
+	            : data.getVisual(visualType);
+	    };
+
+
+	    var updateMethods = {
 
 	        /**
 	         * @param {Object} payload
@@ -1193,15 +1362,18 @@ webpackJsonp([1],[
 
 	    /**
 	     * Resize the chart
+	     * @param {Object} opts
+	     * @param {number} [opts.width] Can be 'auto' (the same as null/undefined)
+	     * @param {number} [opts.height] Can be 'auto' (the same as null/undefined)
 	     */
-	    echartsProto.resize = function () {
+	    echartsProto.resize = function (opts) {
 	        if (__DEV__) {
 	            zrUtil.assert(!this[IN_MAIN_PROCESS], '`resize` should not be called during main process.');
 	        }
 
 	        this[IN_MAIN_PROCESS] = true;
 
-	        this._zr.resize();
+	        this._zr.resize(opts);
 
 	        var optionChanged = this._model && this._model.resetOption('media');
 	        updateMethods[optionChanged ? 'prepareAndUpdate' : 'update'].call(this);
@@ -1566,7 +1738,8 @@ webpackJsonp([1],[
 	    }
 
 	    var MOUSE_EVENT_NAMES = [
-	        'click', 'dblclick', 'mouseover', 'mouseout', 'mousemove', 'mousedown', 'mouseup', 'globalout'
+	        'click', 'dblclick', 'mouseover', 'mouseout', 'mousemove',
+	        'mousedown', 'mouseup', 'globalout', 'contextmenu'
 	    ];
 	    /**
 	     * @private
@@ -1576,17 +1749,27 @@ webpackJsonp([1],[
 	            this._zr.on(eveName, function (e) {
 	                var ecModel = this.getModel();
 	                var el = e.target;
-	                if (el && el.dataIndex != null) {
+	                var params;
+
+	                // no e.target when 'globalout'.
+	                if (eveName === 'globalout') {
+	                    params = {};
+	                }
+	                else if (el && el.dataIndex != null) {
 	                    var dataModel = el.dataModel || ecModel.getSeriesByIndex(el.seriesIndex);
-	                    var params = dataModel && dataModel.getDataParams(el.dataIndex, el.dataType) || {};
+	                    params = dataModel && dataModel.getDataParams(el.dataIndex, el.dataType) || {};
+	                }
+	                // If element has custom eventData of components
+	                else if (el && el.eventData) {
+	                    params = zrUtil.extend({}, el.eventData);
+	                }
+
+	                if (params) {
 	                    params.event = e;
 	                    params.type = eveName;
 	                    this.trigger(eveName, params);
 	                }
-	                // If element has custom eventData of components
-	                else if (el && el.eventData) {
-	                    this.trigger(eveName, el.eventData);
-	                }
+
 	            }, this);
 	        }, this);
 
@@ -1768,9 +1951,9 @@ webpackJsonp([1],[
 	        /**
 	         * @type {number}
 	         */
-	        version: '3.2.3',
+	        version: '3.3.0',
 	        dependencies: {
-	            zrender: '3.1.3'
+	            zrender: '3.2.0'
 	        }
 	    };
 
@@ -1791,12 +1974,13 @@ webpackJsonp([1],[
 	                if (connectedGroups[chart.group] && chart[STATUS_KEY] !== STATUS_PENDING) {
 	                    var action = chart.makeActionFromEvent(event);
 	                    var otherCharts = [];
-	                    for (var id in instances) {
-	                        var otherChart = instances[id];
+
+	                    zrUtil.each(instances, function (otherChart) {
 	                        if (otherChart !== chart && otherChart.group === chart.group) {
 	                            otherCharts.push(otherChart);
 	                        }
-	                    }
+	                    });
+
 	                    updateConnectedChartsStatus(otherCharts, STATUS_PENDING);
 	                    each(otherCharts, function (otherChart) {
 	                        if (otherChart[STATUS_KEY] !== STATUS_UPDATING) {
@@ -1813,6 +1997,12 @@ webpackJsonp([1],[
 	     * @param {HTMLDomElement} dom
 	     * @param {Object} [theme]
 	     * @param {Object} opts
+	     * @param {number} [opts.devicePixelRatio] Use window.devicePixelRatio by default
+	     * @param {string} [opts.renderer] Currently only 'canvas' is supported.
+	     * @param {number} [opts.width] Use clientWidth of the input `dom` by default.
+	     *                              Can be 'auto' (the same as null/undefined)
+	     * @param {number} [opts.height] Use clientHeight of the input `dom` by default.
+	     *                               Can be 'auto' (the same as null/undefined)
 	     */
 	    echarts.init = function (dom, theme, opts) {
 	        if (__DEV__) {
@@ -2115,9 +2305,9 @@ webpackJsonp([1],[
 	        zrUtil.createCanvas = creator;
 	    };
 
-	    echarts.registerVisual(PRIORITY_VISUAL_GLOBAL, __webpack_require__(508));
-	    echarts.registerPreprocessor(__webpack_require__(509));
-	    echarts.registerLoading('default', __webpack_require__(511));
+	    echarts.registerVisual(PRIORITY_VISUAL_GLOBAL, __webpack_require__(514));
+	    echarts.registerPreprocessor(__webpack_require__(515));
+	    echarts.registerLoading('default', __webpack_require__(517));
 
 	    // Default action
 	    echarts.registerAction({
@@ -2136,15 +2326,15 @@ webpackJsonp([1],[
 	    // Exports
 	    // --------
 	    //
-	    echarts.List = __webpack_require__(512);
-	    echarts.Model = __webpack_require__(427);
+	    echarts.List = __webpack_require__(518);
+	    echarts.Model = __webpack_require__(433);
 
-	    echarts.graphic = __webpack_require__(458);
-	    echarts.number = __webpack_require__(422);
-	    echarts.format = __webpack_require__(421);
-	    echarts.matrix = __webpack_require__(426);
-	    echarts.vector = __webpack_require__(425);
-	    echarts.color = __webpack_require__(454);
+	    echarts.graphic = __webpack_require__(464);
+	    echarts.number = __webpack_require__(428);
+	    echarts.format = __webpack_require__(427);
+	    echarts.matrix = __webpack_require__(432);
+	    echarts.vector = __webpack_require__(431);
+	    echarts.color = __webpack_require__(460);
 
 	    echarts.util = {};
 	    each([
@@ -2177,7 +2367,7 @@ webpackJsonp([1],[
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 417 */
+/* 423 */
 /***/ function(module, exports) {
 
 	/**
@@ -2259,13 +2449,12 @@ webpackJsonp([1],[
 	        if (firefox) browser.firefox = true, browser.version = firefox[1];
 	        // if (safari && (ua.match(/Safari/) || !!os.ios)) browser.safari = true;
 	        // if (webview) browser.webview = true;
-	        if (ie) {
-	            browser.ie = true; browser.version = ie[1];
-	        }
+	        
 	        if (ie) {
 	            browser.ie = true;
 	            browser.version = ie[1];
 	        }
+	        
 	        if (edge) {
 	            browser.edge = true;
 	            browser.version = edge[1];
@@ -2299,21 +2488,33 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 418 */
+/* 424 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * ECharts global model
 	 *
 	 * @module {echarts/model/Global}
-	 *
 	 */
 
 
 
-	    var zrUtil = __webpack_require__(419);
-	    var modelUtil = __webpack_require__(420);
-	    var Model = __webpack_require__(427);
+	    /**
+	     * Caution: If the mechanism should be changed some day, these cases
+	     * should be considered:
+	     *
+	     * (1) In `merge option` mode, if using the same option to call `setOption`
+	     * many times, the result should be the same (try our best to ensure that).
+	     * (2) In `merge option` mode, if a component has no id/name specified, it
+	     * will be merged by index, and the result sequence of the components is
+	     * consistent to the original sequence.
+	     * (3) `reset` feature (in toolbox). Find detailed info in comments about
+	     * `mergeOption` in module:echarts/model/OptionManager.
+	     */
+
+	    var zrUtil = __webpack_require__(425);
+	    var modelUtil = __webpack_require__(426);
+	    var Model = __webpack_require__(433);
 	    var each = zrUtil.each;
 	    var filter = zrUtil.filter;
 	    var map = zrUtil.map;
@@ -2321,9 +2522,9 @@ webpackJsonp([1],[
 	    var indexOf = zrUtil.indexOf;
 	    var isObject = zrUtil.isObject;
 
-	    var ComponentModel = __webpack_require__(434);
+	    var ComponentModel = __webpack_require__(440);
 
-	    var globalDefault = __webpack_require__(438);
+	    var globalDefault = __webpack_require__(444);
 
 	    var OPTION_INNER_KEY = '\0_ec_inner';
 
@@ -2480,6 +2681,7 @@ webpackJsonp([1],[
 	                        );
 
 	                        if (componentModel && componentModel instanceof ComponentModelClass) {
+	                            componentModel.name = resultItem.keyInfo.name;
 	                            componentModel.mergeOption(newCptOption, this);
 	                            componentModel.optionUpdated(newCptOption, false);
 	                        }
@@ -2495,6 +2697,7 @@ webpackJsonp([1],[
 	                            componentModel = new ComponentModelClass(
 	                                newCptOption, this, this, extraOpt
 	                            );
+	                            zrUtil.extend(componentModel, extraOpt);
 	                            componentModel.init(newCptOption, this, this, extraOpt);
 	                            // Call optionUpdated after init.
 	                            // newCptOption has been used as componentModel.option
@@ -2564,9 +2767,9 @@ webpackJsonp([1],[
 	         * @param {Object} condition
 	         * @param {string} condition.mainType
 	         * @param {string} [condition.subType] If ignore, only query by mainType
-	         * @param {number} [condition.index] Either input index or id or name.
-	         * @param {string} [condition.id] Either input index or id or name.
-	         * @param {string} [condition.name] Either input index or id or name.
+	         * @param {number|Array.<number>} [condition.index] Either input index or id or name.
+	         * @param {string|Array.<string>} [condition.id] Either input index or id or name.
+	         * @param {string|Array.<string>} [condition.name] Either input index or id or name.
 	         * @return {Array.<module:echarts/model/Component>}
 	         */
 	        queryComponents: function (condition) {
@@ -2866,21 +3069,21 @@ webpackJsonp([1],[
 	     * @inner
 	     */
 	    function mergeTheme(option, theme) {
-	        for (var name in theme) {
+	        zrUtil.each(theme, function (themeItem, name) {
 	            // 如果有 component model 则把具体的 merge 逻辑交给该 model 处理
 	            if (!ComponentModel.hasClass(name)) {
-	                if (typeof theme[name] === 'object') {
+	                if (typeof themeItem === 'object') {
 	                    option[name] = !option[name]
-	                        ? zrUtil.clone(theme[name])
-	                        : zrUtil.merge(option[name], theme[name], false);
+	                        ? zrUtil.clone(themeItem)
+	                        : zrUtil.merge(option[name], themeItem, false);
 	                }
 	                else {
 	                    if (option[name] == null) {
-	                        option[name] = theme[name];
+	                        option[name] = themeItem;
 	                    }
 	                }
 	            }
-	        }
+	        });
 	    }
 
 	    function initBase(baseOption) {
@@ -3064,13 +3267,13 @@ webpackJsonp([1],[
 	        }
 	    }
 
-	    zrUtil.mixin(GlobalModel, __webpack_require__(439));
+	    zrUtil.mixin(GlobalModel, __webpack_require__(445));
 
 	    module.exports = GlobalModel;
 
 
 /***/ },
-/* 419 */
+/* 425 */
 /***/ function(module, exports) {
 
 	/**
@@ -3567,15 +3770,15 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 420 */
+/* 426 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var formatUtil = __webpack_require__(421);
-	    var nubmerUtil = __webpack_require__(422);
-	    var Model = __webpack_require__(427);
-	    var zrUtil = __webpack_require__(419);
+	    var formatUtil = __webpack_require__(427);
+	    var nubmerUtil = __webpack_require__(428);
+	    var Model = __webpack_require__(433);
+	    var zrUtil = __webpack_require__(425);
 
 	    var modelUtil = {};
 
@@ -3939,18 +4142,125 @@ webpackJsonp([1],[
 	        }
 	    };
 
+	    /**
+	     * @param {module:echarts/data/List} data
+	     * @param {Object} payload Contains dataIndex (means rawIndex) / dataIndexInside / name
+	     *                         each of which can be Array or primary type.
+	     * @return {number|Array.<number>} dataIndex If not found, return undefined/null.
+	     */
+	    modelUtil.queryDataIndex = function (data, payload) {
+	        if (payload.dataIndexInside != null) {
+	            return payload.dataIndexInside;
+	        }
+	        else if (payload.dataIndex != null) {
+	            return zrUtil.isArray(payload.dataIndex)
+	                ? zrUtil.map(payload.dataIndex, function (value) {
+	                    return data.indexOfRawIndex(value);
+	                })
+	                : data.indexOfRawIndex(payload.dataIndex);
+	        }
+	        else if (payload.name != null) {
+	            return zrUtil.isArray(payload.name)
+	                ? zrUtil.map(payload.name, function (value) {
+	                    return data.indexOfName(value);
+	                })
+	                : data.indexOfName(payload.name);
+	        }
+	    };
+
+	    /**
+	     * @param {module:echarts/model/Global} ecModel
+	     * @param {string|Object} finder
+	     *        If string, e.g., 'geo', means {geoIndex: 0}.
+	     *        If Object, could contain some of these properties below:
+	     *        {
+	     *            seriesIndex, seriesId, seriesName,
+	     *            geoIndex, geoId, goeName,
+	     *            bmapIndex, bmapId, bmapName,
+	     *            xAxisIndex, xAxisId, xAxisName,
+	     *            yAxisIndex, yAxisId, yAxisName,
+	     *            gridIndex, gridId, gridName,
+	     *            ... (can be extended)
+	     *        }
+	     *        Each properties can be number|string|Array.<number>|Array.<string>
+	     *        For example, a finder could be
+	     *        {
+	     *            seriesIndex: 3,
+	     *            geoId: ['aa', 'cc'],
+	     *            gridName: ['xx', 'rr']
+	     *        }
+	     * @param {Object} [opt]
+	     * @param {string} [opt.defaultMainType]
+	     * @return {Object} result like:
+	     *        {
+	     *            seriesModels: [seriesModel1, seriesModel2],
+	     *            seriesModel: seriesModel1, // The first model
+	     *            geoModels: [geoModel1, geoModel2],
+	     *            geoModel: geoModel1, // The first model
+	     *            ...
+	     *        }
+	     */
+	    modelUtil.parseFinder = function (ecModel, finder, opt) {
+	        if (zrUtil.isString(finder)) {
+	            var obj = {};
+	            obj[finder + 'Index'] = 0;
+	            finder = obj;
+	        }
+
+	        var defaultMainType = opt && opt.defaultMainType;
+	        if (defaultMainType
+	            && !has(finder, defaultMainType + 'Index')
+	            && !has(finder, defaultMainType + 'Id')
+	            && !has(finder, defaultMainType + 'Name')
+	        ) {
+	            finder[defaultMainType + 'Index'] = 0;
+	        }
+
+	        var result = {};
+
+	        zrUtil.each(finder, function (value, key) {
+	            var value = finder[key];
+
+	            // Exclude 'dataIndex' and other illgal keys.
+	            if (key === 'dataIndex' || key === 'dataIndexInside') {
+	                result[key] = value;
+	                return;
+	            }
+
+	            var parsedKey = key.match(/^(\w+)(Index|Id|Name)$/) || [];
+	            var mainType = parsedKey[1];
+	            var queryType = parsedKey[2];
+
+	            if (!mainType || !queryType) {
+	                return;
+	            }
+
+	            var queryParam = {mainType: mainType};
+	            queryParam[queryType.toLowerCase()] = value;
+	            var models = ecModel.queryComponents(queryParam);
+	            result[mainType + 'Models'] = models;
+	            result[mainType + 'Model'] = models[0];
+	        });
+
+	        return result;
+	    };
+
+	    function has(obj, prop) {
+	        return obj && obj.hasOwnProperty(prop);
+	    }
+
 	    module.exports = modelUtil;
 
 
 /***/ },
-/* 421 */
+/* 427 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var zrUtil = __webpack_require__(419);
-	    var numberUtil = __webpack_require__(422);
-	    var textContain = __webpack_require__(423);
+	    var zrUtil = __webpack_require__(425);
+	    var numberUtil = __webpack_require__(428);
+	    var textContain = __webpack_require__(429);
 
 	    var formatUtil = {};
 	    /**
@@ -4112,7 +4422,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 422 */
+/* 428 */
 /***/ function(module, exports) {
 
 	/**
@@ -4227,7 +4537,8 @@ webpackJsonp([1],[
 	        if (precision == null) {
 	            precision = 10;
 	        }
-	        // PENDING
+	        // Avoid range error
+	        precision = Math.min(Math.max(0, precision), 20);
 	        return +(+x).toFixed(precision);
 	    };
 
@@ -4369,7 +4680,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 423 */
+/* 429 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -4378,8 +4689,8 @@ webpackJsonp([1],[
 	    var textWidthCacheCounter = 0;
 	    var TEXT_CACHE_MAX = 5000;
 
-	    var util = __webpack_require__(419);
-	    var BoundingRect = __webpack_require__(424);
+	    var util = __webpack_require__(425);
+	    var BoundingRect = __webpack_require__(430);
 	    var retrieve = util.retrieve;
 
 	    function getTextWidth(text, textFont) {
@@ -4650,7 +4961,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 424 */
+/* 430 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4659,8 +4970,8 @@ webpackJsonp([1],[
 	 */
 
 
-	    var vec2 = __webpack_require__(425);
-	    var matrix = __webpack_require__(426);
+	    var vec2 = __webpack_require__(431);
+	    var matrix = __webpack_require__(432);
 
 	    var v2ApplyTransform = vec2.applyTransform;
 	    var mathMin = Math.min;
@@ -4670,6 +4981,16 @@ webpackJsonp([1],[
 	     * @alias module:echarts/core/BoundingRect
 	     */
 	    function BoundingRect(x, y, width, height) {
+
+	        if (width < 0) {
+	            x = x + width;
+	            width = -width;
+	        }
+	        if (height < 0) {
+	            y = y + height;
+	            height = -height;
+	        }
+
 	        /**
 	         * @type {number}
 	         */
@@ -4765,6 +5086,11 @@ webpackJsonp([1],[
 	         * @return {boolean}
 	         */
 	        intersect: function (b) {
+	            if (!(b instanceof BoundingRect)) {
+	                // Normalize negative width/height.
+	                b = BoundingRect.create(b);
+	            }
+
 	            var a = this;
 	            var ax0 = a.x;
 	            var ax1 = a.x + a.width;
@@ -4802,14 +5128,35 @@ webpackJsonp([1],[
 	            this.y = other.y;
 	            this.width = other.width;
 	            this.height = other.height;
+	        },
+
+	        plain: function () {
+	            return {
+	                x: this.x,
+	                y: this.y,
+	                width: this.width,
+	                height: this.height
+	            };
 	        }
+	    };
+
+	    /**
+	     * @param {Object|module:zrender/core/BoundingRect} rect
+	     * @param {number} rect.x
+	     * @param {number} rect.y
+	     * @param {number} rect.width
+	     * @param {number} rect.height
+	     * @return {module:zrender/core/BoundingRect}
+	     */
+	    BoundingRect.create = function (rect) {
+	        return new BoundingRect(rect.x, rect.y, rect.width, rect.height);
 	    };
 
 	    module.exports = BoundingRect;
 
 
 /***/ },
-/* 425 */
+/* 431 */
 /***/ function(module, exports) {
 
 	
@@ -5095,7 +5442,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 426 */
+/* 432 */
 /***/ function(module, exports) {
 
 	
@@ -5259,7 +5606,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 427 */
+/* 433 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -5267,8 +5614,8 @@ webpackJsonp([1],[
 	 */
 
 
-	    var zrUtil = __webpack_require__(419);
-	    var clazzUtil = __webpack_require__(428);
+	    var zrUtil = __webpack_require__(425);
+	    var clazzUtil = __webpack_require__(434);
 
 	    /**
 	     * @alias module:echarts/model/Model
@@ -5412,21 +5759,21 @@ webpackJsonp([1],[
 	    clazzUtil.enableClassExtend(Model);
 
 	    var mixin = zrUtil.mixin;
-	    mixin(Model, __webpack_require__(429));
-	    mixin(Model, __webpack_require__(431));
-	    mixin(Model, __webpack_require__(432));
-	    mixin(Model, __webpack_require__(433));
+	    mixin(Model, __webpack_require__(435));
+	    mixin(Model, __webpack_require__(437));
+	    mixin(Model, __webpack_require__(438));
+	    mixin(Model, __webpack_require__(439));
 
 	    module.exports = Model;
 
 
 /***/ },
-/* 428 */
+/* 434 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var zrUtil = __webpack_require__(419);
+	    var zrUtil = __webpack_require__(425);
 
 	    var clazz = {};
 
@@ -5447,10 +5794,22 @@ webpackJsonp([1],[
 	    /**
 	     * @public
 	     */
-	    clazz.enableClassExtend = function (RootClass) {
+	    clazz.enableClassExtend = function (RootClass, mandatoryMethods) {
 
 	        RootClass.$constructor = RootClass;
 	        RootClass.extend = function (proto) {
+
+	            if (__DEV__) {
+	                zrUtil.each(mandatoryMethods, function (method) {
+	                    if (!proto[method]) {
+	                        console.warn(
+	                            'Method `' + method + '` should be implemented'
+	                            + (proto.type ? ' in ' + proto.type : '') + '.'
+	                        );
+	                    }
+	                });
+	            }
+
 	            var superClass = this;
 	            var ExtendedClass = function () {
 	                if (!proto.$constructor) {
@@ -5638,11 +5997,11 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 429 */
+/* 435 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	    var getLineStyle = __webpack_require__(430)(
+	    var getLineStyle = __webpack_require__(436)(
 	        [
 	            ['lineWidth', 'width'],
 	            ['stroke', 'color'],
@@ -5656,27 +6015,32 @@ webpackJsonp([1],[
 	    module.exports = {
 	        getLineStyle: function (excludes) {
 	            var style = getLineStyle.call(this, excludes);
-	            var lineDash = this.getLineDash();
+	            var lineDash = this.getLineDash(style.lineWidth);
 	            lineDash && (style.lineDash = lineDash);
 	            return style;
 	        },
 
-	        getLineDash: function () {
+	        getLineDash: function (lineWidth) {
+	            if (lineWidth == null) {
+	                lineWidth = 1;
+	            }
 	            var lineType = this.get('type');
+	            var dotSize = Math.max(lineWidth, 2);
+	            var dashSize = lineWidth * 4;
 	            return (lineType === 'solid' || lineType == null) ? null
-	                : (lineType === 'dashed' ? [5, 5] : [2, 2]);
+	                : (lineType === 'dashed' ? [dashSize, dashSize] : [dotSize, dotSize]);
 	        }
 	    };
 
 
 /***/ },
-/* 430 */
+/* 436 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// TODO Parse shadow style
 	// TODO Only shallow path support
 
-	    var zrUtil = __webpack_require__(419);
+	    var zrUtil = __webpack_require__(425);
 
 	    module.exports = function (properties) {
 	        // Normalize
@@ -5703,12 +6067,12 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 431 */
+/* 437 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 	    module.exports = {
-	        getAreaStyle: __webpack_require__(430)(
+	        getAreaStyle: __webpack_require__(436)(
 	            [
 	                ['fill', 'color'],
 	                ['shadowBlur'],
@@ -5722,12 +6086,12 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 432 */
+/* 438 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var textContain = __webpack_require__(423);
+	    var textContain = __webpack_require__(429);
 
 	    function getShallow(model, path) {
 	        return model && model.getShallow(path);
@@ -5779,11 +6143,11 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 433 */
+/* 439 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	    var getItemStyle = __webpack_require__(430)(
+	    var getItemStyle = __webpack_require__(436)(
 	        [
 	            ['fill', 'color'],
 	            ['stroke', 'borderColor'],
@@ -5792,7 +6156,9 @@ webpackJsonp([1],[
 	            ['shadowBlur'],
 	            ['shadowOffsetX'],
 	            ['shadowOffsetY'],
-	            ['shadowColor']
+	            ['shadowColor'],
+	            ['textPosition'],
+	            ['textAlign']
 	        ]
 	    );
 	    module.exports = {
@@ -5812,7 +6178,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 434 */
+/* 440 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -5822,12 +6188,12 @@ webpackJsonp([1],[
 	 */
 
 
-	    var Model = __webpack_require__(427);
-	    var zrUtil = __webpack_require__(419);
+	    var Model = __webpack_require__(433);
+	    var zrUtil = __webpack_require__(425);
 	    var arrayPush = Array.prototype.push;
-	    var componentUtil = __webpack_require__(435);
-	    var clazzUtil = __webpack_require__(428);
-	    var layout = __webpack_require__(436);
+	    var componentUtil = __webpack_require__(441);
+	    var clazzUtil = __webpack_require__(434);
+	    var layout = __webpack_require__(442);
 
 	    /**
 	     * @alias module:echarts/model/Component
@@ -5906,9 +6272,6 @@ webpackJsonp([1],[
 	        $constructor: function (option, parentModel, ecModel, extraOpt) {
 	            Model.call(this, option, parentModel, ecModel, extraOpt);
 
-	            // Set dependentModels, componentIndex, name, id, mainType, subType.
-	            zrUtil.extend(this, extraOpt);
-
 	            this.uid = componentUtil.getUID('componentModel');
 	        },
 
@@ -5931,7 +6294,7 @@ webpackJsonp([1],[
 	            }
 	        },
 
-	        mergeOption: function (option) {
+	        mergeOption: function (option, extraOpt) {
 	            zrUtil.merge(this.option, option, true);
 
 	            var layoutMode = this.layoutMode;
@@ -5960,6 +6323,14 @@ webpackJsonp([1],[
 	                this.__defaultOption = defaultOption;
 	            }
 	            return this.__defaultOption;
+	        },
+
+	        getReferringComponents: function (mainType) {
+	            return this.ecModel.queryComponents({
+	                mainType: mainType,
+	                index: this.get(mainType + 'Index', true),
+	                id: this.get(mainType + 'Id', true)
+	            });
 	        }
 
 	    });
@@ -6000,19 +6371,19 @@ webpackJsonp([1],[
 	        });
 	    }
 
-	    zrUtil.mixin(ComponentModel, __webpack_require__(437));
+	    zrUtil.mixin(ComponentModel, __webpack_require__(443));
 
 	    module.exports = ComponentModel;
 
 
 /***/ },
-/* 435 */
+/* 441 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var zrUtil = __webpack_require__(419);
-	    var clazz = __webpack_require__(428);
+	    var zrUtil = __webpack_require__(425);
+	    var clazz = __webpack_require__(434);
 
 	    var parseClassType = clazz.parseClassType;
 
@@ -6187,17 +6558,17 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 436 */
+/* 442 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	// Layout helpers for each component positioning
 
 
-	    var zrUtil = __webpack_require__(419);
-	    var BoundingRect = __webpack_require__(424);
-	    var numberUtil = __webpack_require__(422);
-	    var formatUtil = __webpack_require__(421);
+	    var zrUtil = __webpack_require__(425);
+	    var BoundingRect = __webpack_require__(430);
+	    var numberUtil = __webpack_require__(428);
+	    var formatUtil = __webpack_require__(427);
 	    var parsePercent = numberUtil.parsePercent;
 	    var each = zrUtil.each;
 
@@ -6592,7 +6963,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 437 */
+/* 443 */
 /***/ function(module, exports) {
 
 	
@@ -6612,7 +6983,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 438 */
+/* 444 */
 /***/ function(module, exports) {
 
 	
@@ -6669,7 +7040,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 439 */
+/* 445 */
 /***/ function(module, exports) {
 
 	
@@ -6703,13 +7074,13 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 440 */
+/* 446 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var zrUtil = __webpack_require__(419);
+	    var zrUtil = __webpack_require__(425);
 
 	    var echartsAPIList = [
 	        'getDom', 'getZr', 'getWidth', 'getHeight', 'dispatchAction', 'isDisposed',
@@ -6726,11 +7097,41 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 441 */
-/***/ function(module, exports) {
+/* 447 */
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
+
+	    var zrUtil = __webpack_require__(425);
+
+	    /**
+	     * Interface of Coordinate System Class
+	     *
+	     * create:
+	     *     @param {module:echarts/model/Global} ecModel
+	     *     @param {module:echarts/ExtensionAPI} api
+	     *     @return {Object} coordinate system instance
+	     *
+	     * update:
+	     *     @param {module:echarts/model/Global} ecModel
+	     *     @param {module:echarts/ExtensionAPI} api
+	     *
+	     * convertToPixel:
+	     * convertFromPixel:
+	     *     These two methods is also responsible for determine whether this
+	     *     coodinate system is applicable to the given `finder`.
+	     *     Each coordinate system will be tried, util one returns none
+	     *     null/undefined value.
+	     *     @param {module:echarts/model/Global} ecModel
+	     *     @param {Object} finder
+	     *     @param {Array|number} value
+	     *     @return {Array|number} convert result.
+	     *
+	     * containPoint:
+	     *     @param {Array.<number>} point In pixel coordinate system.
+	     *     @return {boolean}
+	     */
 
 	    var coordinateSystemCreators = {};
 
@@ -6745,20 +7146,23 @@ webpackJsonp([1],[
 
 	        create: function (ecModel, api) {
 	            var coordinateSystems = [];
-	            for (var type in coordinateSystemCreators) {
-	                var list = coordinateSystemCreators[type].create(ecModel, api);
-	                list && (coordinateSystems = coordinateSystems.concat(list));
-	            }
+	            zrUtil.each(coordinateSystemCreators, function (creater, type) {
+	                var list = creater.create(ecModel, api);
+	                coordinateSystems = coordinateSystems.concat(list || []);
+	            });
 
 	            this._coordinateSystems = coordinateSystems;
 	        },
 
 	        update: function (ecModel, api) {
-	            var coordinateSystems = this._coordinateSystems;
-	            for (var i = 0; i < coordinateSystems.length; i++) {
+	            zrUtil.each(this._coordinateSystems, function (coordSys) {
 	                // FIXME MUST have
-	                coordinateSystems[i].update && coordinateSystems[i].update(ecModel, api);
-	            }
+	                coordSys.update && coordSys.update(ecModel, api);
+	            });
+	        },
+
+	        getCoordinateSystems: function () {
+	            return this._coordinateSystems.slice();
 	        }
 	    };
 
@@ -6774,7 +7178,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 442 */
+/* 448 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -6785,9 +7189,9 @@ webpackJsonp([1],[
 
 
 
-	    var zrUtil = __webpack_require__(419);
-	    var modelUtil = __webpack_require__(420);
-	    var ComponentModel = __webpack_require__(434);
+	    var zrUtil = __webpack_require__(425);
+	    var modelUtil = __webpack_require__(426);
+	    var ComponentModel = __webpack_require__(440);
 	    var each = zrUtil.each;
 	    var clone = zrUtil.clone;
 	    var map = zrUtil.map;
@@ -7214,18 +7618,18 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 443 */
+/* 449 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var zrUtil = __webpack_require__(419);
-	    var formatUtil = __webpack_require__(421);
-	    var modelUtil = __webpack_require__(420);
-	    var ComponentModel = __webpack_require__(434);
-	    var colorPaletteMixin = __webpack_require__(439);
-	    var env = __webpack_require__(417);
+	    var zrUtil = __webpack_require__(425);
+	    var formatUtil = __webpack_require__(427);
+	    var modelUtil = __webpack_require__(426);
+	    var ComponentModel = __webpack_require__(440);
+	    var colorPaletteMixin = __webpack_require__(445);
+	    var env = __webpack_require__(423);
 
 	    var encodeHTML = formatUtil.encodeHTML;
 	    var addCommas = formatUtil.addCommas;
@@ -7404,21 +7808,27 @@ webpackJsonp([1],[
 	         */
 	        formatTooltip: function (dataIndex, multipleSeries, dataType) {
 	            function formatArrayValue(value) {
-	                return zrUtil.map(value, function (val, idx) {
+	                var result = [];
+
+	                zrUtil.each(value, function (val, idx) {
 	                    var dimInfo = data.getDimensionInfo(idx);
 	                    var dimType = dimInfo && dimInfo.type;
+	                    var valStr;
+
 	                    if (dimType === 'ordinal') {
-	                        return val;
+	                        valStr = val + '';
 	                    }
 	                    else if (dimType === 'time') {
-	                        return multipleSeries ? '' : formatUtil.formatTime('yyyy/mm/dd hh:mm:ss', val);
+	                        valStr = multipleSeries ? '' : formatUtil.formatTime('yyyy/mm/dd hh:mm:ss', val);
 	                    }
 	                    else {
-	                        return addCommas(val);
+	                        valStr = addCommas(val);
 	                    }
-	                }).filter(function (val) {
-	                    return !!val;
-	                }).join(', ');
+
+	                    valStr && result.push(valStr);
+	                });
+
+	                return result.join(', ');
 	            }
 
 	            var data = this._data;
@@ -7477,7 +7887,23 @@ webpackJsonp([1],[
 	            return color;
 	        },
 
-	        getAxisTooltipDataIndex: null
+	        /**
+	         * Get data indices for show tooltip content. See tooltip.
+	         * @abstract
+	         * @param {Array.<string>|string} dim
+	         * @param {Array.<number>} value
+	         * @param {module:echarts/coord/single/SingleAxis} baseAxis
+	         * @return {Array.<number>} data indices.
+	         */
+	        getAxisTooltipDataIndex: null,
+
+	        /**
+	         * See tooltip.
+	         * @abstract
+	         * @param {number} dataIndex
+	         * @return {Array.<number>} Point of tooltip. null/undefined can be returned.
+	         */
+	        getTooltipPosition: null
 	    });
 
 	    zrUtil.mixin(SeriesModel, modelUtil.dataFormatMixin);
@@ -7487,14 +7913,14 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 444 */
+/* 450 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var Group = __webpack_require__(445);
-	    var componentUtil = __webpack_require__(435);
-	    var clazzUtil = __webpack_require__(428);
+	    var Group = __webpack_require__(451);
+	    var componentUtil = __webpack_require__(441);
+	    var clazzUtil = __webpack_require__(434);
 
 	    var Component = function () {
 	        /**
@@ -7519,6 +7945,7 @@ webpackJsonp([1],[
 	        render: function (componentModel, ecModel, api, payload) {},
 
 	        dispose: function () {}
+
 	    };
 
 	    var componentProto = Component.prototype;
@@ -7538,7 +7965,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 445 */
+/* 451 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -7561,9 +7988,9 @@ webpackJsonp([1],[
 	 */
 
 
-	    var zrUtil = __webpack_require__(419);
-	    var Element = __webpack_require__(446);
-	    var BoundingRect = __webpack_require__(424);
+	    var zrUtil = __webpack_require__(425);
+	    var Element = __webpack_require__(452);
+	    var BoundingRect = __webpack_require__(430);
 
 	    /**
 	     * @alias module:zrender/graphic/Group
@@ -7578,7 +8005,9 @@ webpackJsonp([1],[
 	        Element.call(this, opts);
 
 	        for (var key in opts) {
-	            this[key] = opts[key];
+	            if (opts.hasOwnProperty(key)) {
+	                this[key] = opts[key];
+	            }
 	        }
 
 	        this._children = [];
@@ -7852,7 +8281,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 446 */
+/* 452 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7861,11 +8290,11 @@ webpackJsonp([1],[
 	 */
 
 
-	    var guid = __webpack_require__(447);
-	    var Eventful = __webpack_require__(448);
-	    var Transformable = __webpack_require__(449);
-	    var Animatable = __webpack_require__(450);
-	    var zrUtil = __webpack_require__(419);
+	    var guid = __webpack_require__(453);
+	    var Eventful = __webpack_require__(454);
+	    var Transformable = __webpack_require__(455);
+	    var Animatable = __webpack_require__(456);
+	    var zrUtil = __webpack_require__(425);
 
 	    /**
 	     * @alias module:zrender/Element
@@ -8120,7 +8549,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 447 */
+/* 453 */
 /***/ function(module, exports) {
 
 	/**
@@ -8139,7 +8568,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 448 */
+/* 454 */
 /***/ function(module, exports) {
 
 	/**
@@ -8442,7 +8871,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 449 */
+/* 455 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8453,8 +8882,8 @@ webpackJsonp([1],[
 	 */
 
 
-	    var matrix = __webpack_require__(426);
-	    var vector = __webpack_require__(425);
+	    var matrix = __webpack_require__(432);
+	    var vector = __webpack_require__(431);
 	    var mIdentity = matrix.identity;
 
 	    var EPSILON = 5e-5;
@@ -8698,7 +9127,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 450 */
+/* 456 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8707,12 +9136,12 @@ webpackJsonp([1],[
 	 */
 
 
-	    var Animator = __webpack_require__(451);
-	    var util = __webpack_require__(419);
+	    var Animator = __webpack_require__(457);
+	    var util = __webpack_require__(425);
 	    var isString = util.isString;
 	    var isFunction = util.isFunction;
 	    var isObject = util.isObject;
-	    var log = __webpack_require__(455);
+	    var log = __webpack_require__(461);
 
 	    /**
 	     * @alias modue:zrender/mixin/Animatable
@@ -8924,6 +9353,10 @@ webpackJsonp([1],[
 	            var objShallow = {};
 	            var propertyCount = 0;
 	            for (var name in target) {
+	                if (!target.hasOwnProperty(name)) {
+	                    continue;
+	                }
+
 	                if (source[name] != null) {
 	                    if (isObject(target[name]) && !util.isArrayLike(target[name])) {
 	                        this._animateToShallow(
@@ -8968,7 +9401,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 451 */
+/* 457 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -8976,9 +9409,9 @@ webpackJsonp([1],[
 	 */
 
 
-	    var Clip = __webpack_require__(452);
-	    var color = __webpack_require__(454);
-	    var util = __webpack_require__(419);
+	    var Clip = __webpack_require__(458);
+	    var color = __webpack_require__(460);
+	    var util = __webpack_require__(425);
 	    var isArrayLike = util.isArrayLike;
 
 	    var arraySlice = Array.prototype.slice;
@@ -9445,6 +9878,10 @@ webpackJsonp([1],[
 	        when: function(time /* ms */, props) {
 	            var tracks = this._tracks;
 	            for (var propName in props) {
+	                if (!props.hasOwnProperty(propName)) {
+	                    continue;
+	                }
+
 	                if (!tracks[propName]) {
 	                    tracks[propName] = [];
 	                    // Invalid value
@@ -9513,6 +9950,9 @@ webpackJsonp([1],[
 
 	            var lastClip;
 	            for (var propName in this._tracks) {
+	                if (!this._tracks.hasOwnProperty(propName)) {
+	                    continue;
+	                }
 	                var clip = createTrackClip(
 	                    this, easing, oneTrackDone,
 	                    this._tracks[propName], propName
@@ -9597,7 +10037,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 452 */
+/* 458 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -9616,7 +10056,7 @@ webpackJsonp([1],[
 	 */
 
 
-	    var easingFuncs = __webpack_require__(453);
+	    var easingFuncs = __webpack_require__(459);
 
 	    function Clip(options) {
 
@@ -9709,7 +10149,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 453 */
+/* 459 */
 /***/ function(module, exports) {
 
 	/**
@@ -10060,7 +10500,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 454 */
+/* 460 */
 /***/ function(module, exports) {
 
 	/**
@@ -10543,11 +10983,11 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 455 */
+/* 461 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	        var config = __webpack_require__(456);
+	        var config = __webpack_require__(462);
 
 	        /**
 	         * @exports zrender/tool/log
@@ -10573,7 +11013,7 @@ webpackJsonp([1],[
 	        return function(mes) {
 	            document.getElementById('wrong-message').innerHTML =
 	                mes + ' ' + (new Date() - 0)
-	                + '<br/>' 
+	                + '<br/>'
 	                + document.getElementById('wrong-message').innerHTML;
 	        };
 	        */
@@ -10581,7 +11021,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 456 */
+/* 462 */
 /***/ function(module, exports) {
 
 	
@@ -10613,14 +11053,16 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 457 */
+/* 463 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var Group = __webpack_require__(445);
-	    var componentUtil = __webpack_require__(435);
-	    var clazzUtil = __webpack_require__(428);
+	    var Group = __webpack_require__(451);
+	    var componentUtil = __webpack_require__(441);
+	    var clazzUtil = __webpack_require__(434);
+	    var modelUtil = __webpack_require__(426);
+	    var zrUtil = __webpack_require__(425);
 
 	    function Chart() {
 
@@ -10694,6 +11136,15 @@ webpackJsonp([1],[
 	         * @param  {module:echarts/ExtensionAPI} api
 	         */
 	        dispose: function () {}
+
+	        /**
+	         * The view contains the given point.
+	         * @interface
+	         * @param {Array.<number>} point
+	         * @return {boolean}
+	         */
+	        // containPoint: function () {}
+
 	    };
 
 	    var chartProto = Chart.prototype;
@@ -10726,21 +11177,12 @@ webpackJsonp([1],[
 	     * @inner
 	     */
 	    function toggleHighlight(data, payload, state) {
-	        var dataIndex = payload && payload.dataIndex;
-	        var name = payload && payload.name;
+	        var dataIndex = modelUtil.queryDataIndex(data, payload);
 
 	        if (dataIndex != null) {
-	            var dataIndices = dataIndex instanceof Array ? dataIndex : [dataIndex];
-	            for (var i = 0, len = dataIndices.length; i < len; i++) {
-	                elSetState(data.getItemGraphicEl(dataIndices[i]), state);
-	            }
-	        }
-	        else if (name) {
-	            var names = name instanceof Array ? name : [name];
-	            for (var i = 0, len = names.length; i < len; i++) {
-	                var dataIndex = data.indexOfName(names[i]);
-	                elSetState(data.getItemGraphicEl(dataIndex), state);
-	            }
+	            zrUtil.each(modelUtil.normalizeToArray(dataIndex), function (dataIdx) {
+	                elSetState(data.getItemGraphicEl(dataIdx), state);
+	            });
 	        }
 	        else {
 	            data.eachItemGraphicEl(function (el) {
@@ -10750,7 +11192,7 @@ webpackJsonp([1],[
 	    }
 
 	    // Enable Chart.extend.
-	    clazzUtil.enableClassExtend(Chart);
+	    clazzUtil.enableClassExtend(Chart, ['dispose']);
 
 	    // Add capability of registerClass, getClass, hasClass, registerSubTypeDefaulter and so on.
 	    clazzUtil.enableClassManagement(Chart, {registerWhenExtend: true});
@@ -10759,55 +11201,55 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 458 */
+/* 464 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var zrUtil = __webpack_require__(419);
+	    var zrUtil = __webpack_require__(425);
 
-	    var pathTool = __webpack_require__(459);
+	    var pathTool = __webpack_require__(465);
 	    var round = Math.round;
-	    var Path = __webpack_require__(460);
-	    var colorTool = __webpack_require__(454);
-	    var matrix = __webpack_require__(426);
-	    var vector = __webpack_require__(425);
-	    var Gradient = __webpack_require__(476);
+	    var Path = __webpack_require__(466);
+	    var colorTool = __webpack_require__(460);
+	    var matrix = __webpack_require__(432);
+	    var vector = __webpack_require__(431);
+	    var Gradient = __webpack_require__(482);
 
 	    var graphic = {};
 
-	    graphic.Group = __webpack_require__(445);
+	    graphic.Group = __webpack_require__(451);
 
-	    graphic.Image = __webpack_require__(477);
+	    graphic.Image = __webpack_require__(483);
 
-	    graphic.Text = __webpack_require__(479);
+	    graphic.Text = __webpack_require__(485);
 
-	    graphic.Circle = __webpack_require__(480);
+	    graphic.Circle = __webpack_require__(486);
 
-	    graphic.Sector = __webpack_require__(481);
+	    graphic.Sector = __webpack_require__(487);
 
-	    graphic.Ring = __webpack_require__(482);
+	    graphic.Ring = __webpack_require__(488);
 
-	    graphic.Polygon = __webpack_require__(483);
+	    graphic.Polygon = __webpack_require__(489);
 
-	    graphic.Polyline = __webpack_require__(487);
+	    graphic.Polyline = __webpack_require__(493);
 
-	    graphic.Rect = __webpack_require__(488);
+	    graphic.Rect = __webpack_require__(494);
 
-	    graphic.Line = __webpack_require__(490);
+	    graphic.Line = __webpack_require__(496);
 
-	    graphic.BezierCurve = __webpack_require__(491);
+	    graphic.BezierCurve = __webpack_require__(497);
 
-	    graphic.Arc = __webpack_require__(492);
+	    graphic.Arc = __webpack_require__(498);
 
-	    graphic.CompoundPath = __webpack_require__(493);
+	    graphic.CompoundPath = __webpack_require__(499);
 
-	    graphic.LinearGradient = __webpack_require__(494);
+	    graphic.LinearGradient = __webpack_require__(500);
 
-	    graphic.RadialGradient = __webpack_require__(495);
+	    graphic.RadialGradient = __webpack_require__(501);
 
-	    graphic.BoundingRect = __webpack_require__(424);
+	    graphic.BoundingRect = __webpack_require__(430);
 
 	    /**
 	     * Extend shape with parameters
@@ -11317,15 +11759,15 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 459 */
+/* 465 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var Path = __webpack_require__(460);
-	    var PathProxy = __webpack_require__(464);
-	    var transformPath = __webpack_require__(475);
-	    var matrix = __webpack_require__(426);
+	    var Path = __webpack_require__(466);
+	    var PathProxy = __webpack_require__(470);
+	    var transformPath = __webpack_require__(481);
+	    var matrix = __webpack_require__(432);
 
 	    // command chars
 	    var cc = [
@@ -11725,7 +12167,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 460 */
+/* 466 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -11735,12 +12177,12 @@ webpackJsonp([1],[
 
 
 
-	    var Displayable = __webpack_require__(461);
-	    var zrUtil = __webpack_require__(419);
-	    var PathProxy = __webpack_require__(464);
-	    var pathContain = __webpack_require__(467);
+	    var Displayable = __webpack_require__(467);
+	    var zrUtil = __webpack_require__(425);
+	    var PathProxy = __webpack_require__(470);
+	    var pathContain = __webpack_require__(473);
 
-	    var Pattern = __webpack_require__(474);
+	    var Pattern = __webpack_require__(480);
 	    var getCanvasPattern = Pattern.prototype.getCanvasPattern;
 
 	    var abs = Math.abs;
@@ -12009,7 +12451,9 @@ webpackJsonp([1],[
 	            if (shape) {
 	                if (zrUtil.isObject(key)) {
 	                    for (var name in key) {
-	                        shape[name] = key[name];
+	                        if (key.hasOwnProperty(name)) {
+	                            shape[name] = key[name];
+	                        }
 	                    }
 	                }
 	                else {
@@ -12088,7 +12532,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 461 */
+/* 467 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -12099,12 +12543,12 @@ webpackJsonp([1],[
 
 
 
-	    var zrUtil = __webpack_require__(419);
+	    var zrUtil = __webpack_require__(425);
 
-	    var Style = __webpack_require__(462);
+	    var Style = __webpack_require__(468);
 
-	    var Element = __webpack_require__(446);
-	    var RectText = __webpack_require__(463);
+	    var Element = __webpack_require__(452);
+	    var RectText = __webpack_require__(469);
 	    // var Stateful = require('./mixin/Stateful');
 
 	    /**
@@ -12362,7 +12806,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 462 */
+/* 468 */
 /***/ function(module, exports) {
 
 	/**
@@ -12678,7 +13122,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 463 */
+/* 469 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -12688,8 +13132,8 @@ webpackJsonp([1],[
 
 
 
-	    var textContain = __webpack_require__(423);
-	    var BoundingRect = __webpack_require__(424);
+	    var textContain = __webpack_require__(429);
+	    var BoundingRect = __webpack_require__(430);
 
 	    var tmpRect = new BoundingRect();
 
@@ -12827,7 +13271,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 464 */
+/* 470 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12842,11 +13286,11 @@ webpackJsonp([1],[
 	 // TODO getTotalLength, getPointAtLength
 
 
-	    var curve = __webpack_require__(465);
-	    var vec2 = __webpack_require__(425);
-	    var bbox = __webpack_require__(466);
-	    var BoundingRect = __webpack_require__(424);
-	    var dpr = __webpack_require__(456).devicePixelRatio;
+	    var curve = __webpack_require__(471);
+	    var vec2 = __webpack_require__(431);
+	    var bbox = __webpack_require__(472);
+	    var BoundingRect = __webpack_require__(430);
+	    var dpr = __webpack_require__(462).devicePixelRatio;
 
 	    var CMD = {
 	        M: 1,
@@ -13602,7 +14046,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 465 */
+/* 471 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13613,7 +14057,7 @@ webpackJsonp([1],[
 	 */
 
 
-	    var vec2 = __webpack_require__(425);
+	    var vec2 = __webpack_require__(431);
 	    var v2Create = vec2.create;
 	    var v2DistSquare = vec2.distSquare;
 	    var mathPow = Math.pow;
@@ -14148,7 +14592,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 466 */
+/* 472 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -14156,8 +14600,8 @@ webpackJsonp([1],[
 	 */
 
 
-	    var vec2 = __webpack_require__(425);
-	    var curve = __webpack_require__(465);
+	    var vec2 = __webpack_require__(431);
+	    var curve = __webpack_require__(471);
 
 	    var bbox = {};
 	    var mathMin = Math.min;
@@ -14384,21 +14828,21 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 467 */
+/* 473 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var CMD = __webpack_require__(464).CMD;
-	    var line = __webpack_require__(468);
-	    var cubic = __webpack_require__(469);
-	    var quadratic = __webpack_require__(470);
-	    var arc = __webpack_require__(471);
-	    var normalizeRadian = __webpack_require__(472).normalizeRadian;
-	    var curve = __webpack_require__(465);
+	    var CMD = __webpack_require__(470).CMD;
+	    var line = __webpack_require__(474);
+	    var cubic = __webpack_require__(475);
+	    var quadratic = __webpack_require__(476);
+	    var arc = __webpack_require__(477);
+	    var normalizeRadian = __webpack_require__(478).normalizeRadian;
+	    var curve = __webpack_require__(471);
 
-	    var windingLine = __webpack_require__(473);
+	    var windingLine = __webpack_require__(479);
 
 	    var containStroke = line.containStroke;
 
@@ -14790,7 +15234,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 468 */
+/* 474 */
 /***/ function(module, exports) {
 
 	
@@ -14838,12 +15282,12 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 469 */
+/* 475 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var curve = __webpack_require__(465);
+	    var curve = __webpack_require__(471);
 
 	    module.exports = {
 	        /**
@@ -14885,12 +15329,12 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 470 */
+/* 476 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var curve = __webpack_require__(465);
+	    var curve = __webpack_require__(471);
 
 	    module.exports = {
 	        /**
@@ -14930,12 +15374,12 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 471 */
+/* 477 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var normalizeRadian = __webpack_require__(472).normalizeRadian;
+	    var normalizeRadian = __webpack_require__(478).normalizeRadian;
 	    var PI2 = Math.PI * 2;
 
 	    module.exports = {
@@ -14996,7 +15440,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 472 */
+/* 478 */
 /***/ function(module, exports) {
 
 	
@@ -15014,7 +15458,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 473 */
+/* 479 */
 /***/ function(module, exports) {
 
 	
@@ -15041,7 +15485,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 474 */
+/* 480 */
 /***/ function(module, exports) {
 
 	
@@ -15064,13 +15508,13 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 475 */
+/* 481 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var CMD = __webpack_require__(464).CMD;
-	    var vec2 = __webpack_require__(425);
+	    var CMD = __webpack_require__(470).CMD;
+	    var vec2 = __webpack_require__(431);
 	    var v2ApplyTransform = vec2.applyTransform;
 
 	    var points = [[], [], []];
@@ -15165,7 +15609,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 476 */
+/* 482 */
 /***/ function(module, exports) {
 
 	
@@ -15196,7 +15640,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 477 */
+/* 483 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -15206,11 +15650,11 @@ webpackJsonp([1],[
 
 
 
-	    var Displayable = __webpack_require__(461);
-	    var BoundingRect = __webpack_require__(424);
-	    var zrUtil = __webpack_require__(419);
+	    var Displayable = __webpack_require__(467);
+	    var BoundingRect = __webpack_require__(430);
+	    var zrUtil = __webpack_require__(425);
 
-	    var LRU = __webpack_require__(478);
+	    var LRU = __webpack_require__(484);
 	    var globalImageCache = new LRU(50);
 	    /**
 	     * @alias zrender/graphic/Image
@@ -15357,7 +15801,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 478 */
+/* 484 */
 /***/ function(module, exports) {
 
 	// Simple LRU cache use doubly linked list
@@ -15532,7 +15976,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 479 */
+/* 485 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -15546,9 +15990,9 @@ webpackJsonp([1],[
 
 
 
-	    var Displayable = __webpack_require__(461);
-	    var zrUtil = __webpack_require__(419);
-	    var textContain = __webpack_require__(423);
+	    var Displayable = __webpack_require__(467);
+	    var zrUtil = __webpack_require__(425);
+	    var textContain = __webpack_require__(429);
 
 	    /**
 	     * @alias zrender/graphic/Text
@@ -15663,7 +16107,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 480 */
+/* 486 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15674,7 +16118,7 @@ webpackJsonp([1],[
 
 
 
-	    module.exports = __webpack_require__(460).extend({
+	    module.exports = __webpack_require__(466).extend({
 
 	        type: 'circle',
 
@@ -15700,7 +16144,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 481 */
+/* 487 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -15710,7 +16154,7 @@ webpackJsonp([1],[
 
 
 
-	    module.exports = __webpack_require__(460).extend({
+	    module.exports = __webpack_require__(466).extend({
 
 	        type: 'sector',
 
@@ -15766,7 +16210,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 482 */
+/* 488 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -15775,7 +16219,7 @@ webpackJsonp([1],[
 	 */
 
 
-	    module.exports = __webpack_require__(460).extend({
+	    module.exports = __webpack_require__(466).extend({
 
 	        type: 'ring',
 
@@ -15800,7 +16244,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 483 */
+/* 489 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -15809,9 +16253,9 @@ webpackJsonp([1],[
 	 */
 
 
-	    var polyHelper = __webpack_require__(484);
+	    var polyHelper = __webpack_require__(490);
 
-	    module.exports = __webpack_require__(460).extend({
+	    module.exports = __webpack_require__(466).extend({
 	        
 	        type: 'polygon',
 
@@ -15830,13 +16274,13 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 484 */
+/* 490 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var smoothSpline = __webpack_require__(485);
-	    var smoothBezier = __webpack_require__(486);
+	    var smoothSpline = __webpack_require__(491);
+	    var smoothBezier = __webpack_require__(492);
 
 	    module.exports = {
 	        buildPath: function (ctx, shape, closePath) {
@@ -15877,7 +16321,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 485 */
+/* 491 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -15888,7 +16332,7 @@ webpackJsonp([1],[
 	 *         errorrik (errorrik@gmail.com)
 	 */
 
-	    var vec2 = __webpack_require__(425);
+	    var vec2 = __webpack_require__(431);
 
 	    /**
 	     * @inner
@@ -15953,7 +16397,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 486 */
+/* 492 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -15965,7 +16409,7 @@ webpackJsonp([1],[
 	 */
 
 
-	    var vec2 = __webpack_require__(425);
+	    var vec2 = __webpack_require__(431);
 	    var v2Min = vec2.min;
 	    var v2Max = vec2.max;
 	    var v2Scale = vec2.scale;
@@ -16060,7 +16504,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 487 */
+/* 493 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -16068,9 +16512,9 @@ webpackJsonp([1],[
 	 */
 
 
-	    var polyHelper = __webpack_require__(484);
+	    var polyHelper = __webpack_require__(490);
 
-	    module.exports = __webpack_require__(460).extend({
+	    module.exports = __webpack_require__(466).extend({
 	        
 	        type: 'polyline',
 
@@ -16095,7 +16539,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 488 */
+/* 494 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -16104,9 +16548,9 @@ webpackJsonp([1],[
 	 */
 
 
-	    var roundRectHelper = __webpack_require__(489);
+	    var roundRectHelper = __webpack_require__(495);
 
-	    module.exports = __webpack_require__(460).extend({
+	    module.exports = __webpack_require__(466).extend({
 
 	        type: 'rect',
 
@@ -16143,7 +16587,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 489 */
+/* 495 */
 /***/ function(module, exports) {
 
 	
@@ -16238,7 +16682,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 490 */
+/* 496 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -16246,7 +16690,7 @@ webpackJsonp([1],[
 	 * @module zrender/graphic/shape/Line
 	 */
 
-	    module.exports = __webpack_require__(460).extend({
+	    module.exports = __webpack_require__(466).extend({
 
 	        type: 'line',
 
@@ -16303,7 +16747,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 491 */
+/* 497 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16313,8 +16757,8 @@ webpackJsonp([1],[
 	 */
 
 
-	    var curveTool = __webpack_require__(465);
-	    var vec2 = __webpack_require__(425);
+	    var curveTool = __webpack_require__(471);
+	    var vec2 = __webpack_require__(431);
 	    var quadraticSubdivide = curveTool.quadraticSubdivide;
 	    var cubicSubdivide = curveTool.cubicSubdivide;
 	    var quadraticAt = curveTool.quadraticAt;
@@ -16340,7 +16784,7 @@ webpackJsonp([1],[
 	            ];
 	        }
 	    }
-	    module.exports = __webpack_require__(460).extend({
+	    module.exports = __webpack_require__(466).extend({
 
 	        type: 'bezier-curve',
 
@@ -16444,7 +16888,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 492 */
+/* 498 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -16453,7 +16897,7 @@ webpackJsonp([1],[
 	 */
 	 
 
-	    module.exports = __webpack_require__(460).extend({
+	    module.exports = __webpack_require__(466).extend({
 
 	        type: 'arc',
 
@@ -16498,13 +16942,13 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 493 */
+/* 499 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CompoundPath to improve performance
 
 
-	    var Path = __webpack_require__(460);
+	    var Path = __webpack_require__(466);
 	    module.exports = Path.extend({
 
 	        type: 'compound',
@@ -16557,15 +17001,15 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 494 */
+/* 500 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var zrUtil = __webpack_require__(419);
+	    var zrUtil = __webpack_require__(425);
 
-	    var Gradient = __webpack_require__(476);
+	    var Gradient = __webpack_require__(482);
 
 	    /**
 	     * x, y, x2, y2 are all percent from 0 to 1
@@ -16605,15 +17049,15 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 495 */
+/* 501 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var zrUtil = __webpack_require__(419);
+	    var zrUtil = __webpack_require__(425);
 
-	    var Gradient = __webpack_require__(476);
+	    var Gradient = __webpack_require__(482);
 
 	    /**
 	     * x, y, r are all percent from 0 to 1
@@ -16650,7 +17094,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 496 */
+/* 502 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -16664,27 +17108,28 @@ webpackJsonp([1],[
 	 */
 	// Global defines
 
-	    var guid = __webpack_require__(447);
-	    var env = __webpack_require__(417);
+	    var guid = __webpack_require__(453);
+	    var env = __webpack_require__(423);
 
-	    var Handler = __webpack_require__(497);
-	    var Storage = __webpack_require__(499);
-	    var Animation = __webpack_require__(501);
-	    var HandlerProxy = __webpack_require__(504);
+	    var Handler = __webpack_require__(503);
+	    var Storage = __webpack_require__(505);
+	    var Animation = __webpack_require__(507);
+	    var HandlerProxy = __webpack_require__(510);
 
 	    var useVML = !env.canvasSupported;
 
 	    var painterCtors = {
-	        canvas: __webpack_require__(506)
+	        canvas: __webpack_require__(512)
 	    };
 
 	    var instances = {};    // ZRender实例map索引
 
 	    var zrender = {};
+
 	    /**
 	     * @type {string}
 	     */
-	    zrender.version = '3.1.3';
+	    zrender.version = '3.2.0';
 
 	    /**
 	     * Initializing a zrender instance
@@ -16692,6 +17137,8 @@ webpackJsonp([1],[
 	     * @param {Object} opts
 	     * @param {string} [opts.renderer='canvas'] 'canvas' or 'svg'
 	     * @param {number} [opts.devicePixelRatio]
+	     * @param {number|string} [opts.width] Can be 'auto' (the same as null/undefined)
+	     * @param {number|string} [opts.height] Can be 'auto' (the same as null/undefined)
 	     * @return {module:zrender/ZRender}
 	     */
 	    zrender.init = function(dom, opts) {
@@ -16710,7 +17157,9 @@ webpackJsonp([1],[
 	        }
 	        else {
 	            for (var key in instances) {
-	                instances[key].dispose();
+	                if (instances.hasOwnProperty(key)) {
+	                    instances[key].dispose();
+	                }
 	            }
 	            instances = {};
 	        }
@@ -16746,6 +17195,8 @@ webpackJsonp([1],[
 	     * @param {Object} opts
 	     * @param {string} [opts.renderer='canvas'] 'canvas' or 'svg'
 	     * @param {number} [opts.devicePixelRatio]
+	     * @param {number} [opts.width] Can be 'auto' (the same as null/undefined)
+	     * @param {number} [opts.height] Can be 'auto' (the same as null/undefined)
 	     */
 	    var ZRender = function(id, dom, opts) {
 
@@ -16780,7 +17231,7 @@ webpackJsonp([1],[
 	        this.painter = painter;
 
 	        var handerProxy = !env.node ? new HandlerProxy(painter.getViewportRoot()) : null;
-	        this.handler = new Handler(storage, painter, handerProxy);
+	        this.handler = new Handler(storage, painter, handerProxy, painter.root);
 
 	        /**
 	         * @type {module:zrender/animation/Animation}
@@ -16940,9 +17391,13 @@ webpackJsonp([1],[
 	        /**
 	         * Resize the canvas.
 	         * Should be invoked when container size is changed
+	         * @param {Object} [opts]
+	         * @param {number|string} [opts.width] Can be 'auto' (the same as null/undefined)
+	         * @param {number|string} [opts.height] Can be 'auto' (the same as null/undefined)
 	         */
-	        resize: function() {
-	            this.painter.resize();
+	        resize: function(opts) {
+	            opts = opts || {};
+	            this.painter.resize(opts.width, opts.height);
 	            this.handler.resize();
 	        },
 
@@ -17063,7 +17518,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 497 */
+/* 503 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17076,10 +17531,10 @@ webpackJsonp([1],[
 	 */
 
 
-	    var util = __webpack_require__(419);
-	    var Draggable = __webpack_require__(498);
+	    var util = __webpack_require__(425);
+	    var Draggable = __webpack_require__(504);
 
-	    var Eventful = __webpack_require__(448);
+	    var Eventful = __webpack_require__(454);
 
 	    function makeEventPacket(eveType, target, event) {
 	        return {
@@ -17102,24 +17557,28 @@ webpackJsonp([1],[
 
 	    var handlerNames = [
 	        'click', 'dblclick', 'mousewheel', 'mouseout',
-	        'mouseup', 'mousedown', 'mousemove'
+	        'mouseup', 'mousedown', 'mousemove', 'contextmenu'
 	    ];
 	    /**
 	     * @alias module:zrender/Handler
 	     * @constructor
 	     * @extends module:zrender/mixin/Eventful
-	     * @param {HTMLElement} root Main HTML element for painting.
 	     * @param {module:zrender/Storage} storage Storage instance.
 	     * @param {module:zrender/Painter} painter Painter instance.
+	     * @param {module:zrender/dom/HandlerProxy} proxy HandlerProxy instance.
+	     * @param {HTMLElement} painterRoot painter.root (not painter.getViewportRoot()).
 	     */
-	    var Handler = function(storage, painter, proxy) {
+	    var Handler = function(storage, painter, proxy, painterRoot) {
 	        Eventful.call(this);
 
 	        this.storage = storage;
 
 	        this.painter = painter;
 
+	        this.painterRoot = painterRoot;
+
 	        proxy = proxy || new EmptyProxy();
+
 	        /**
 	         * Proxy of event. can be Dom, WebGLSurface, etc.
 	         */
@@ -17193,9 +17652,21 @@ webpackJsonp([1],[
 	        mouseout: function (event) {
 	            this.dispatchToElement(this._hovered, 'mouseout', event);
 
-	            this.trigger('globalout', {
-	                event: event
-	            });
+	            // There might be some doms created by upper layer application
+	            // at the same level of painter.getViewportRoot() (e.g., tooltip
+	            // dom created by echarts), where 'globalout' event should not
+	            // be triggered when mouse enters these doms. (But 'mouseout'
+	            // should be triggered at the original hovered element as usual).
+	            var element = event.toElement || event.relatedTarget;
+	            var innerDom;
+	            do {
+	                element = element && element.parentNode;
+	            }
+	            while (element && element.nodeType != 9 && !(
+	                innerDom = element === this.painterRoot
+	            ));
+
+	            !innerDom && this.trigger('globalout', {event: event});
 	        },
 
 	        /**
@@ -17301,7 +17772,7 @@ webpackJsonp([1],[
 	    };
 
 	    // Common handlers
-	    util.each(['click', 'mousedown', 'mouseup', 'mousewheel', 'dblclick'], function (name) {
+	    util.each(['click', 'mousedown', 'mouseup', 'mousewheel', 'dblclick', 'contextmenu'], function (name) {
 	        Handler.prototype[name] = function (event) {
 	            // Find hover again to avoid click event is dispatched manually. Or click is triggered without mouseover
 	            var hovered = this.findHover(event.zrX, event.zrY, null);
@@ -17347,7 +17818,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 498 */
+/* 504 */
 /***/ function(module, exports) {
 
 	// TODO Draggable for group
@@ -17435,7 +17906,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 499 */
+/* 505 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17448,14 +17919,14 @@ webpackJsonp([1],[
 	 */
 
 
-	    var util = __webpack_require__(419);
-	    var env = __webpack_require__(417);
+	    var util = __webpack_require__(425);
+	    var env = __webpack_require__(423);
 
-	    var Group = __webpack_require__(445);
+	    var Group = __webpack_require__(451);
 
 	    // Use timsort because in most case elements are partially sorted
 	    // https://jsfiddle.net/pissang/jr4x7mdm/8/
-	    var timsort = __webpack_require__(500);
+	    var timsort = __webpack_require__(506);
 
 	    function shapeCompareFunc(a, b) {
 	        if (a.zlevel === b.zlevel) {
@@ -17709,7 +18180,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 500 */
+/* 506 */
 /***/ function(module, exports) {
 
 	// https://github.com/mziccard/node-timsort
@@ -18390,7 +18861,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 501 */
+/* 507 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -18405,12 +18876,12 @@ webpackJsonp([1],[
 	// https://developer.apple.com/videos/wwdc2014/#236
 
 
-	    var util = __webpack_require__(419);
-	    var Dispatcher = __webpack_require__(502).Dispatcher;
+	    var util = __webpack_require__(425);
+	    var Dispatcher = __webpack_require__(508).Dispatcher;
 
-	    var requestAnimationFrame = __webpack_require__(503);
+	    var requestAnimationFrame = __webpack_require__(509);
 
-	    var Animator = __webpack_require__(451);
+	    var Animator = __webpack_require__(457);
 	    /**
 	     * @typedef {Object} IZRenderStage
 	     * @property {Function} update
@@ -18647,7 +19118,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 502 */
+/* 508 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -18658,7 +19129,8 @@ webpackJsonp([1],[
 	 */
 
 
-	    var Eventful = __webpack_require__(448);
+	    var Eventful = __webpack_require__(454);
+	    var env = __webpack_require__(423);
 
 	    var isDomLevel2 = (typeof window !== 'undefined') && !!window.addEventListener;
 
@@ -18668,12 +19140,51 @@ webpackJsonp([1],[
 	    }
 
 	    function clientToLocal(el, e, out) {
-	        // clientX/clientY is according to view port.
+	        // According to the W3C Working Draft, offsetX and offsetY should be relative
+	        // to the padding edge of the target element. The only browser using this convention
+	        // is IE. Webkit uses the border edge, Opera uses the content edge, and FireFox does
+	        // not support the properties.
+	        // (see http://www.jacklmoore.com/notes/mouse-position/)
+	        // In zr painter.dom, padding edge equals to border edge.
+
+	        // FIXME
+	        // When mousemove event triggered on ec tooltip, target is not zr painter.dom, and
+	        // offsetX/Y is relative to e.target, where the calculation of zrX/Y via offsetX/Y
+	        // is too complex. So css-transfrom dont support in this case temporarily.
+
+	        if (!e.currentTarget || el !== e.currentTarget) {
+	            defaultGetZrXY(el, e, out);
+	        }
+	        // Caution: In FireFox, layerX/layerY Mouse position relative to the closest positioned
+	        // ancestor element, so we should make sure el is positioned (e.g., not position:static).
+	        // BTW1, Webkit don't return the same results as FF in non-simple cases (like add
+	        // zoom-factor, overflow / opacity layers, transforms ...)
+	        // BTW2, (ev.offsetY || ev.pageY - $(ev.target).offset().top) is not correct in preserve-3d.
+	        // <https://bugs.jquery.com/ticket/8523#comment:14>
+	        // BTW3, In ff, offsetX/offsetY is always 0.
+	        else if (env.browser.firefox && e.layerX != null && e.layerX !== e.offsetX) {
+	            out.zrX = e.layerX;
+	            out.zrY = e.layerY;
+	        }
+	        // For IE6+, chrome, safari, opera. (When will ff support offsetX?)
+	        else if (e.offsetX != null) {
+	            out.zrX = e.offsetX;
+	            out.zrY = e.offsetY;
+	        }
+	        // For some other device, e.g., IOS safari.
+	        else {
+	            defaultGetZrXY(el, e, out);
+	        }
+
+	        return out;
+	    }
+
+	    function defaultGetZrXY(el, e, out) {
+	        // This well-known method below does not support css transform.
 	        var box = getBoundingClientRect(el);
 	        out = out || {};
 	        out.zrX = e.clientX - box.left;
 	        out.zrY = e.clientY - box.top;
-	        return out;
 	    }
 
 	    /**
@@ -18753,7 +19264,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 503 */
+/* 509 */
 /***/ function(module, exports) {
 
 	
@@ -18770,16 +19281,16 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 504 */
+/* 510 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var eventTool = __webpack_require__(502);
-	    var zrUtil = __webpack_require__(419);
-	    var Eventful = __webpack_require__(448);
-	    var env = __webpack_require__(417);
-	    var GestureMgr = __webpack_require__(505);
+	    var eventTool = __webpack_require__(508);
+	    var zrUtil = __webpack_require__(425);
+	    var Eventful = __webpack_require__(454);
+	    var env = __webpack_require__(423);
+	    var GestureMgr = __webpack_require__(511);
 
 	    var addEventListener = eventTool.addEventListener;
 	    var removeEventListener = eventTool.removeEventListener;
@@ -18789,7 +19300,7 @@ webpackJsonp([1],[
 
 	    var mouseHandlerNames = [
 	        'click', 'dblclick', 'mousewheel', 'mouseout',
-	        'mouseup', 'mousedown', 'mousemove'
+	        'mouseup', 'mousedown', 'mousemove', 'contextmenu'
 	    ];
 
 	    var touchHandlerNames = [
@@ -18944,7 +19455,7 @@ webpackJsonp([1],[
 	    };
 
 	    // Common handlers
-	    zrUtil.each(['click', 'mousedown', 'mouseup', 'mousewheel', 'dblclick'], function (name) {
+	    zrUtil.each(['click', 'mousedown', 'mouseup', 'mousewheel', 'dblclick', 'contextmenu'], function (name) {
 	        domHandlers[name] = function (event) {
 	            event = normalizeEvent(this.dom, event);
 	            this.trigger(name, event);
@@ -19045,7 +19556,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 505 */
+/* 511 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19054,7 +19565,7 @@ webpackJsonp([1],[
 	 */
 
 
-	    var eventUtil = __webpack_require__(502);
+	    var eventUtil = __webpack_require__(508);
 
 	    var GestureMgr = function () {
 
@@ -19171,7 +19682,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 506 */
+/* 512 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19184,15 +19695,15 @@ webpackJsonp([1],[
 	 */
 	 
 
-	    var config = __webpack_require__(456);
-	    var util = __webpack_require__(419);
-	    var log = __webpack_require__(455);
-	    var BoundingRect = __webpack_require__(424);
-	    var timsort = __webpack_require__(500);
+	    var config = __webpack_require__(462);
+	    var util = __webpack_require__(425);
+	    var log = __webpack_require__(461);
+	    var BoundingRect = __webpack_require__(430);
+	    var timsort = __webpack_require__(506);
 
-	    var Layer = __webpack_require__(507);
+	    var Layer = __webpack_require__(513);
 
-	    var requestAnimationFrame = __webpack_require__(503);
+	    var requestAnimationFrame = __webpack_require__(509);
 
 	    // PENDIGN
 	    // Layer exceeds MAX_PROGRESSIVE_LAYER_NUMBER may have some problem when flush directly second time.
@@ -19275,13 +19786,18 @@ webpackJsonp([1],[
 
 	    function createRoot(width, height) {
 	        var domRoot = document.createElement('div');
-	        var domRootStyle = domRoot.style;
 
 	        // domRoot.onselectstart = returnFalse; // 避免页面选中的尴尬
-	        domRootStyle.position = 'relative';
-	        domRootStyle.overflow = 'hidden';
-	        domRootStyle.width = width + 'px';
-	        domRootStyle.height = height + 'px';
+	        domRoot.style.cssText = [
+	            'position:relative',
+	            'overflow:hidden',
+	            'width:' + width + 'px',
+	            'height:' + height + 'px',
+	            'padding:0',
+	            'margin:0',
+	            'border-width:0'
+	        ].join(';') + ';';
+
 	        return domRoot;
 	    }
 
@@ -19297,7 +19813,7 @@ webpackJsonp([1],[
 	        var singleCanvas = !root.nodeName // In node ?
 	            || root.nodeName.toUpperCase() === 'CANVAS';
 
-	        opts = opts || {};
+	        this._opts = opts = util.extend({}, opts || {});
 
 	        /**
 	         * @type {number}
@@ -19349,8 +19865,8 @@ webpackJsonp([1],[
 	        this._layerConfig = {};
 
 	        if (!singleCanvas) {
-	            this._width = this._getWidth();
-	            this._height = this._getHeight();
+	            this._width = this._getSize(0);
+	            this._height = this._getSize(1);
 
 	            var domRoot = this._domRoot = createRoot(
 	                this._width, this._height
@@ -20055,8 +20571,13 @@ webpackJsonp([1],[
 	            // FIXME Why ?
 	            domRoot.style.display = 'none';
 
-	            width = width || this._getWidth();
-	            height = height || this._getHeight();
+	            // Save input w/h
+	            var opts = this._opts;
+	            width != null && (opts.width = width);
+	            height != null && (opts.height = height);
+
+	            width = this._getSize(0);
+	            height = this._getSize(1);
 
 	            domRoot.style.display = '';
 
@@ -20066,8 +20587,13 @@ webpackJsonp([1],[
 	                domRoot.style.height = height + 'px';
 
 	                for (var id in this._layers) {
-	                    this._layers[id].resize(width, height);
+	                    if (this._layers.hasOwnProperty(id)) {
+	                        this._layers[id].resize(width, height);
+	                    }
 	                }
+	                util.each(this._progressiveLayers, function (layer) {
+	                    layer.resize(width, height);
+	                });
 
 	                this.refresh(true);
 	            }
@@ -20143,23 +20669,25 @@ webpackJsonp([1],[
 	            return this._height;
 	        },
 
-	        _getWidth: function () {
+	        _getSize: function (whIdx) {
+	            var opts = this._opts;
+	            var wh = ['width', 'height'][whIdx];
+	            var cwh = ['clientWidth', 'clientHeight'][whIdx];
+	            var plt = ['paddingLeft', 'paddingTop'][whIdx];
+	            var prb = ['paddingRight', 'paddingBottom'][whIdx];
+
+	            if (opts[wh] != null && opts[wh] !== 'auto') {
+	                return parseFloat(opts[wh]);
+	            }
+
 	            var root = this.root;
 	            var stl = document.defaultView.getComputedStyle(root);
 
-	            // FIXME Better way to get the width and height when element has not been append to the document
-	            return ((root.clientWidth || parseInt10(stl.width) || parseInt10(root.style.width))
-	                    - (parseInt10(stl.paddingLeft) || 0)
-	                    - (parseInt10(stl.paddingRight) || 0)) | 0;
-	        },
-
-	        _getHeight: function () {
-	            var root = this.root;
-	            var stl = document.defaultView.getComputedStyle(root);
-
-	            return ((root.clientHeight || parseInt10(stl.height) || parseInt10(root.style.height))
-	                    - (parseInt10(stl.paddingTop) || 0)
-	                    - (parseInt10(stl.paddingBottom) || 0)) | 0;
+	            return (
+	                (root[cwh] || parseInt10(stl[wh]) || parseInt10(root.style[wh]))
+	                - (parseInt10(stl[plt]) || 0)
+	                - (parseInt10(stl[prb]) || 0)
+	            ) | 0;
 	        },
 
 	        _pathToImage: function (id, path, width, height, dpr) {
@@ -20183,7 +20711,7 @@ webpackJsonp([1],[
 	                path.brush(ctx);
 	            }
 
-	            var ImageShape = __webpack_require__(477);
+	            var ImageShape = __webpack_require__(483);
 	            var imgShape = new ImageShape({
 	                id: id,
 	                style: {
@@ -20224,7 +20752,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 507 */
+/* 513 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -20233,10 +20761,10 @@ webpackJsonp([1],[
 	 */
 
 
-	    var util = __webpack_require__(419);
-	    var config = __webpack_require__(456);
-	    var Style = __webpack_require__(462);
-	    var Pattern = __webpack_require__(474);
+	    var util = __webpack_require__(425);
+	    var config = __webpack_require__(462);
+	    var Style = __webpack_require__(468);
+	    var Pattern = __webpack_require__(480);
 
 	    function returnFalse() {
 	        return false;
@@ -20300,6 +20828,9 @@ webpackJsonp([1],[
 	            domStyle['user-select'] = 'none';
 	            domStyle['-webkit-touch-callout'] = 'none';
 	            domStyle['-webkit-tap-highlight-color'] = 'rgba(0,0,0,0)';
+	            domStyle['padding'] = 0;
+	            domStyle['margin'] = 0;
+	            domStyle['border-width'] = 0;
 	        }
 
 	        this.domBack = null;
@@ -20456,11 +20987,11 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 508 */
+/* 514 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	    var Gradient = __webpack_require__(476);
+	    var Gradient = __webpack_require__(482);
 	    module.exports = function (ecModel) {
 	        function encodeColor(seriesModel) {
 	            var colorAccessPath = (seriesModel.visualColorAccessPath || 'itemStyle.normal.color').split('.');
@@ -20496,14 +21027,14 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 509 */
+/* 515 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Compatitable with 2.0
 
 
-	    var zrUtil = __webpack_require__(419);
-	    var compatStyle = __webpack_require__(510);
+	    var zrUtil = __webpack_require__(425);
+	    var compatStyle = __webpack_require__(516);
 
 	    function get(opt, path) {
 	        path = path.split(',');
@@ -20606,12 +21137,12 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 510 */
+/* 516 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var zrUtil = __webpack_require__(419);
+	    var zrUtil = __webpack_require__(425);
 
 	    var POSSIBLE_STYLES = [
 	        'areaStyle', 'lineStyle', 'nodeStyle', 'linkStyle',
@@ -20687,13 +21218,13 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 511 */
+/* 517 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var graphic = __webpack_require__(458);
-	    var zrUtil = __webpack_require__(419);
+	    var graphic = __webpack_require__(464);
+	    var zrUtil = __webpack_require__(425);
 	    var PI = Math.PI;
 	    /**
 	     * @param {module:echarts/ExtensionAPI} api
@@ -20790,7 +21321,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 512 */
+/* 518 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -20815,11 +21346,11 @@ webpackJsonp([1],[
 	        'time': Array
 	    };
 
-	    var Model = __webpack_require__(427);
-	    var DataDiffer = __webpack_require__(513);
+	    var Model = __webpack_require__(433);
+	    var DataDiffer = __webpack_require__(519);
 
-	    var zrUtil = __webpack_require__(419);
-	    var modelUtil = __webpack_require__(420);
+	    var zrUtil = __webpack_require__(425);
+	    var modelUtil = __webpack_require__(426);
 	    var isObject = zrUtil.isObject;
 
 	    var TRANSFERABLE_PROPERTIES = [
@@ -21308,6 +21839,13 @@ webpackJsonp([1],[
 	    listProto.indexOfRawIndex = function (rawIndex) {
 	        // Indices are ascending
 	        var indices = this.indices;
+
+	        // If rawIndex === dataIndex
+	        var rawDataIndex = indices[rawIndex];
+	        if (rawDataIndex != null && rawDataIndex === rawIndex) {
+	            return rawIndex;
+	        }
+
 	        var left = 0;
 	        var right = indices.length - 1;
 	        while (left <= right) {
@@ -21921,7 +22459,7 @@ webpackJsonp([1],[
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 513 */
+/* 519 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22050,20 +22588,20 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 514 */
+/* 520 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var zrUtil = __webpack_require__(419);
+	    var zrUtil = __webpack_require__(425);
 
-	    __webpack_require__(515);
+	    __webpack_require__(521);
 
-	    __webpack_require__(532);
-	    __webpack_require__(535);
+	    __webpack_require__(539);
+	    __webpack_require__(542);
 
-	    var barLayoutGrid = __webpack_require__(537);
-	    var echarts = __webpack_require__(416);
+	    var barLayoutGrid = __webpack_require__(544);
+	    var echarts = __webpack_require__(422);
 
 	    echarts.registerLayout(zrUtil.curry(barLayoutGrid, 'bar'));
 	    // Visual coding for legend
@@ -22075,11 +22613,11 @@ webpackJsonp([1],[
 	    });
 
 	    // In case developer forget to include grid component
-	    __webpack_require__(538);
+	    __webpack_require__(545);
 
 
 /***/ },
-/* 515 */
+/* 521 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -22089,12 +22627,12 @@ webpackJsonp([1],[
 	 */
 	var factory = exports;
 
-	    var layout = __webpack_require__(436);
-	    var axisHelper = __webpack_require__(516);
+	    var layout = __webpack_require__(442);
+	    var axisHelper = __webpack_require__(522);
 
-	    var zrUtil = __webpack_require__(419);
-	    var Cartesian2D = __webpack_require__(522);
-	    var Axis2D = __webpack_require__(524);
+	    var zrUtil = __webpack_require__(425);
+	    var Cartesian2D = __webpack_require__(528);
+	    var Axis2D = __webpack_require__(530);
 
 	    var each = zrUtil.each;
 
@@ -22102,7 +22640,7 @@ webpackJsonp([1],[
 	    var niceScaleExtent = axisHelper.niceScaleExtent;
 
 	    // 依赖 GridModel, AxisModel 做预处理
-	    __webpack_require__(527);
+	    __webpack_require__(533);
 
 	    /**
 	     * Check if the axis is used in the specified grid
@@ -22179,9 +22717,11 @@ webpackJsonp([1],[
 	        function ifAxisCanNotOnZero(otherAxisDim) {
 	            var axes = axesMap[otherAxisDim];
 	            for (var idx in axes) {
-	                var axis = axes[idx];
-	                if (axis && (axis.type === 'category' || !ifAxisCrossZero(axis))) {
-	                    return true;
+	                if (axes.hasOwnProperty(idx)) {
+	                    var axis = axes[idx];
+	                    if (axis && (axis.type === 'category' || !ifAxisCrossZero(axis))) {
+	                        return true;
+	                    }
 	                }
 	            }
 	            return false;
@@ -22275,7 +22815,9 @@ webpackJsonp([1],[
 	            if (axisIndex == null) {
 	                // Find first axis
 	                for (var name in axesMapOnDim) {
-	                    return axesMapOnDim[name];
+	                    if (axesMapOnDim.hasOwnProperty(name)) {
+	                        return axesMapOnDim[name];
+	                    }
 	                }
 	            }
 	            return axesMapOnDim[axisIndex];
@@ -22296,6 +22838,83 @@ webpackJsonp([1],[
 	                    return coordList[i];
 	                }
 	            }
+	        }
+	    };
+
+	    /**
+	     * @implements
+	     * see {module:echarts/CoodinateSystem}
+	     */
+	    gridProto.convertToPixel = function (ecModel, finder, value) {
+	        var target = this._findConvertTarget(ecModel, finder);
+
+	        return target.cartesian
+	            ? target.cartesian.dataToPoint(value)
+	            : target.axis
+	            ? target.axis.toGlobalCoord(target.axis.dataToCoord(value))
+	            : null;
+	    };
+
+	    /**
+	     * @implements
+	     * see {module:echarts/CoodinateSystem}
+	     */
+	    gridProto.convertFromPixel = function (ecModel, finder, value) {
+	        var target = this._findConvertTarget(ecModel, finder);
+
+	        return target.cartesian
+	            ? target.cartesian.pointToData(value)
+	            : target.axis
+	            ? target.axis.coordToData(target.axis.toLocalCoord(value))
+	            : null;
+	    };
+
+	    /**
+	     * @inner
+	     */
+	    gridProto._findConvertTarget = function (ecModel, finder) {
+	        var seriesModel = finder.seriesModel;
+	        var xAxisModel = finder.xAxisModel
+	            || (seriesModel && seriesModel.getReferringComponents('xAxis')[0]);
+	        var yAxisModel = finder.yAxisModel
+	            || (seriesModel && seriesModel.getReferringComponents('yAxis')[0]);
+	        var gridModel = finder.gridModel;
+	        var coordsList = this._coordsList;
+	        var cartesian;
+	        var axis;
+
+	        if (seriesModel) {
+	            cartesian = seriesModel.coordinateSystem;
+	            zrUtil.indexOf(coordsList, cartesian) < 0 && (cartesian = null);
+	        }
+	        else if (xAxisModel && yAxisModel) {
+	            cartesian = this.getCartesian(xAxisModel.componentIndex, yAxisModel.componentIndex);
+	        }
+	        else if (xAxisModel) {
+	            axis = this.getAxis('x', xAxisModel.componentIndex);
+	        }
+	        else if (yAxisModel) {
+	            axis = this.getAxis('y', yAxisModel.componentIndex);
+	        }
+	        // Lowest priority.
+	        else if (gridModel) {
+	            var grid = gridModel.coordinateSystem;
+	            if (grid === this) {
+	                cartesian = this._coordsList[0];
+	            }
+	        }
+
+	        return {cartesian: cartesian, axis: axis};
+	    };
+
+	    /**
+	     * @implements
+	     * see {module:echarts/CoodinateSystem}
+	     */
+	    gridProto.containPoint = function (point) {
+	        var coord = this._coordsList[0];
+	        if (coord) {
+	            return coord.containPoint(point);
 	        }
 	    };
 
@@ -22486,11 +23105,7 @@ webpackJsonp([1],[
 	     */
 	    function findAxesModels(seriesModel, ecModel) {
 	        return zrUtil.map(axesTypes, function (axisType) {
-	            var axisModel = ecModel.queryComponents({
-	                mainType: axisType,
-	                index: seriesModel.get(axisType + 'Index'),
-	                id: seriesModel.get(axisType + 'Id')
-	            })[0];
+	            var axisModel = seriesModel.getReferringComponents(axisType)[0];
 
 	            if (__DEV__) {
 	                if (!axisModel) {
@@ -22564,26 +23179,26 @@ webpackJsonp([1],[
 	    // For deciding which dimensions to use when creating list data
 	    Grid.dimensions = Cartesian2D.prototype.dimensions;
 
-	    __webpack_require__(441).register('cartesian2d', Grid);
+	    __webpack_require__(447).register('cartesian2d', Grid);
 
 	    module.exports = Grid;
 
 
 /***/ },
-/* 516 */
+/* 522 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var OrdinalScale = __webpack_require__(517);
-	    var IntervalScale = __webpack_require__(519);
-	    __webpack_require__(520);
-	    __webpack_require__(521);
-	    var Scale = __webpack_require__(518);
+	    var OrdinalScale = __webpack_require__(523);
+	    var IntervalScale = __webpack_require__(525);
+	    __webpack_require__(526);
+	    __webpack_require__(527);
+	    var Scale = __webpack_require__(524);
 
-	    var numberUtil = __webpack_require__(422);
-	    var zrUtil = __webpack_require__(419);
-	    var textContain = __webpack_require__(423);
+	    var numberUtil = __webpack_require__(428);
+	    var zrUtil = __webpack_require__(425);
+	    var textContain = __webpack_require__(429);
 	    var axisHelper = {};
 
 	    /**
@@ -22673,7 +23288,11 @@ webpackJsonp([1],[
 	            //     scaleQuantity *= 10;
 	            // }
 	            extent = scale.getExtent();
-	            scale.setExtent(intervalScale * extent[0], extent[1] * intervalScale);
+	            var origin = (extent[1] + extent[0]) / 2;
+	            scale.setExtent(
+	                intervalScale * (extent[0] - origin) + origin,
+	                intervalScale * (extent[1] - origin) + origin
+	            );
 	            scale.niceExtent(splitNumber);
 	        }
 
@@ -22804,7 +23423,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 517 */
+/* 523 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -22817,8 +23436,8 @@ webpackJsonp([1],[
 	// FIXME only one data
 
 
-	    var zrUtil = __webpack_require__(419);
-	    var Scale = __webpack_require__(518);
+	    var zrUtil = __webpack_require__(425);
+	    var Scale = __webpack_require__(524);
 
 	    var scaleProto = Scale.prototype;
 
@@ -22904,7 +23523,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 518 */
+/* 524 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -22913,7 +23532,7 @@ webpackJsonp([1],[
 	 */
 
 
-	    var clazzUtil = __webpack_require__(428);
+	    var clazzUtil = __webpack_require__(434);
 
 	    function Scale() {
 	        /**
@@ -23032,7 +23651,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 519 */
+/* 525 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -23042,9 +23661,9 @@ webpackJsonp([1],[
 
 
 
-	    var numberUtil = __webpack_require__(422);
-	    var formatUtil = __webpack_require__(421);
-	    var Scale = __webpack_require__(518);
+	    var numberUtil = __webpack_require__(428);
+	    var formatUtil = __webpack_require__(427);
+	    var Scale = __webpack_require__(524);
 
 	    var mathFloor = Math.floor;
 	    var mathCeil = Math.ceil;
@@ -23122,6 +23741,7 @@ webpackJsonp([1],[
 	                    ticks.push(extent[0]);
 	                }
 	                var tick = niceExtent[0];
+
 	                while (tick <= niceExtent[1]) {
 	                    ticks.push(tick);
 	                    // Avoid rounding error
@@ -23130,7 +23750,9 @@ webpackJsonp([1],[
 	                        return [];
 	                    }
 	                }
-	                if (extent[1] > niceExtent[1]) {
+	                // Consider this case: the last item of ticks is smaller
+	                // than niceExtent[1] and niceExtent[1] === extent[1].
+	                if (extent[1] > (ticks.length ? ticks[ticks.length - 1] : niceExtent[1])) {
 	                    ticks.push(extent[1]);
 	                }
 	            }
@@ -23263,7 +23885,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 520 */
+/* 526 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -23273,11 +23895,11 @@ webpackJsonp([1],[
 
 
 
-	    var zrUtil = __webpack_require__(419);
-	    var numberUtil = __webpack_require__(422);
-	    var formatUtil = __webpack_require__(421);
+	    var zrUtil = __webpack_require__(425);
+	    var numberUtil = __webpack_require__(428);
+	    var formatUtil = __webpack_require__(427);
 
-	    var IntervalScale = __webpack_require__(519);
+	    var IntervalScale = __webpack_require__(525);
 
 	    var intervalScaleProto = IntervalScale.prototype;
 
@@ -23429,7 +24051,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 521 */
+/* 527 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -23438,15 +24060,18 @@ webpackJsonp([1],[
 	 */
 
 
-	    var zrUtil = __webpack_require__(419);
-	    var Scale = __webpack_require__(518);
-	    var numberUtil = __webpack_require__(422);
+	    var zrUtil = __webpack_require__(425);
+	    var Scale = __webpack_require__(524);
+	    var numberUtil = __webpack_require__(428);
 
 	    // Use some method of IntervalScale
-	    var IntervalScale = __webpack_require__(519);
+	    var IntervalScale = __webpack_require__(525);
 
 	    var scaleProto = Scale.prototype;
 	    var intervalScaleProto = IntervalScale.prototype;
+
+	    var getPrecisionSafe = numberUtil.getPrecisionSafe;
+	    var roundingErrorFix = numberUtil.round;
 
 	    var mathFloor = Math.floor;
 	    var mathCeil = Math.ceil;
@@ -23460,12 +24085,31 @@ webpackJsonp([1],[
 
 	        base: 10,
 
+	        $constructor: function () {
+	            Scale.apply(this, arguments);
+	            this._originalScale = new IntervalScale();
+	        },
+
 	        /**
 	         * @return {Array.<number>}
 	         */
 	        getTicks: function () {
+	            var originalScale = this._originalScale;
+	            var extent = this._extent;
+	            var originalExtent = originalScale.getExtent();
+
 	            return zrUtil.map(intervalScaleProto.getTicks.call(this), function (val) {
-	                return numberUtil.round(mathPow(this.base, val));
+	                var powVal = numberUtil.round(mathPow(this.base, val));
+
+	                // Fix #4158
+	                powVal = (val === extent[0] && originalScale.__fixMin)
+	                    ? fixRoundingError(powVal, originalExtent[0])
+	                    : powVal;
+	                powVal = (val === extent[1] && originalScale.__fixMax)
+	                    ? fixRoundingError(powVal, originalExtent[1])
+	                    : powVal;
+
+	                return powVal;
 	            }, this);
 	        },
 
@@ -23503,6 +24147,13 @@ webpackJsonp([1],[
 	            var extent = scaleProto.getExtent.call(this);
 	            extent[0] = mathPow(base, extent[0]);
 	            extent[1] = mathPow(base, extent[1]);
+
+	            // Fix #4158
+	            var originalScale = this._originalScale;
+	            var originalExtent = originalScale.getExtent();
+	            originalScale.__fixMin && (extent[0] = fixRoundingError(extent[0], originalExtent[0]));
+	            originalScale.__fixMax && (extent[1] = fixRoundingError(extent[1], originalExtent[1]));
+
 	            return extent;
 	        },
 
@@ -23510,6 +24161,8 @@ webpackJsonp([1],[
 	         * @param  {Array.<number>} extent
 	         */
 	        unionExtent: function (extent) {
+	            this._originalScale.unionExtent(extent);
+
 	            var base = this.base;
 	            extent[0] = mathLog(extent[0]) / mathLog(base);
 	            extent[1] = mathLog(extent[1]) / mathLog(base);
@@ -23556,7 +24209,14 @@ webpackJsonp([1],[
 	         * @param {boolean} [fixMin=false]
 	         * @param {boolean} [fixMax=false]
 	         */
-	        niceExtent: intervalScaleProto.niceExtent
+	        niceExtent: function (splitNumber, fixMin, fixMax) {
+	            intervalScaleProto.niceExtent.call(this, splitNumber, fixMin, fixMax);
+
+	            var originalScale = this._originalScale;
+	            originalScale.__fixMin = fixMin;
+	            originalScale.__fixMax = fixMax;
+	        }
+
 	    });
 
 	    zrUtil.each(['contain', 'normalize'], function (methodName) {
@@ -23570,18 +24230,22 @@ webpackJsonp([1],[
 	        return new LogScale();
 	    };
 
+	    function fixRoundingError(val, originalVal) {
+	        return roundingErrorFix(val, getPrecisionSafe(originalVal));
+	    }
+
 	    module.exports = LogScale;
 
 
 /***/ },
-/* 522 */
+/* 528 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var zrUtil = __webpack_require__(419);
-	    var Cartesian = __webpack_require__(523);
+	    var zrUtil = __webpack_require__(425);
+	    var Cartesian = __webpack_require__(529);
 
 	    function Cartesian2D(name) {
 
@@ -23690,7 +24354,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 523 */
+/* 529 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23701,7 +24365,7 @@ webpackJsonp([1],[
 	 */
 
 
-	    var zrUtil = __webpack_require__(419);
+	    var zrUtil = __webpack_require__(425);
 
 	    function dimAxisMapper(dim) {
 	        return this._axes[dim];
@@ -23808,14 +24472,14 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 524 */
+/* 530 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var zrUtil = __webpack_require__(419);
-	    var Axis = __webpack_require__(525);
-	    var axisLabelInterval = __webpack_require__(526);
+	    var zrUtil = __webpack_require__(425);
+	    var Axis = __webpack_require__(531);
+	    var axisLabelInterval = __webpack_require__(532);
 
 	    /**
 	     * Extend axis 2d
@@ -23930,14 +24594,14 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 525 */
+/* 531 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var numberUtil = __webpack_require__(422);
+	    var numberUtil = __webpack_require__(428);
 	    var linearMap = numberUtil.linearMap;
-	    var zrUtil = __webpack_require__(419);
+	    var zrUtil = __webpack_require__(425);
 
 	    function fixExtentWithBands(extent, nTick) {
 	        var size = extent[1] - extent[0];
@@ -24155,7 +24819,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 526 */
+/* 532 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24165,8 +24829,8 @@ webpackJsonp([1],[
 
 
 
-	    var zrUtil = __webpack_require__(419);
-	    var axisHelper = __webpack_require__(516);
+	    var zrUtil = __webpack_require__(425);
+	    var axisHelper = __webpack_require__(522);
 
 	    module.exports = function (axis) {
 	        var axisModel = axis.model;
@@ -24186,7 +24850,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 527 */
+/* 533 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24194,8 +24858,8 @@ webpackJsonp([1],[
 	// 所以这里也要被 Cartesian2D 依赖
 
 
-	    __webpack_require__(528);
-	    var ComponentModel = __webpack_require__(434);
+	    __webpack_require__(534);
+	    var ComponentModel = __webpack_require__(440);
 
 	    module.exports = ComponentModel.extend({
 
@@ -24230,15 +24894,15 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 528 */
+/* 534 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var ComponentModel = __webpack_require__(434);
-	    var zrUtil = __webpack_require__(419);
-	    var axisModelCreator = __webpack_require__(529);
+	    var ComponentModel = __webpack_require__(440);
+	    var zrUtil = __webpack_require__(425);
+	    var axisModelCreator = __webpack_require__(535);
 
 	    var AxisModel = ComponentModel.extend({
 
@@ -24254,7 +24918,7 @@ webpackJsonp([1],[
 	         */
 	        init: function () {
 	            AxisModel.superApply(this, 'init', arguments);
-	            this._resetRange();
+	            this.resetRange();
 	        },
 
 	        /**
@@ -24262,7 +24926,7 @@ webpackJsonp([1],[
 	         */
 	        mergeOption: function () {
 	            AxisModel.superApply(this, 'mergeOption', arguments);
-	            this._resetRange();
+	            this.resetRange();
 	        },
 
 	        /**
@@ -24270,45 +24934,7 @@ webpackJsonp([1],[
 	         */
 	        restoreData: function () {
 	            AxisModel.superApply(this, 'restoreData', arguments);
-	            this._resetRange();
-	        },
-
-	        /**
-	         * @public
-	         * @param {number} rangeStart
-	         * @param {number} rangeEnd
-	         */
-	        setRange: function (rangeStart, rangeEnd) {
-	            this.option.rangeStart = rangeStart;
-	            this.option.rangeEnd = rangeEnd;
-	        },
-
-	        /**
-	         * @public
-	         * @return {Array.<number|string|Date>}
-	         */
-	        getMin: function () {
-	            var option = this.option;
-	            return option.rangeStart != null ? option.rangeStart : option.min;
-	        },
-
-	        /**
-	         * @public
-	         * @return {Array.<number|string|Date>}
-	         */
-	        getMax: function () {
-	            var option = this.option;
-	            return option.rangeEnd != null ? option.rangeEnd : option.max;
-	        },
-
-	        /**
-	         * @public
-	         * @return {boolean}
-	         */
-	        getNeedCrossZero: function () {
-	            var option = this.option;
-	            return (option.rangeStart != null || option.rangeEnd != null)
-	                ? false : !option.scale;
+	            this.resetRange();
 	        },
 
 	        /**
@@ -24320,14 +24946,6 @@ webpackJsonp([1],[
 	                index: this.get('gridIndex'),
 	                id: this.get('gridId')
 	            })[0];
-	        },
-
-	        /**
-	         * @private
-	         */
-	        _resetRange: function () {
-	            // rangeStart and rangeEnd is readonly.
-	            this.option.rangeStart = this.option.rangeEnd = null;
 	        }
 
 	    });
@@ -24337,7 +24955,8 @@ webpackJsonp([1],[
 	        return option.type || (option.data ? 'category' : 'value');
 	    }
 
-	    zrUtil.merge(AxisModel.prototype, __webpack_require__(531));
+	    zrUtil.merge(AxisModel.prototype, __webpack_require__(537));
+	    zrUtil.merge(AxisModel.prototype, __webpack_require__(538));
 
 	    var extraOption = {
 	        // gridIndex: 0,
@@ -24354,15 +24973,15 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 529 */
+/* 535 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var axisDefault = __webpack_require__(530);
-	    var zrUtil = __webpack_require__(419);
-	    var ComponentModel = __webpack_require__(434);
-	    var layout = __webpack_require__(436);
+	    var axisDefault = __webpack_require__(536);
+	    var zrUtil = __webpack_require__(425);
+	    var ComponentModel = __webpack_require__(440);
+	    var layout = __webpack_require__(442);
 
 	    // FIXME axisType is fixed ?
 	    var AXIS_TYPES = ['value', 'category', 'time', 'log'];
@@ -24417,12 +25036,12 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 530 */
+/* 536 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var zrUtil = __webpack_require__(419);
+	    var zrUtil = __webpack_require__(425);
 
 	    var defaultOption = {
 	        show: true,
@@ -24575,13 +25194,13 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 531 */
+/* 537 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var zrUtil = __webpack_require__(419);
-	    var axisHelper = __webpack_require__(516);
+	    var zrUtil = __webpack_require__(425);
+	    var axisHelper = __webpack_require__(522);
 
 	    function getName(obj) {
 	        if (zrUtil.isObject(obj) && obj.value != null) {
@@ -24619,14 +25238,83 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 532 */
+/* 538 */
+/***/ function(module, exports) {
+
+	
+
+	    module.exports = {
+
+	        /**
+	         * @public
+	         * @return {Array.<number|string|Date>}
+	         */
+	        getMin: function () {
+	            var option = this.option;
+	            var min = option.rangeStart != null ? option.rangeStart : option.min;
+	            // In case of axis.type === 'time', Date should be converted to timestamp.
+	            // In other cases, min/max should be a number or null/undefined or 'dataMin/Max'.
+	            if (min instanceof Date) {
+	                min = +min;
+	            }
+	            return min;
+	        },
+
+	        /**
+	         * @public
+	         * @return {Array.<number|string|Date>}
+	         */
+	        getMax: function () {
+	            var option = this.option;
+	            var max = option.rangeEnd != null ? option.rangeEnd : option.max;
+	            // In case of axis.type === 'time', Date should be converted to timestamp.
+	            // In other cases, min/max should be a number or null/undefined or 'dataMin/Max'.
+	            if (max instanceof Date) {
+	                max = +max;
+	            }
+	            return max;
+	        },
+
+	        /**
+	         * @public
+	         * @return {boolean}
+	         */
+	        getNeedCrossZero: function () {
+	            var option = this.option;
+	            return (option.rangeStart != null || option.rangeEnd != null)
+	                ? false : !option.scale;
+	        },
+
+	        /**
+	         * @public
+	         * @param {number} rangeStart
+	         * @param {number} rangeEnd
+	         */
+	        setRange: function (rangeStart, rangeEnd) {
+	            this.option.rangeStart = rangeStart;
+	            this.option.rangeEnd = rangeEnd;
+	        },
+
+	        /**
+	         * @public
+	         */
+	        resetRange: function () {
+	            // rangeStart and rangeEnd is readonly.
+	            this.option.rangeStart = this.option.rangeEnd = null;
+	        }
+	    };
+
+
+
+/***/ },
+/* 539 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var SeriesModel = __webpack_require__(443);
-	    var createListFromArray = __webpack_require__(533);
+	    var SeriesModel = __webpack_require__(449);
+	    var createListFromArray = __webpack_require__(540);
 
 	    module.exports = SeriesModel.extend({
 
@@ -24698,17 +25386,17 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 533 */
+/* 540 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var List = __webpack_require__(512);
-	    var completeDimensions = __webpack_require__(534);
-	    var zrUtil = __webpack_require__(419);
-	    var modelUtil = __webpack_require__(420);
-	    var CoordinateSystem = __webpack_require__(441);
+	    var List = __webpack_require__(518);
+	    var completeDimensions = __webpack_require__(541);
+	    var zrUtil = __webpack_require__(425);
+	    var modelUtil = __webpack_require__(426);
+	    var CoordinateSystem = __webpack_require__(447);
 	    var getDataItemValue = modelUtil.getDataItemValue;
 	    var converDataValue = modelUtil.converDataValue;
 
@@ -24984,7 +25672,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 534 */
+/* 541 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -24992,7 +25680,7 @@ webpackJsonp([1],[
 	 */
 
 
-	    var zrUtil = __webpack_require__(419);
+	    var zrUtil = __webpack_require__(425);
 
 	    /**
 	     * Complete the dimensions array guessed from the data structure.
@@ -25054,16 +25742,16 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 535 */
+/* 542 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var zrUtil = __webpack_require__(419);
-	    var graphic = __webpack_require__(458);
+	    var zrUtil = __webpack_require__(425);
+	    var graphic = __webpack_require__(464);
 
-	    zrUtil.extend(__webpack_require__(427).prototype, __webpack_require__(536));
+	    zrUtil.extend(__webpack_require__(433).prototype, __webpack_require__(543));
 
 	    function fixLayoutWithLineWidth(layout, lineWidth) {
 	        var signX = layout.width > 0 ? 1 : -1;
@@ -25076,7 +25764,7 @@ webpackJsonp([1],[
 	        layout.height -= signY * lineWidth;
 	    }
 
-	    module.exports = __webpack_require__(416).extendChartView({
+	    module.exports = __webpack_require__(422).extendChartView({
 
 	        type: 'bar',
 
@@ -25089,6 +25777,8 @@ webpackJsonp([1],[
 
 	            return this.group;
 	        },
+
+	        dispose: zrUtil.noop,
 
 	        _renderOnCartesian: function (seriesModel, ecModel, api) {
 	            var group = this.group;
@@ -25273,13 +25963,13 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 536 */
+/* 543 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
 
-	    var getBarItemStyle = __webpack_require__(430)(
+	    var getBarItemStyle = __webpack_require__(436)(
 	        [
 	            ['fill', 'color'],
 	            ['stroke', 'borderColor'],
@@ -25307,14 +25997,14 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 537 */
+/* 544 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var zrUtil = __webpack_require__(419);
-	    var numberUtil = __webpack_require__(422);
+	    var zrUtil = __webpack_require__(425);
+	    var numberUtil = __webpack_require__(428);
 	    var parsePercent = numberUtil.parsePercent;
 
 	    function getSeriesStackId(seriesModel) {
@@ -25459,6 +26149,7 @@ webpackJsonp([1],[
 	        );
 
 	        var lastStackCoords = {};
+	        var lastStackCoordsOrigin = {};
 
 	        ecModel.eachSeriesByType(seriesType, function (seriesModel) {
 
@@ -25480,11 +26171,13 @@ webpackJsonp([1],[
 
 	            var coords = cartesian.dataToPoints(data, true);
 	            lastStackCoords[stackId] = lastStackCoords[stackId] || [];
+	            lastStackCoordsOrigin[stackId] = lastStackCoordsOrigin[stackId] || []; // Fix #4243
 
 	            data.setLayout({
 	                offset: columnOffset,
 	                size: columnWidth
 	            });
+
 	            data.each(valueAxis.dim, function (value, idx) {
 	                // 空数据
 	                if (isNaN(value)) {
@@ -25492,22 +26185,30 @@ webpackJsonp([1],[
 	                }
 	                if (!lastStackCoords[stackId][idx]) {
 	                    lastStackCoords[stackId][idx] = {
-	                        // Positive stack
-	                        p: valueAxisStart,
-	                        // Negative stack
-	                        n: valueAxisStart
+	                        p: valueAxisStart, // Positive stack
+	                        n: valueAxisStart  // Negative stack
+	                    };
+	                    lastStackCoordsOrigin[stackId][idx] = {
+	                        p: valueAxisStart, // Positive stack
+	                        n: valueAxisStart  // Negative stack
 	                    };
 	                }
 	                var sign = value >= 0 ? 'p' : 'n';
 	                var coord = coords[idx];
 	                var lastCoord = lastStackCoords[stackId][idx][sign];
-	                var x, y, width, height;
+	                var lastCoordOrigin = lastStackCoordsOrigin[stackId][idx][sign];
+	                var x;
+	                var y;
+	                var width;
+	                var height;
+
 	                if (valueAxis.isHorizontal()) {
 	                    x = lastCoord;
 	                    y = coord[1] + columnOffset;
-	                    width = coord[0] - lastCoord;
+	                    width = coord[0] - lastCoordOrigin;
 	                    height = columnWidth;
 
+	                    lastStackCoordsOrigin[stackId][idx][sign] += width;
 	                    if (Math.abs(width) < barMinHeight) {
 	                        width = (width < 0 ? -1 : 1) * barMinHeight;
 	                    }
@@ -25517,7 +26218,9 @@ webpackJsonp([1],[
 	                    x = coord[0] + columnOffset;
 	                    y = lastCoord;
 	                    width = columnWidth;
-	                    height = coord[1] - lastCoord;
+	                    height = coord[1] - lastCoordOrigin;
+
+	                    lastStackCoordsOrigin[stackId][idx][sign] += height;
 	                    if (Math.abs(height) < barMinHeight) {
 	                        // Include zero to has a positive bar
 	                        height = (height <= 0 ? -1 : 1) * barMinHeight;
@@ -25540,19 +26243,19 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 538 */
+/* 545 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var graphic = __webpack_require__(458);
-	    var zrUtil = __webpack_require__(419);
-	    var echarts = __webpack_require__(416);
+	    var graphic = __webpack_require__(464);
+	    var zrUtil = __webpack_require__(425);
+	    var echarts = __webpack_require__(422);
 
-	    __webpack_require__(515);
+	    __webpack_require__(521);
 
-	    __webpack_require__(539);
+	    __webpack_require__(546);
 
 	    // Grid view
 	    echarts.extendComponentView({
@@ -25563,14 +26266,16 @@ webpackJsonp([1],[
 	            this.group.removeAll();
 	            if (gridModel.get('show')) {
 	                this.group.add(new graphic.Rect({
-	                    shape:gridModel.coordinateSystem.getRect(),
+	                    shape: gridModel.coordinateSystem.getRect(),
 	                    style: zrUtil.defaults({
 	                        fill: gridModel.get('backgroundColor')
 	                    }, gridModel.getItemStyle()),
-	                    silent: true
+	                    silent: true,
+	                    z2: -1
 	                }));
 	            }
 	        }
+
 	    });
 
 	    echarts.registerPreprocessor(function (option) {
@@ -25582,27 +26287,27 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 539 */
+/* 546 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	// TODO boundaryGap
 
 
-	    __webpack_require__(528);
+	    __webpack_require__(534);
 
-	    __webpack_require__(540);
+	    __webpack_require__(547);
 
 
 /***/ },
-/* 540 */
+/* 547 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var zrUtil = __webpack_require__(419);
-	    var graphic = __webpack_require__(458);
-	    var AxisBuilder = __webpack_require__(541);
+	    var zrUtil = __webpack_require__(425);
+	    var graphic = __webpack_require__(464);
+	    var AxisBuilder = __webpack_require__(548);
 	    var ifIgnoreOnTick = AxisBuilder.ifIgnoreOnTick;
 	    var getInterval = AxisBuilder.getInterval;
 
@@ -25621,7 +26326,7 @@ webpackJsonp([1],[
 	    //     return alignWithLabel;
 	    // }
 
-	    var AxisView = __webpack_require__(416).extendComponentView({
+	    var AxisView = __webpack_require__(422).extendComponentView({
 
 	        type: 'axis',
 
@@ -25880,19 +26585,19 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 541 */
+/* 548 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var zrUtil = __webpack_require__(419);
-	    var formatUtil = __webpack_require__(421);
-	    var graphic = __webpack_require__(458);
-	    var Model = __webpack_require__(427);
-	    var numberUtil = __webpack_require__(422);
+	    var zrUtil = __webpack_require__(425);
+	    var formatUtil = __webpack_require__(427);
+	    var graphic = __webpack_require__(464);
+	    var Model = __webpack_require__(433);
+	    var numberUtil = __webpack_require__(428);
 	    var remRadian = numberUtil.remRadian;
 	    var isRadianAroundZero = numberUtil.isRadianAroundZero;
-	    var vec2 = __webpack_require__(425);
+	    var vec2 = __webpack_require__(431);
 	    var v2ApplyTransform = vec2.applyTransform;
 	    var retrieve = zrUtil.retrieve;
 
@@ -26481,15 +27186,15 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 542 */
+/* 549 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// FIXME Better way to pack data in graphic element
 
 
-	    __webpack_require__(543);
+	    __webpack_require__(550);
 
-	    __webpack_require__(544);
+	    __webpack_require__(551);
 
 	    // Show tip action
 	    /**
@@ -26500,7 +27205,7 @@ webpackJsonp([1],[
 	     * @property {number} [x]
 	     * @property {number} [y]
 	     */
-	    __webpack_require__(416).registerAction(
+	    __webpack_require__(422).registerAction(
 	        {
 	            type: 'showTip',
 	            event: 'showTip',
@@ -26510,7 +27215,7 @@ webpackJsonp([1],[
 	        function () {}
 	    );
 	    // Hide tip action
-	    __webpack_require__(416).registerAction(
+	    __webpack_require__(422).registerAction(
 	        {
 	            type: 'hideTip',
 	            event: 'hideTip',
@@ -26522,12 +27227,12 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 543 */
+/* 550 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    __webpack_require__(416).extendComponentModel({
+	    __webpack_require__(422).extendComponentModel({
 
 	        type: 'tooltip',
 
@@ -26544,7 +27249,7 @@ webpackJsonp([1],[
 	            // 触发类型，默认数据触发，见下图，可选为：'item' ¦ 'axis'
 	            trigger: 'item',
 
-	            // 触发条件，支持 'click' | 'mousemove'
+	            // 触发条件，支持 'click' | 'mousemove' | 'none'
 	            triggerOn: 'mousemove',
 
 	            // 是否永远显示 content
@@ -26631,19 +27336,20 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 544 */
+/* 551 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var TooltipContent = __webpack_require__(545);
-	    var graphic = __webpack_require__(458);
-	    var zrUtil = __webpack_require__(419);
-	    var formatUtil = __webpack_require__(421);
-	    var numberUtil = __webpack_require__(422);
+	    var TooltipContent = __webpack_require__(552);
+	    var graphic = __webpack_require__(464);
+	    var zrUtil = __webpack_require__(425);
+	    var formatUtil = __webpack_require__(427);
+	    var numberUtil = __webpack_require__(428);
+	    var modelUtil = __webpack_require__(426);
 	    var parsePercent = numberUtil.parsePercent;
-	    var env = __webpack_require__(417);
-	    var Model = __webpack_require__(427);
+	    var env = __webpack_require__(423);
+	    var Model = __webpack_require__(433);
 
 	    function dataEqual(a, b) {
 	        if (!a || !b) {
@@ -26797,7 +27503,7 @@ webpackJsonp([1],[
 	            || trigger === 'item');
 	    }
 
-	    __webpack_require__(416).extendComponentView({
+	    __webpack_require__(422).extendComponentView({
 
 	        type: 'tooltip',
 
@@ -26872,8 +27578,16 @@ webpackJsonp([1],[
 	                this.group.add(crossText);
 	            }
 
+	            var triggerOn = tooltipModel.get('triggerOn');
+
 	            // Try to keep the tooltip show when refreshing
-	            if (this._lastX != null && this._lastY != null) {
+	            if (this._lastX != null
+	                && this._lastY != null
+	                // When user is willing to control tooltip totally using API,
+	                // self._manuallyShowTip({x, y}) might cause tooltip hide,
+	                // which is not expected.
+	                && triggerOn !== 'none'
+	            ) {
 	                var self = this;
 	                clearTimeout(this._refreshUpdateTimeout);
 	                this._refreshUpdateTimeout = setTimeout(function () {
@@ -26892,14 +27606,17 @@ webpackJsonp([1],[
 	            zr.off('mousemove', this._mousemove);
 	            zr.off('mouseout', this._hide);
 	            zr.off('globalout', this._hide);
-	            if (tooltipModel.get('triggerOn') === 'click') {
+
+	            if (triggerOn === 'click') {
 	                zr.on('click', this._tryShow, this);
 	            }
-	            else {
+	            else if (triggerOn === 'mousemove') {
 	                zr.on('mousemove', this._mousemove, this);
 	                zr.on('mouseout', this._hide, this);
 	                zr.on('globalout', this._hide, this);
 	            }
+	            // else triggerOn is 'none', which enable user
+	            // to control tooltip totally using API.
 	        },
 
 	        _mousemove: function (e) {
@@ -26918,17 +27635,17 @@ webpackJsonp([1],[
 
 	        /**
 	         * Show tip manually by
-	         *  dispatchAction({
-	         *      type: 'showTip',
-	         *      x: 10,
-	         *      y: 10
-	         *  });
+	         * dispatchAction({
+	         *     type: 'showTip',
+	         *     x: 10,
+	         *     y: 10
+	         * });
 	         * Or
-	         *  dispatchAction({
+	         * dispatchAction({
 	         *      type: 'showTip',
 	         *      seriesIndex: 0,
-	         *      dataIndex: 1
-	         *  });
+	         *      dataIndex or dataIndexInside or name
+	         * });
 	         *
 	         *  TODO Batch
 	         */
@@ -26940,7 +27657,6 @@ webpackJsonp([1],[
 
 	            var ecModel = this._ecModel;
 	            var seriesIndex = event.seriesIndex;
-	            var dataIndex = event.dataIndex;
 	            var seriesModel = ecModel.getSeriesByIndex(seriesIndex);
 	            var api = this._api;
 
@@ -26955,14 +27671,23 @@ webpackJsonp([1],[
 	                }
 	                if (seriesModel) {
 	                    var data = seriesModel.getData();
-	                    if (dataIndex == null) {
-	                        dataIndex = data.indexOfName(event.name);
+	                    var dataIndex = modelUtil.queryDataIndex(data, event);
+
+	                    if (dataIndex == null || zrUtil.isArray(dataIndex)) {
+	                        return;
 	                    }
+
 	                    var el = data.getItemGraphicEl(dataIndex);
-	                    var cx, cy;
+	                    var cx;
+	                    var cy;
 	                    // Try to get the point in coordinate system
 	                    var coordSys = seriesModel.coordinateSystem;
-	                    if (coordSys && coordSys.dataToPoint) {
+	                    if (seriesModel.getTooltipPosition) {
+	                        var point = seriesModel.getTooltipPosition(dataIndex) || [];
+	                        cx = point[0];
+	                        cy = point[1];
+	                    }
+	                    else if (coordSys && coordSys.dataToPoint) {
 	                        var point = coordSys.dataToPoint(
 	                            data.getValues(
 	                                zrUtil.map(coordSys.dimensions, function (dim) {
@@ -26980,10 +27705,12 @@ webpackJsonp([1],[
 	                        cx = rect.x + rect.width / 2;
 	                        cy = rect.y + rect.height / 2;
 	                    }
+
 	                    if (cx != null && cy != null) {
 	                        this._tryShow({
 	                            offsetX: cx,
 	                            offsetY: cy,
+	                            position: event.position,
 	                            target: el,
 	                            event: {}
 	                        });
@@ -26995,6 +27722,7 @@ webpackJsonp([1],[
 	                this._tryShow({
 	                    offsetX: event.x,
 	                    offsetY: event.y,
+	                    position: event.position,
 	                    target: el,
 	                    event: {}
 	                });
@@ -27091,7 +27819,7 @@ webpackJsonp([1],[
 	                api.dispatchAction({
 	                    type: 'showTip',
 	                    from: this.uid,
-	                    dataIndex: el.dataIndex,
+	                    dataIndexInside: el.dataIndex,
 	                    seriesIndex: el.seriesIndex
 	                });
 	            }
@@ -27112,7 +27840,7 @@ webpackJsonp([1],[
 	                this._showTooltipContent(
 	                    // TODO params
 	                    subTooltipModel, defaultHtml, subTooltipModel.get('formatterParams') || {},
-	                    asyncTicket, e.offsetX, e.offsetY, el, api
+	                    asyncTicket, e.offsetX, e.offsetY, e.position, el, api
 	                );
 	            }
 	            else {
@@ -27222,7 +27950,7 @@ webpackJsonp([1],[
 
 	                if (axisPointerType !== 'cross') {
 	                    this._dispatchAndShowSeriesTooltipContent(
-	                        coordSys, seriesCoordSysSameAxis.series, point, value, contentNotChange
+	                        coordSys, seriesCoordSysSameAxis.series, point, value, contentNotChange, e.position
 	                    );
 	                }
 	            }, this);
@@ -27548,10 +28276,10 @@ webpackJsonp([1],[
 	         * @param {Array.<number>} point
 	         * @param {Array.<number>} value
 	         * @param {boolean} contentNotChange
-	         * @param {Object} e
+	         * @param {Array.<number>|string|Function} [positionExpr]
 	         */
 	        _dispatchAndShowSeriesTooltipContent: function (
-	            coordSys, seriesList, point, value, contentNotChange
+	            coordSys, seriesList, point, value, contentNotChange, positionExpr
 	        ) {
 
 	            var rootTooltipModel = this._tooltipModel;
@@ -27562,7 +28290,7 @@ webpackJsonp([1],[
 	            var payloadBatch = zrUtil.map(seriesList, function (series) {
 	                return {
 	                    seriesIndex: series.seriesIndex,
-	                    dataIndex: series.getAxisTooltipDataIndex
+	                    dataIndexInside: series.getAxisTooltipDataIndex
 	                        ? series.getAxisTooltipDataIndex(series.coordDimToDataDim(baseAxis.dim), value, baseAxis)
 	                        : series.getData().indexOfNearest(
 	                            series.coordDimToDataDim(baseAxis.dim)[0],
@@ -27593,19 +28321,19 @@ webpackJsonp([1],[
 	            // Dispatch showTip action
 	            api.dispatchAction({
 	                type: 'showTip',
-	                dataIndex: payloadBatch[0].dataIndex,
+	                dataIndexInside: payloadBatch[0].dataIndexInside,
 	                seriesIndex: payloadBatch[0].seriesIndex,
 	                from: this.uid
 	            });
 
 	            if (baseAxis && rootTooltipModel.get('showContent') && rootTooltipModel.get('show')) {
 	                var paramsList = zrUtil.map(seriesList, function (series, index) {
-	                    return series.getDataParams(payloadBatch[index].dataIndex);
+	                    return series.getDataParams(payloadBatch[index].dataIndexInside);
 	                });
 
 	                if (!contentNotChange) {
 	                    // Update html content
-	                    var firstDataIndex = payloadBatch[0].dataIndex;
+	                    var firstDataIndex = payloadBatch[0].dataIndexInside;
 
 	                    // Default tooltip content
 	                    // FIXME
@@ -27616,19 +28344,19 @@ webpackJsonp([1],[
 	                        : seriesList[0].getData().getName(firstDataIndex);
 	                    var defaultHtml = (firstLine ? firstLine + '<br />' : '')
 	                        + zrUtil.map(seriesList, function (series, index) {
-	                            return series.formatTooltip(payloadBatch[index].dataIndex, true);
+	                            return series.formatTooltip(payloadBatch[index].dataIndexInside, true);
 	                        }).join('<br />');
 
 	                    var asyncTicket = 'axis_' + coordSys.name + '_' + firstDataIndex;
 
 	                    this._showTooltipContent(
 	                        rootTooltipModel, defaultHtml, paramsList, asyncTicket,
-	                        point[0], point[1], null, api
+	                        point[0], point[1], positionExpr, null, api
 	                    );
 	                }
 	                else {
 	                    updatePosition(
-	                        rootTooltipModel.get('position'), point[0], point[1],
+	                        positionExpr || rootTooltipModel.get('position'), point[0], point[1],
 	                        this._tooltipContent, paramsList, null, api
 	                    );
 	                }
@@ -27673,12 +28401,12 @@ webpackJsonp([1],[
 
 	            this._showTooltipContent(
 	                tooltipModel, defaultHtml, params, asyncTicket,
-	                e.offsetX, e.offsetY, e.target, api
+	                e.offsetX, e.offsetY, e.position, e.target, api
 	            );
 	        },
 
 	        _showTooltipContent: function (
-	            tooltipModel, defaultHtml, params, asyncTicket, x, y, target, api
+	            tooltipModel, defaultHtml, params, asyncTicket, x, y, positionExpr, target, api
 	        ) {
 	            // Reset ticket
 	            this._ticket = '';
@@ -27687,7 +28415,7 @@ webpackJsonp([1],[
 	                var tooltipContent = this._tooltipContent;
 
 	                var formatter = tooltipModel.get('formatter');
-	                var positionExpr = tooltipModel.get('position');
+	                positionExpr = positionExpr || tooltipModel.get('position');
 	                var html = defaultHtml;
 
 	                if (formatter) {
@@ -27806,7 +28534,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 545 */
+/* 552 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -27814,13 +28542,13 @@ webpackJsonp([1],[
 	 */
 
 
-	    var zrUtil = __webpack_require__(419);
-	    var zrColor = __webpack_require__(454);
-	    var eventUtil = __webpack_require__(502);
-	    var formatUtil = __webpack_require__(421);
+	    var zrUtil = __webpack_require__(425);
+	    var zrColor = __webpack_require__(460);
+	    var eventUtil = __webpack_require__(508);
+	    var formatUtil = __webpack_require__(427);
 	    var each = zrUtil.each;
 	    var toCamelCase = formatUtil.toCamelCase;
-	    var env = __webpack_require__(417);
+	    var env = __webpack_require__(423);
 
 	    var vendors = ['', '-webkit-', '-moz-', '-o-'];
 
@@ -27953,6 +28681,7 @@ webpackJsonp([1],[
 	            self._inContent = true;
 	        };
 	        el.onmousemove = function (e) {
+	            e = e || window.event;
 	            if (!self.enterable) {
 	                // Try trigger zrender event to avoid mouse
 	                // in and out shape too frequently
@@ -27976,14 +28705,14 @@ webpackJsonp([1],[
 	    function compromiseMobile(tooltipContentEl, container) {
 	        // Prevent default behavior on mobile. For example,
 	        // default pinch gesture will cause browser zoom.
-	        // We do not preventing event on tooltip contnet el,
+	        // We do not preventing event on tooltip content el,
 	        // because user may need customization in tooltip el.
 	        eventUtil.addEventListener(container, 'touchstart', preventDefault);
 	        eventUtil.addEventListener(container, 'touchmove', preventDefault);
 	        eventUtil.addEventListener(container, 'touchend', preventDefault);
 
 	        function preventDefault(e) {
-	            if (contains(e.target)) {
+	            if (!contains(e.target)) {
 	                e.preventDefault();
 	            }
 	        }
@@ -28079,15 +28808,15 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 546 */
+/* 553 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var echarts = __webpack_require__(416);
-	    var graphic = __webpack_require__(458);
-	    var layout = __webpack_require__(436);
+	    var echarts = __webpack_require__(422);
+	    var graphic = __webpack_require__(464);
+	    var layout = __webpack_require__(442);
 
 	    // Model
 	    echarts.extendComponentModel({

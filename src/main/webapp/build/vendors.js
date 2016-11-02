@@ -100,8 +100,8 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(28);
-	__webpack_require__(829);
-	module.exports = __webpack_require__(848);
+	__webpack_require__(836);
+	module.exports = __webpack_require__(855);
 
 
 /***/ },
@@ -20358,27 +20358,27 @@
 
 /***/ },
 
-/***/ 829:
+/***/ 836:
 /***/ function(module, exports, __webpack_require__) {
 
-	var Reflux = __webpack_require__(830);
+	var Reflux = __webpack_require__(837);
 
-	Reflux.connect = __webpack_require__(843);
+	Reflux.connect = __webpack_require__(850);
 
-	Reflux.connectFilter = __webpack_require__(845);
+	Reflux.connectFilter = __webpack_require__(852);
 
-	Reflux.ListenerMixin = __webpack_require__(844);
+	Reflux.ListenerMixin = __webpack_require__(851);
 
-	Reflux.listenTo = __webpack_require__(846);
+	Reflux.listenTo = __webpack_require__(853);
 
-	Reflux.listenToMany = __webpack_require__(847);
+	Reflux.listenToMany = __webpack_require__(854);
 
 	module.exports = Reflux;
 
 
 /***/ },
 
-/***/ 830:
+/***/ 837:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20392,19 +20392,19 @@
 	    }
 	};
 
-	Reflux.ActionMethods = __webpack_require__(831);
+	Reflux.ActionMethods = __webpack_require__(838);
 
-	Reflux.ListenerMethods = __webpack_require__(832);
+	Reflux.ListenerMethods = __webpack_require__(839);
 
-	Reflux.PublisherMethods = __webpack_require__(841);
+	Reflux.PublisherMethods = __webpack_require__(848);
 
-	Reflux.StoreMethods = __webpack_require__(840);
+	Reflux.StoreMethods = __webpack_require__(847);
 
-	Reflux.createAction = __webpack_require__(842);
+	Reflux.createAction = __webpack_require__(849);
 
-	Reflux.createStore = __webpack_require__(836);
+	Reflux.createStore = __webpack_require__(843);
 
-	var maker = __webpack_require__(835).staticJoinCreator;
+	var maker = __webpack_require__(842).staticJoinCreator;
 
 	Reflux.joinTrailing = Reflux.all = maker("last"); // Reflux.all alias for backward compatibility
 
@@ -20414,7 +20414,7 @@
 
 	Reflux.joinConcat = maker("all");
 
-	var _ = Reflux.utils = __webpack_require__(833);
+	var _ = Reflux.utils = __webpack_require__(840);
 
 	Reflux.EventEmitter = _.EventEmitter;
 
@@ -20473,7 +20473,7 @@
 	 * Provides the set of created actions and stores for introspection
 	 */
 	/*eslint-disable no-underscore-dangle*/
-	Reflux.__keep = __webpack_require__(837);
+	Reflux.__keep = __webpack_require__(844);
 	/*eslint-enable no-underscore-dangle*/
 
 	/**
@@ -20488,7 +20488,7 @@
 
 /***/ },
 
-/***/ 831:
+/***/ 838:
 /***/ function(module, exports) {
 
 	/**
@@ -20501,13 +20501,13 @@
 
 /***/ },
 
-/***/ 832:
+/***/ 839:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _ = __webpack_require__(833),
-	    maker = __webpack_require__(835).instanceJoinCreator;
+	var _ = __webpack_require__(840),
+	    maker = __webpack_require__(842).instanceJoinCreator;
 
 	/**
 	 * Extract child listenables from a parent from their
@@ -20740,7 +20740,7 @@
 
 /***/ },
 
-/***/ 833:
+/***/ 840:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20799,7 +20799,7 @@
 	    return typeof value === "function";
 	}
 
-	exports.EventEmitter = __webpack_require__(834);
+	exports.EventEmitter = __webpack_require__(841);
 
 	exports.nextTick = function (callback) {
 	    setTimeout(callback, 0);
@@ -20826,7 +20826,7 @@
 
 /***/ },
 
-/***/ 834:
+/***/ 841:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21122,7 +21122,7 @@
 
 /***/ },
 
-/***/ 835:
+/***/ 842:
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -21131,8 +21131,8 @@
 
 	"use strict";
 
-	var createStore = __webpack_require__(836),
-	    _ = __webpack_require__(833);
+	var createStore = __webpack_require__(843),
+	    _ = __webpack_require__(840);
 
 	var slice = Array.prototype.slice,
 	    strategyMethodNames = {
@@ -21244,15 +21244,15 @@
 
 /***/ },
 
-/***/ 836:
+/***/ 843:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _ = __webpack_require__(833),
-	    Keep = __webpack_require__(837),
-	    mixer = __webpack_require__(838),
-	    bindMethods = __webpack_require__(839);
+	var _ = __webpack_require__(840),
+	    Keep = __webpack_require__(844),
+	    mixer = __webpack_require__(845),
+	    bindMethods = __webpack_require__(846);
 
 	var allowed = { preEmit: 1, shouldEmit: 1 };
 
@@ -21266,9 +21266,9 @@
 	 */
 	module.exports = function (definition) {
 
-	    var StoreMethods = __webpack_require__(840),
-	        PublisherMethods = __webpack_require__(841),
-	        ListenerMethods = __webpack_require__(832);
+	    var StoreMethods = __webpack_require__(847),
+	        PublisherMethods = __webpack_require__(848),
+	        ListenerMethods = __webpack_require__(839);
 
 	    definition = definition || {};
 
@@ -21314,7 +21314,7 @@
 
 /***/ },
 
-/***/ 837:
+/***/ 844:
 /***/ function(module, exports) {
 
 	"use strict";
@@ -21334,12 +21334,12 @@
 
 /***/ },
 
-/***/ 838:
+/***/ 845:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _ = __webpack_require__(833);
+	var _ = __webpack_require__(840);
 
 	module.exports = function mix(def) {
 	    var composed = {
@@ -21399,7 +21399,7 @@
 
 /***/ },
 
-/***/ 839:
+/***/ 846:
 /***/ function(module, exports) {
 
 	"use strict";
@@ -21430,7 +21430,7 @@
 
 /***/ },
 
-/***/ 840:
+/***/ 847:
 /***/ function(module, exports) {
 
 	/**
@@ -21443,12 +21443,12 @@
 
 /***/ },
 
-/***/ 841:
+/***/ 848:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _ = __webpack_require__(833);
+	var _ = __webpack_require__(840);
 
 	/**
 	 * A module of methods for object that you want to be able to listen to.
@@ -21546,15 +21546,15 @@
 
 /***/ },
 
-/***/ 842:
+/***/ 849:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _ = __webpack_require__(833),
-	    ActionMethods = __webpack_require__(831),
-	    PublisherMethods = __webpack_require__(841),
-	    Keep = __webpack_require__(837);
+	var _ = __webpack_require__(840),
+	    ActionMethods = __webpack_require__(838),
+	    PublisherMethods = __webpack_require__(848),
+	    Keep = __webpack_require__(844);
 
 	var allowed = { preEmit: 1, shouldEmit: 1 };
 
@@ -21618,12 +21618,12 @@
 
 /***/ },
 
-/***/ 843:
+/***/ 850:
 /***/ function(module, exports, __webpack_require__) {
 
-	var ListenerMethods = __webpack_require__(832),
-	    ListenerMixin = __webpack_require__(844),
-	    _ = __webpack_require__(833);
+	var ListenerMethods = __webpack_require__(839),
+	    ListenerMixin = __webpack_require__(851),
+	    _ = __webpack_require__(840);
 
 	module.exports = function(listenable,key){
 	    return {
@@ -21652,11 +21652,11 @@
 
 /***/ },
 
-/***/ 844:
+/***/ 851:
 /***/ function(module, exports, __webpack_require__) {
 
-	var _ = __webpack_require__(833),
-	    ListenerMethods = __webpack_require__(832);
+	var _ = __webpack_require__(840),
+	    ListenerMethods = __webpack_require__(839);
 
 	/**
 	 * A module meant to be consumed as a mixin by a React component. Supplies the methods from
@@ -21676,12 +21676,12 @@
 
 /***/ },
 
-/***/ 845:
+/***/ 852:
 /***/ function(module, exports, __webpack_require__) {
 
-	var ListenerMethods = __webpack_require__(832),
-	    ListenerMixin = __webpack_require__(844),
-	    _ = __webpack_require__(833);
+	var ListenerMethods = __webpack_require__(839),
+	    ListenerMixin = __webpack_require__(851),
+	    _ = __webpack_require__(840);
 
 	module.exports = function(listenable, key, filterFunc) {
 	    filterFunc = _.isFunction(key) ? key : filterFunc;
@@ -21723,10 +21723,10 @@
 
 /***/ },
 
-/***/ 846:
+/***/ 853:
 /***/ function(module, exports, __webpack_require__) {
 
-	var ListenerMethods = __webpack_require__(832);
+	var ListenerMethods = __webpack_require__(839);
 
 	/**
 	 * A mixin factory for a React component. Meant as a more convenient way of using the `ListenerMixin`,
@@ -21765,10 +21765,10 @@
 
 /***/ },
 
-/***/ 847:
+/***/ 854:
 /***/ function(module, exports, __webpack_require__) {
 
-	var ListenerMethods = __webpack_require__(832);
+	var ListenerMethods = __webpack_require__(839);
 
 	/**
 	 * A mixin factory for a React component. Meant as a more convenient way of using the `listenerMixin`,
@@ -21805,10 +21805,10 @@
 
 /***/ },
 
-/***/ 848:
+/***/ 855:
 /***/ function(module, exports, __webpack_require__) {
 
-	var mixin = __webpack_require__(849);
+	var mixin = __webpack_require__(856);
 	var assign = __webpack_require__(197);
 
 	var mixinProto = mixin({
@@ -21965,7 +21965,7 @@
 
 /***/ },
 
-/***/ 849:
+/***/ 856:
 /***/ function(module, exports) {
 
 	function objToStr(x){ return Object.prototype.toString.call(x); };

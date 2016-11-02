@@ -54,15 +54,15 @@ public class AddUserJob extends QuartzJobBean
         try {
             IUserService userService = BeanUtil.getBean("userService", UserServiceImpl.class);
             Properties properties =ProjectConfigUtil.getConfig();
-            logger.info("start calling saveUser.");
+
             if(BFConstant.TRUE.equals(properties.get("saveUserJob"))){
+                logger.info("start calling saveUser.");
                 Map<String, Object> params = new HashMap<String, Object>();
                 params.put("name", UUID.randomUUID().toString());
                 params.put("address", new Random().nextInt(10000) + "");
                 userService.saveUser(params);
+                logger.info("end up calling saveUser.");
             }
-
-            logger.info("end up calling saveUser.");
         }
         catch (Exception e)
         {

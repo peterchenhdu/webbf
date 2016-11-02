@@ -1,16 +1,43 @@
 import React from 'react'
 import echarts from 'echarts'
+import $ from 'jquery';          //jquery
 
 export default class AreaStack extends React.Component{
 
   constructor(props){
     super(props);
+    this.chartData = {};
+    $.ajax({
+     async: false,
+      type : "post",
+      url : "/webbf/ad/getAdData.do",
+      data: {},
+      datatype : 'json',
+      success : function(data) {
+        if(data != "faild"){
+          this.chartData.emailList = data.emailList;
+          this.chartData.allianceList = data.allianceList;
+          this.chartData.vedioList = data.vedioList;
+          this.chartData.directList = data.directList;
+          this.chartData.searchList = data.searchList;
+          this.chartData.xTitleList = data.xTitleList;
+        }else{
+          Modal.error({title: '请求失败！', content: '请求后端数据失败!'});
+        }
+      }.bind(this),
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+          Modal.error({title: '请求失败！', content: '可能原因：系统异常或页面已过期，请刷新页面后重新尝试！'});
+       }
+    });
+
   }
   autoResize() {
     var areastack = document.getElementById('areastack-chart');
     areastack.style.width = (5*window.innerWidth/6 - 240)+'px';
     areastack.style.height = (window.innerHeight - 90)+'px';
   }
+
+
   componentDidMount() {
     this.autoResize();
     // 基于准备好的dom，初始化echarts实例
@@ -18,7 +45,7 @@ export default class AreaStack extends React.Component{
     // 绘制图表
     myChart.setOption({
         title: {
-            text: '堆叠区域图'
+            text: '1小时访问来源堆积图'
         },
         tooltip : {
             trigger: 'axis'
@@ -41,7 +68,7 @@ export default class AreaStack extends React.Component{
             {
                 type : 'category',
                 boundaryGap : false,
-                data : ['周一','周二','周三','周四','周五','周六','周日']
+                data : this.chartData.xTitleList
             }
         ],
         yAxis : [
@@ -55,28 +82,28 @@ export default class AreaStack extends React.Component{
                 type:'line',
                 stack: '总量',
                 areaStyle: {normal: {}},
-                data:[120, 132, 101, 134, 90, 230, 210]
+                data:this.chartData.emailList
             },
             {
                 name:'联盟广告',
                 type:'line',
                 stack: '总量',
                 areaStyle: {normal: {}},
-                data:[220, 182, 191, 234, 290, 330, 310]
+                data:this.chartData.allianceList
             },
             {
                 name:'视频广告',
                 type:'line',
                 stack: '总量',
                 areaStyle: {normal: {}},
-                data:[150, 232, 201, 154, 190, 330, 410]
+                data:this.chartData.vedioList
             },
             {
                 name:'直接访问',
                 type:'line',
                 stack: '总量',
                 areaStyle: {normal: {}},
-                data:[320, 332, 301, 334, 390, 330, 320]
+                data:this.chartData.directList
             },
             {
                 name:'搜索引擎',
@@ -89,7 +116,7 @@ export default class AreaStack extends React.Component{
                     }
                 },
                 areaStyle: {normal: {}},
-                data:[820, 932, 901, 934, 1290, 1330, 1320]
+                data:this.chartData.searchList
             }
         ]
     });

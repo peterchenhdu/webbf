@@ -3,6 +3,7 @@ import React from 'react'
 import { Row, Col } from 'antd';
 import SiderMenu from '../common/sidermenu'
 import AreaStack from '../echarts/areastack'
+import UserMgt from '../antd/usermgt'
 import HeatmapCartesian from '../echarts/heatmapcartesian'
 
 export default class Index extends React.Component{
@@ -30,6 +31,9 @@ export default class Index extends React.Component{
       case 'HeatmapCartesian':
         content = <HeatmapCartesian />;
         break;
+      case 'userMgt':
+        content = <UserMgt />;
+        break;
       default:
         content = <AreaStack />;
     }
@@ -48,7 +52,7 @@ export default class Index extends React.Component{
             <SiderMenu clickEvent={this.handleClick.bind(this)} current={this.state.current}/>
           </Col>
           <Col span={16} >
-            <div>
+            <div className="content-div">
               {content}
             </div>
           </Col>

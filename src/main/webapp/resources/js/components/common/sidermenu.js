@@ -27,7 +27,7 @@ export default class SiderMenu extends React.Component {
           <Menu.Item key="HeatmapCartesian">热力图</Menu.Item>
         </SubMenu>
         <SubMenu key="sub4" title={<span><Icon type="setting" /><span>增删改查</span></span>}>
-          <Menu.Item key="9">选项9</Menu.Item>
+          <Menu.Item key="userMgt">用户管理</Menu.Item>
           <Menu.Item key="10">选项10</Menu.Item>
           <Menu.Item key="11">选项11</Menu.Item>
           <Menu.Item key="12">选项12</Menu.Item>

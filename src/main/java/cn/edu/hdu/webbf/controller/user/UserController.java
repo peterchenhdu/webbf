@@ -26,8 +26,6 @@ import cn.edu.hdu.webbf.controller.base.BaseController;
 import cn.edu.hdu.webbf.model.User;
 import cn.edu.hdu.webbf.service.user.IUserService;
 
-import com.google.gson.Gson;
-
 /**
  *
  * @author Pi Chen
@@ -46,7 +44,6 @@ public class UserController extends BaseController
     @ResponseBody
     public String getUserList(int pageNo, int pageSize)
     {
-        Gson gson = new Gson();
         Map<String, Object> map = new HashMap<String, Object>();
         try
         {
@@ -62,14 +59,13 @@ public class UserController extends BaseController
         {
             logger.error(e.toString(), e);
         }
-        return gson.toJson("faild");
+        return gson.toJson(FAILD);
     }
 
     @RequestMapping(value = "/deleteUser", produces = "application/json; charset=utf-8")
     @ResponseBody
     public String deleteUser(int userId)
     {
-        Gson gson = new Gson();
         try
         {
             Map<String, Object> param = new HashMap<String, Object>();
@@ -82,14 +78,13 @@ public class UserController extends BaseController
         {
             logger.error(e.toString(), e);
         }
-        return gson.toJson("faild");
+        return gson.toJson(FAILD);
     }
 
     @RequestMapping(value = "/saveUserTest", produces = "application/json; charset=utf-8")
     @ResponseBody
     public String saveUserTest(String userName, String address)
     {
-        Gson gson = new Gson();
         /* test transaction */
         try
         {
