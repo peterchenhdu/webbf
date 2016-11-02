@@ -4,9 +4,10 @@ Java Web工程demo</br>
 前端：react + reflux + webpack，涉及ES6、jquery、react-bootstrap、ant design等内容</br>
 都是demo，提供下思路，仅供参考</br>
 
-如何运行：
-前端：查看src/main/webapp/目录下的readme文件，输入npm run build构建即可，后续修改完前端代码后，刷新浏览器可看到修改后的效果；
-后端：执行maven命令：clean tomcat：run
+如何运行：</br>
+前端：查看src/main/webapp/目录下的readme文件，输入npm run build构建即可，后续修改完前端代码后，刷新浏览器可看到修改后的效果；</br>
+后端：执行maven命令：clean tomcat：run</br>
+
 
 <h3>index<h3>
 <img src="https://github.com/peterchenhdu/webbf/blob/master/doc/index.jpg">
