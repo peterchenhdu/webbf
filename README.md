@@ -1,5 +1,5 @@
-# webbf</br>
-##Java Web工程demo</br>
+# webbf Java Web工程例子
+
 ###后端：spring + spring mvc + mybatis + maven；
 涉及定时任务quartz、ehcache缓存...
 ###前端：react + webpack
