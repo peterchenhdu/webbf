@@ -44,9 +44,9 @@ public class UserServiceImpl implements IUserService
      * @throws Exception
      */
     @Override
-    public List<User> queryAll(Map<String, Object> param) throws Exception
+    public List<User> query(Map<String, Object> param)
     {
-        return userDao.queryAll(param);
+        return userDao.query(param);
     }
 
     /**
@@ -56,7 +56,7 @@ public class UserServiceImpl implements IUserService
      * @throws Exception
      */
     @Override
-    public void saveUser(Map<String, Object> param) throws Exception
+    public void saveUser(Map<String, Object> param)
     {
         userDao.saveUser(param);
 
@@ -69,7 +69,7 @@ public class UserServiceImpl implements IUserService
      * @throws Exception
      */
     @Override
-    public void deleteUser(Map<String, Object> param) throws Exception
+    public void deleteUser(Map<String, Object> param)
     {
         userDao.deleteUser(param);
     }

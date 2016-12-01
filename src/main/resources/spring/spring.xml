@@ -22,6 +22,7 @@
     <!-- 启动组件扫描，排除@Controller组件，该组件由SpringMVC配置文件扫描 -->
     <context:component-scan base-package="cn.edu.hdu.webbf">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+        <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />
     </context:component-scan>
     
     <context:property-placeholder location="classpath:config.properties" />

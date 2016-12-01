@@ -52,10 +52,9 @@ public class AddUserJob extends QuartzJobBean
     protected void executeInternal(JobExecutionContext context) throws JobExecutionException
     {
         try {
-            IUserService userService = BeanUtil.getBean("userService", UserServiceImpl.class);
             Properties properties =ProjectConfigUtil.getConfig();
-
             if(BFConstant.TRUE.equals(properties.get("saveUserJob"))){
+                IUserService userService = BeanUtil.getBean("userService", UserServiceImpl.class);
                 logger.info("start calling saveUser.");
                 Map<String, Object> params = new HashMap<String, Object>();
                 params.put("name", UUID.randomUUID().toString());

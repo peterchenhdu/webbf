@@ -11,7 +11,7 @@
  * Bugzilla Id:
  * Modify Content:
  */
-package cn.edu.hdu.webbf.controller.base;
+package cn.edu.hdu.webbf.common.base;
 
 import cn.edu.hdu.webbf.common.log.Logger;
 

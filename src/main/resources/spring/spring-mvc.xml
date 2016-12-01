@@ -10,14 +10,15 @@
     <mvc:annotation-driven/>    
     <mvc:default-servlet-handler/>
     
-    <context:component-scan base-package="cn.edu.hdu.webbf.controller" />
-
+    <context:component-scan base-package="cn.edu.hdu.webbf" >
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>  
+        <context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/> 
+    </context:component-scan> 
+    
     <!-- 配置SpringMVC的视图解析器 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
-    
-    <bean id="exceptionResolver" class="cn.edu.hdu.webbf.core.exceptionresolver.MyExceptionResolver"></bean>
     
 </beans>

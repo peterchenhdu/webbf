@@ -14,7 +14,7 @@ import cn.edu.hdu.webbf.model.User;
 
 public interface IUserDao
 {
-    public List<User> queryAll(Map<String, Object> param);
+    public List<User> query(Map<String, Object> param);
 
     public void saveUser(Map<String, Object> param);
 

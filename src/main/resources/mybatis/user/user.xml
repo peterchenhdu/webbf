@@ -8,7 +8,7 @@
 		address
 	</sql>
 	
-	<select id="queryAll" parameterType="java.util.Map" resultType="cn.edu.hdu.webbf.model.User">
+	<select id="query" parameterType="java.util.Map" resultType="cn.edu.hdu.webbf.model.User">
 	    SELECT 
 			<include refid="userColumns"/>
 		FROM
@@ -23,8 +23,11 @@
 			</if>
 			<if test="content != null">
 				and address=#{address}
-			</if>		
-		ORDER BY id asc limit #{pageNo} , #{pageSize}
+			</if>	
+			<if test="pageNo != null">	
+			    ORDER BY id asc limit #{pageNo} , #{pageSize}
+			</if>    
+		
 	</select>
 	
    <insert id="saveUser" parameterType="java.util.Map" flushCache="false">

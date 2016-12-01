@@ -22,7 +22,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import cn.edu.hdu.webbf.controller.base.BaseController;
+import cn.edu.hdu.webbf.common.base.BaseController;
 import cn.edu.hdu.webbf.model.User;
 import cn.edu.hdu.webbf.service.user.IUserService;
 
@@ -45,40 +45,34 @@ public class UserController extends BaseController
     public String getUserList(int pageNo, int pageSize)
     {
         Map<String, Object> map = new HashMap<String, Object>();
-        try
-        {
-            Map<String, Object> param = new HashMap<String, Object>();
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("pageNo", pageNo);
+        param.put("pageSize", pageSize);
+        List<User> userList = userService.query(param);
+        map.put("userList", userList);
+        return gson.toJson(map);
+    }
 
-            param.put("pageNo", pageNo);
-            param.put("pageSize", pageSize);
-            List<User> userList = userService.queryAll(param);
-            map.put("userList", userList);
-            return gson.toJson(map);
-        }
-        catch (Exception e)
-        {
-            logger.error(e.toString(), e);
-        }
-        return gson.toJson(FAILD);
+    @RequestMapping(value = "/getUserById", produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public String getUserById(long id)
+    {
+        Map<String, Object> map = new HashMap<String, Object>();
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("id", id);
+        List<User> userList = userService.query(param);
+        map.put("userList", userList);
+        return gson.toJson(map);
     }
 
     @RequestMapping(value = "/deleteUser", produces = "application/json; charset=utf-8")
     @ResponseBody
     public String deleteUser(int userId)
     {
-        try
-        {
-            Map<String, Object> param = new HashMap<String, Object>();
-
-            param.put("userId", userId);
-            userService.deleteUser(param);
-            return gson.toJson("success");
-        }
-        catch (Exception e)
-        {
-            logger.error(e.toString(), e);
-        }
-        return gson.toJson(FAILD);
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("userId", userId);
+        userService.deleteUser(param);
+        return gson.toJson("success");
     }
 
     @RequestMapping(value = "/saveUserTest", produces = "application/json; charset=utf-8")
@@ -86,20 +80,10 @@ public class UserController extends BaseController
     public String saveUserTest(String userName, String address)
     {
         /* test transaction */
-        try
-        {
-            Map<String, Object> param = new HashMap<String, Object>();
-
-            param.put("name", userName);
-            param.put("address", address);
-            userService.saveUser(param);
-
-        }
-        catch (Exception e)
-        {
-            logger.error(e.toString(), e);
-            return gson.toJson("fail");
-        }
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("name", userName);
+        param.put("address", address);
+        userService.saveUser(param);
         return gson.toJson("success");
     }
 }
