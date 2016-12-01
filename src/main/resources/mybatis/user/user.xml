@@ -21,16 +21,13 @@
 			<if test="name != null">
 				and name=#{name}
 			</if>
-			<if test="content != null">
-				and address=#{address}
-			</if>	
 			<if test="pageNo != null">	
 			    ORDER BY id asc limit #{pageNo} , #{pageSize}
 			</if>    
 		
 	</select>
 	
-   <insert id="saveUser" parameterType="java.util.Map" flushCache="false">
+   <insert id="saveUser" parameterType="java.util.Map" useGeneratedKeys="true" flushCache="false">
        insert into user (
            name,
            address
@@ -38,12 +35,15 @@
            #{name},
            #{address}
        )
+       <selectKey resultType="long" order="AFTER" keyProperty="id">
+	    SELECT  *  from user where id = LAST_INSERT_ID()
+	   </selectKey>
    </insert>
 
     <delete id="deleteUser" parameterType="java.util.Map" flushCache="false">
         delete from user
         where 
-            id = #{userId}
+            id = #{id}
     </delete>
 	
 </mapper>

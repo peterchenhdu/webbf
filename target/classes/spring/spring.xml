@@ -23,6 +23,8 @@
     <context:component-scan base-package="cn.edu.hdu.webbf">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
         <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />
+        <!-- 防止重复 -->
+        <context:exclude-filter type="annotation" expression="org.springframework.cache.annotation.EnableCaching" />
     </context:component-scan>
     
     <context:property-placeholder location="classpath:config.properties" />

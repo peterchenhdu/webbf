@@ -4,12 +4,20 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean name="addUserJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+	<bean name="addUserJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
 		<property name="jobClass" value="cn.edu.hdu.webbf.core.quartzjobs.AddUserJob" />
+		<!--  do not work
+        <property name="jobDataMap">
+            <map>
+                <entry key="userService" value-ref="userService" />
+            </map>
+        </property>-->
+        <property name="durability" value="true" />
+        
 	</bean>
 
 
-	<bean id="cron5SecTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+	<bean id="cron5SecTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
 		<property name="jobDetail" ref="addUserJob" />
 		<property name="cronExpression" value="${fiveSecFreq}" />
 	</bean>

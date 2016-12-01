@@ -13,6 +13,7 @@
  */
 package cn.edu.hdu.webbf.service.user.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -56,9 +57,14 @@ public class UserServiceImpl implements IUserService
      * @throws Exception
      */
     @Override
-    public void saveUser(Map<String, Object> param)
+    public User saveUser(Map<String, Object> param)
     {
         userDao.saveUser(param);
+        User user = new User();
+        user.setId((long) param.get("id"));
+        user.setName(param.get("name").toString());
+        user.setAddress( param.get("address").toString());
+        return user;
 
     }
 
@@ -69,9 +75,25 @@ public class UserServiceImpl implements IUserService
      * @throws Exception
      */
     @Override
-    public void deleteUser(Map<String, Object> param)
+    public void deleteUser(long id)
     {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("id", id);
         userDao.deleteUser(param);
+    }
+
+    /**
+     * brief description
+     * detail description
+     * @see cn.edu.hdu.webbf.service.user.IUserService#findById(long)
+     * @param id
+     */
+    @Override
+    public User findById(long id)
+    {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("id", id);
+        return this.query(param).get(0);
     }
 
 }

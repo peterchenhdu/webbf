@@ -16,6 +16,10 @@ package cn.edu.hdu.webbf.service.user;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
+
 import cn.edu.hdu.webbf.model.User;
 
 /**
@@ -29,9 +33,16 @@ import cn.edu.hdu.webbf.model.User;
 public interface IUserService
 {
 
+
     public List<User> query(Map<String, Object> param);
 
-    public void saveUser(Map<String, Object> param);
+    @Cacheable(value = "userCache", key = "#id")
+    public User findById(long id);
 
-    public void deleteUser(Map<String, Object> param);
+    @CachePut(value = "userCache", key="#result.id")
+    public User saveUser(Map<String, Object> param);
+
+    //注意key的类型要一致，不要一个是long，一个object or string
+    @CacheEvict(value = "userCache", key = "#id")
+    public void deleteUser(long id);
 }

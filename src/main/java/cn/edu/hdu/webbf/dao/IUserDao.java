@@ -16,7 +16,7 @@ public interface IUserDao
 {
     public List<User> query(Map<String, Object> param);
 
-    public void saveUser(Map<String, Object> param);
+    public int saveUser(Map<String, Object> param);
 
     public void deleteUser(Map<String, Object> param);
 }

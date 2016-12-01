@@ -39,7 +39,6 @@ public class AddUserJob extends QuartzJobBean
 {
 
     private static Logger logger = Logger.getLogger(AddUserJob.class);
-
     /**
      *
      * 每天具体Job

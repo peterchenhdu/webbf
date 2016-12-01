@@ -58,20 +58,15 @@ public class UserController extends BaseController
     public String getUserById(long id)
     {
         Map<String, Object> map = new HashMap<String, Object>();
-        Map<String, Object> param = new HashMap<String, Object>();
-        param.put("id", id);
-        List<User> userList = userService.query(param);
-        map.put("userList", userList);
-        return gson.toJson(map);
+
+        return gson.toJson(userService.findById(id));
     }
 
     @RequestMapping(value = "/deleteUser", produces = "application/json; charset=utf-8")
     @ResponseBody
-    public String deleteUser(int userId)
+    public String deleteUser(long userId)
     {
-        Map<String, Object> param = new HashMap<String, Object>();
-        param.put("userId", userId);
-        userService.deleteUser(param);
+        userService.deleteUser(userId);
         return gson.toJson("success");
     }
 
