@@ -42,11 +42,11 @@ public class BFExceptionHandler extends BaseController
      */
     @ExceptionHandler(Exception.class)
     @ResponseBody
-    public ResponseEntity<Void> handleException(HttpServletRequest request, Exception e)
+    public ResponseEntity<Exception> handleException(HttpServletRequest request, Exception e)
     {
         logger.error("Request FAILD, URL = {} method = {}", request.getRequestURI(), request.getMethod());
         logger.error(e.toString(), e);
-        return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<Exception>(e, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     /**
@@ -56,11 +56,11 @@ public class BFExceptionHandler extends BaseController
      */
     @ExceptionHandler(NumberFormatException.class)
     @ResponseBody
-    public ResponseEntity<Void> handleNumberFormatException(HttpServletRequest request, NumberFormatException e)
+    public ResponseEntity<Exception> handleNumberFormatException(HttpServletRequest request, NumberFormatException e)
     {
         logger.error("Request FAILD, URL = {} method = {}", request.getRequestURI(), request.getMethod());
         logger.error(e.toString(), e);
-        return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<Exception>(e, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     /* other exception */
