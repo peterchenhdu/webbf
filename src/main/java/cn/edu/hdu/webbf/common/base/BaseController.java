@@ -29,6 +29,7 @@ public class BaseController
 {
     public static final String FAILD = "faild";
     public static final String SUCCESS = "success";
+    protected static final String MAX_LONG_AS_STRING = "9223372036854775807";
     /**
      * gson是线程安全的
      */

@@ -24,50 +24,60 @@ export default Reflux.createStore({
     getAllUser () {
       $.ajax({
          async: false,
-          type : "post",
-          url : "/webbf/user/getUserList.do",
-          data: {pageNo:0,pageSize:100},
+          type : "get",
+          url : "/webbf/users",
+          data: {},
           datatype : 'json',
-          success : function(data) {
-            this.trigger({userList:data.userList});
-          }.bind(this)
+		  
+          success : function(data,textStatus) {
+            this.trigger({userList:data});
+          }.bind(this),
+		  
+		  error: function(jqXHR, textStatus, errorThrown) {
+            alert(jqXHR.status + ' ' + jqXHR.responseText);
+		  }
+
         });
 
     },
     deleteUser(userId){
       $.ajax({
          async: false,
-          type : "post",
-          url : "/webbf/user/deleteUser.do",
-          data: {userId:userId},
+          type : "delete",
+          url : "/webbf/users/" + userId,
+          data: {},
           datatype : 'json',
           success : function(data) {
-            if(data="sucess"){
+
               alert("删除成功");
               this.getAllUser();
-            }else{
-              alert("删除失败");
-            }
-
-          }.bind(this)
+ 
+          }.bind(this),
+		  
+		  error: function(jqXHR, textStatus, errorThrown) {
+            alert(jqXHR.status + ' ' + jqXHR.responseText);
+		  }
         });
     },
     addUser(userName, address){
       $.ajax({
          async: false,
+		 contentType: "application/json; charset=utf-8",
           type : "post",
-          url : "/webbf/user/saveUserTest.do",
-          data: {userName:userName,address:address},
+          url : "/webbf/users",
+          data: JSON.stringify({name:userName,address:address}),
           datatype : 'json',
           success : function(data) {
-            if(data="sucess"){
+
               alert("操作成功");
               this.openAddModal(false);
               this.getAllUser();
-            }else{
-              alert("操作失败");
-            }
-          }.bind(this)
+  
+          }.bind(this),
+		  
+		  error: function(jqXHR, textStatus, errorThrown) {
+            alert(jqXHR.status + ' ' + jqXHR.responseText);
+		  }
         });
 
     },

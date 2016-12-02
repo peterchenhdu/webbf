@@ -19,9 +19,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import cn.edu.hdu.webbf.common.base.BaseController;
 
@@ -34,8 +36,8 @@ import cn.edu.hdu.webbf.common.base.BaseController;
  * @see
  * @since webbf V1.0.0
  */
-@Controller
-@RequestMapping(value = "/ad")
+@RestController
+@RequestMapping(value = "/addatas")
 public class AccessDataController extends BaseController
 {
 
@@ -44,9 +46,8 @@ public class AccessDataController extends BaseController
      *
      * @return
      */
-    @RequestMapping(value = "/getAdData", produces = "application/json; charset=utf-8")
-    @ResponseBody
-    public String getAdData()
+    @RequestMapping(method = RequestMethod.GET,  produces = "application/json; charset=utf-8")
+    public ResponseEntity<Map<String, Object>> getAdData()
     {
 
         Map<String, Object> map = new HashMap<String, Object>();
@@ -73,7 +74,6 @@ public class AccessDataController extends BaseController
         map.put("directList", directList);
         map.put("searchList", searchList);
         map.put("xTitleList", xTitleList);
-        return gson.toJson(map);
-
+        return new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
     }
 }

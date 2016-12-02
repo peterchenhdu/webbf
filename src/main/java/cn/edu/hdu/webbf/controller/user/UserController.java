@@ -1,5 +1,5 @@
 /*
- * File Name: LifeService.java
+ * File Name: UserController.java
  * Copyright: Copyright 2016-2016 hdu All Rights Reserved.
 
  * Description:
@@ -13,14 +13,22 @@
  */
 package cn.edu.hdu.webbf.controller.user;
 
+import java.net.URI;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import cn.edu.hdu.webbf.common.base.BaseController;
 import cn.edu.hdu.webbf.model.User;
@@ -33,52 +41,95 @@ import cn.edu.hdu.webbf.service.user.IUserService;
  * @see
  * @since webbf V1.0.0
  */
-@Controller
-@RequestMapping(value = "/user")
+@RestController
+@RequestMapping(value = "/users")
 public class UserController extends BaseController
 {
     @Autowired
     private IUserService userService;
 
-    @RequestMapping(value = "/getUserList", produces = "application/json; charset=utf-8")
-    @ResponseBody
-    public String getUserList(int pageNo, int pageSize)
+    @RequestMapping(method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+    public ResponseEntity<List<User>> getUserList(
+        @RequestParam(value = "offset", defaultValue = "0") long offset,
+        @RequestParam(value = "limit", defaultValue = MAX_LONG_AS_STRING) long limit)
     {
-        Map<String, Object> map = new HashMap<String, Object>();
         Map<String, Object> param = new HashMap<String, Object>();
-        param.put("pageNo", pageNo);
-        param.put("pageSize", pageSize);
+        param.put("offset", offset);
+        param.put("limit", limit);
         List<User> userList = userService.query(param);
-        map.put("userList", userList);
-        return gson.toJson(map);
+        if (userList.size() == 0)
+        {
+            return new ResponseEntity<List<User>>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<User>>(userList, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/getUserById", produces = "application/json; charset=utf-8")
-    @ResponseBody
-    public String getUserById(long id)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+    public ResponseEntity<User> getUserById(@PathVariable Long id)
     {
-        Map<String, Object> map = new HashMap<String, Object>();
 
-        return gson.toJson(userService.findById(id));
+        User user = userService.findById(id);
+        if (user == null)
+        {
+            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<User>(userService.findById(id), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/deleteUser", produces = "application/json; charset=utf-8")
-    @ResponseBody
-    public String deleteUser(long userId)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json; charset=utf-8")
+    public ResponseEntity<User> deleteUser(@PathVariable Long id)
     {
-        userService.deleteUser(userId);
-        return gson.toJson("success");
+        User user = userService.findById(id);
+        if (user == null)
+        {
+            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+        }
+        userService.deleteUser(id);
+        return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
     }
 
-    @RequestMapping(value = "/saveUserTest", produces = "application/json; charset=utf-8")
-    @ResponseBody
-    public String saveUserTest(String userName, String address)
+    // @RequestMapping(method = RequestMethod.DELETE)
+    // public ResponseEntity<User> deleteUsers() {
+    // //Deleting All Users
+    // userService.deleteUsers();
+    // return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
+    // }
+
+    @RequestMapping(method = RequestMethod.POST, consumes = "application/json; charset=utf-8")
+    public ResponseEntity<User> saveUser(@RequestBody User user, UriComponentsBuilder ucb)
     {
-        /* test transaction */
-        Map<String, Object> param = new HashMap<String, Object>();
-        param.put("name", userName);
-        param.put("address", address);
-        userService.saveUser(param);
-        return gson.toJson("success");
+
+        // if (userService.isUserExist(user)) {
+        // System.out.println("A User with name " + user.getName() +
+        // " already exist");
+        // return new ResponseEntity<User>(user, HttpStatus.CONFLICT);
+        // }
+        User saved = userService.saveUser(user);
+
+        HttpHeaders headers = new HttpHeaders();
+        URI locationUri = ucb.path("/users/").path(String.valueOf(saved.getId())).build().toUri();
+        headers.setLocation(locationUri);
+
+        ResponseEntity<User> responseEntity = new ResponseEntity<User>(saved, headers,
+            HttpStatus.CREATED);
+        return responseEntity;
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = "application/json; charset=utf-8")
+    public ResponseEntity<User> updateUser(@PathVariable("id") long id, @RequestBody User user)
+    {
+        User currentUser = userService.findById(id);
+
+        if (currentUser == null)
+        {
+            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+        }
+
+        currentUser.setId(id);
+        currentUser.setName(user.getName());
+        currentUser.setAddress(user.getAddress());
+
+        userService.updateUser(currentUser);
+        return new ResponseEntity<User>(currentUser, HttpStatus.OK);
     }
 }

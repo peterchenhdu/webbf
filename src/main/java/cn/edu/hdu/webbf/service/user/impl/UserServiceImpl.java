@@ -57,13 +57,13 @@ public class UserServiceImpl implements IUserService
      * @throws Exception
      */
     @Override
-    public User saveUser(Map<String, Object> param)
+    public User saveUser(User user)
     {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("name", user.getName());
+        param.put("address", user.getAddress());
         userDao.saveUser(param);
-        User user = new User();
         user.setId((long) param.get("id"));
-        user.setName(param.get("name").toString());
-        user.setAddress( param.get("address").toString());
         return user;
 
     }
@@ -83,8 +83,8 @@ public class UserServiceImpl implements IUserService
     }
 
     /**
-     * brief description
-     * detail description
+     * brief description detail description
+     *
      * @see cn.edu.hdu.webbf.service.user.IUserService#findById(long)
      * @param id
      */
@@ -93,7 +93,22 @@ public class UserServiceImpl implements IUserService
     {
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("id", id);
-        return this.query(param).get(0);
+        List<User> users = this.query(param);
+        return users.size() > 0 ? users.get(0) : null;
+    }
+
+    /**
+     * brief description
+     * detail description
+     * @see cn.edu.hdu.webbf.service.user.IUserService#updateUser(cn.edu.hdu.webbf.model.User)
+     * @param user
+     * @return
+     */
+    @Override
+    public User updateUser(User user)
+    {
+        userDao.updateUser(user);
+        return user;
     }
 
 }

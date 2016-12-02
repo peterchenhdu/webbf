@@ -19,4 +19,6 @@ public interface IUserDao
     public int saveUser(Map<String, Object> param);
 
     public void deleteUser(Map<String, Object> param);
+
+    public int updateUser(User user);
 }

@@ -21,8 +21,8 @@
 			<if test="name != null">
 				and name=#{name}
 			</if>
-			<if test="pageNo != null">	
-			    ORDER BY id asc limit #{pageNo} , #{pageSize}
+			<if test="offset != null and  limit != null">	
+			    ORDER BY id asc limit #{offset} , #{limit}
 			</if>    
 		
 	</select>
@@ -45,5 +45,12 @@
         where 
             id = #{id}
     </delete>
+	
+    <update id="updateUser" parameterType="cn.edu.hdu.webbf.model.User">
+        update  user SET
+           name=#{name},
+           address=#{address}
+        WHERE id=#{id}  
+    </update>   
 	
 </mapper>

@@ -40,9 +40,11 @@ public interface IUserService
     public User findById(long id);
 
     @CachePut(value = "userCache", key="#result.id")
-    public User saveUser(Map<String, Object> param);
+    public User saveUser(User user);
 
     //注意key的类型要一致，不要一个是long，一个object or string
     @CacheEvict(value = "userCache", key = "#id")
     public void deleteUser(long id);
+
+    public User updateUser(User user);
 }

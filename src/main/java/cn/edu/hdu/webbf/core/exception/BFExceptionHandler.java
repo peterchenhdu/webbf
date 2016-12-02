@@ -15,6 +15,8 @@ package cn.edu.hdu.webbf.core.exception;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -40,11 +42,11 @@ public class BFExceptionHandler extends BaseController
      */
     @ExceptionHandler(Exception.class)
     @ResponseBody
-    public String handleException(HttpServletRequest request, Exception e)
+    public ResponseEntity<Void> handleException(HttpServletRequest request, Exception e)
     {
-        logger.error("Request FAILD, URL = {} ", request.getRequestURI());
+        logger.error("Request FAILD, URL = {} method = {}", request.getRequestURI(), request.getMethod());
         logger.error(e.toString(), e);
-        return gson.toJson(BaseController.FAILD);
+        return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     /**
@@ -54,11 +56,11 @@ public class BFExceptionHandler extends BaseController
      */
     @ExceptionHandler(NumberFormatException.class)
     @ResponseBody
-    public String handleNumberFormatException(HttpServletRequest request, NumberFormatException e)
+    public ResponseEntity<Void> handleNumberFormatException(HttpServletRequest request, NumberFormatException e)
     {
-        logger.error("Request FAILD, URL = {} ", request.getRequestURI());
+        logger.error("Request FAILD, URL = {} method = {}", request.getRequestURI(), request.getMethod());
         logger.error(e.toString(), e);
-        return gson.toJson(BaseController.FAILD);
+        return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     /* other exception */

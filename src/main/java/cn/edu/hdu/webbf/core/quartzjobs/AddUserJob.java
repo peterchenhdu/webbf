@@ -8,8 +8,6 @@
  */
 package cn.edu.hdu.webbf.core.quartzjobs;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Properties;
 import java.util.Random;
 import java.util.UUID;
@@ -20,6 +18,7 @@ import org.springframework.scheduling.quartz.QuartzJobBean;
 
 import cn.edu.hdu.webbf.common.constant.BFConstant;
 import cn.edu.hdu.webbf.common.log.Logger;
+import cn.edu.hdu.webbf.model.User;
 import cn.edu.hdu.webbf.service.user.IUserService;
 import cn.edu.hdu.webbf.service.user.impl.UserServiceImpl;
 import cn.edu.hdu.webbf.util.BeanUtil;
@@ -55,10 +54,10 @@ public class AddUserJob extends QuartzJobBean
             if(BFConstant.TRUE.equals(properties.get("saveUserJob"))){
                 IUserService userService = BeanUtil.getBean("userService", UserServiceImpl.class);
                 logger.info("start calling saveUser.");
-                Map<String, Object> params = new HashMap<String, Object>();
-                params.put("name", UUID.randomUUID().toString());
-                params.put("address", new Random().nextInt(10000) + "");
-                userService.saveUser(params);
+                User user = new User();
+                user.setAddress(new Random().nextInt(10000) + "");
+                user.setName(UUID.randomUUID().toString());
+                userService.saveUser(user);
                 logger.info("end up calling saveUser.");
             }
         }

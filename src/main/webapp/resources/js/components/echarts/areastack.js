@@ -9,25 +9,23 @@ export default class AreaStack extends React.Component{
     this.chartData = {};
     $.ajax({
      async: false,
-      type : "post",
-      url : "/webbf/ad/getAdData.do",
+      type : "get",
+      url : "/webbf/addatas",
       data: {},
       datatype : 'json',
       success : function(data) {
-        if(data != "faild"){
-          this.chartData.emailList = data.emailList;
-          this.chartData.allianceList = data.allianceList;
-          this.chartData.vedioList = data.vedioList;
-          this.chartData.directList = data.directList;
-          this.chartData.searchList = data.searchList;
-          this.chartData.xTitleList = data.xTitleList;
-        }else{
-          Modal.error({title: '请求失败！', content: '请求后端数据失败!'});
-        }
+  
+		  this.chartData.emailList = data.emailList;
+		  this.chartData.allianceList = data.allianceList;
+		  this.chartData.vedioList = data.vedioList;
+		  this.chartData.directList = data.directList;
+		  this.chartData.searchList = data.searchList;
+		  this.chartData.xTitleList = data.xTitleList;
+   
       }.bind(this),
-      error: function(XMLHttpRequest, textStatus, errorThrown) {
-          Modal.error({title: '请求失败！', content: '可能原因：系统异常或页面已过期，请刷新页面后重新尝试！'});
-       }
+	  error: function(jqXHR, textStatus, errorThrown) {
+            alert(jqXHR.status + ' ' + jqXHR.responseText);
+	  }
     });
 
   }
