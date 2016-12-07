@@ -37,4 +37,25 @@
     <import resource="quartz.xml" />
     
     
+    <bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">  
+        <property name="host" value="smtp.qq.com"></property>  
+        <property name="port" value="25"></property>  
+        <property name="username" value="928651551@qq.com"></property>  
+        <property name="password" value="your email password"></property>  
+        <property name="defaultEncoding" value="UTF-8"></property>  
+        <property name="javaMailProperties">  
+            <props>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.smtp.auth">true</prop>
+                <!-- true for Gamil 
+                <prop key="mail.smtp.starttls.enable">false</prop>
+                <prop key="mail.debug">true</prop>-->
+            </props> 
+        </property>
+    </bean> 
+    
+    <bean id="freeMarkerConfiguration" class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
+	   <property name="templateLoaderPath" value="classpath:emailtemplates" />
+	</bean>
+    
 </beans>

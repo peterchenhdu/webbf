@@ -32,6 +32,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import cn.edu.hdu.webbf.common.base.BaseController;
 import cn.edu.hdu.webbf.model.User;
+import cn.edu.hdu.webbf.service.mail.IMailService;
 import cn.edu.hdu.webbf.service.user.IUserService;
 
 /**
@@ -47,6 +48,8 @@ public class UserController extends BaseController
 {
     @Autowired
     private IUserService userService;
+    @Autowired
+    private IMailService mailService;
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json; charset=utf-8")
     public ResponseEntity<List<User>> getUserList(
@@ -85,6 +88,7 @@ public class UserController extends BaseController
             return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
         }
         userService.deleteUser(id);
+        mailService.sendEmail(user);
         return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
     }
 
