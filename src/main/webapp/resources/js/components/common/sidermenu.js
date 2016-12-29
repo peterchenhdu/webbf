@@ -6,7 +6,7 @@ export default class SiderMenu extends React.Component {
   constructor(props) {
     super(props);
     this.state={
-      current: 'AreaStack',
+      current: 'userMgt',
       openKeys: []
     };
   }
@@ -24,17 +24,11 @@ export default class SiderMenu extends React.Component {
       <Menu onClick={this.handleClick.bind(this)}
         style={{ width: '100%' }}
         penKeys = {this.state.openKeys}
-        theme={'dark'}
-        defaultOpenKeys={['sub2','sub4']}
+        theme={'light'}
+        defaultOpenKeys={['sub2','sub4',"sub1"]}
         selectedKeys={[this.state.current]}
         mode="inline"
       >
-        <SubMenu key="sub1" title={<span><Icon type="mail" /><span>导航一</span></span>}>
-          <Menu.Item key="1">选项1</Menu.Item>
-          <Menu.Item key="2">选项2</Menu.Item>
-          <Menu.Item key="3">选项3</Menu.Item>
-          <Menu.Item key="4">选项4</Menu.Item>
-        </SubMenu>
         <SubMenu key="sub2" title={<span><Icon type="appstore" /><span>Echarts图表示例</span></span>}>
           <Menu.Item key="AreaStack">折线图</Menu.Item>
           <Menu.Item key="HeatmapCartesian">热力图</Menu.Item>
@@ -44,6 +38,12 @@ export default class SiderMenu extends React.Component {
           <Menu.Item key="10">选项10</Menu.Item>
           <Menu.Item key="11">选项11</Menu.Item>
           <Menu.Item key="12">选项12</Menu.Item>
+        </SubMenu>
+        <SubMenu key="sub1" title={<span><Icon type="mail" /><span>导航一</span></span>}>
+          <Menu.Item key="1">选项1</Menu.Item>
+          <Menu.Item key="2">选项2</Menu.Item>
+          <Menu.Item key="3">选项3</Menu.Item>
+          <Menu.Item key="4">选项4</Menu.Item>
         </SubMenu>
       </Menu>
     );

@@ -31,8 +31,8 @@ export default class AreaStack extends React.Component{
   }
   autoResize() {
     var areastack = document.getElementById('areastack-chart');
-    areastack.style.width = (5*window.innerWidth/6 - 240)+'px';
-    areastack.style.height = (window.innerHeight - 90 - 200)+'px';
+    areastack.style.width = '100%';
+    areastack.style.height = '500px';
   }
 
 

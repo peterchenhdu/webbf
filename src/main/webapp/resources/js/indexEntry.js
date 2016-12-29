@@ -11,7 +11,7 @@ import HeatmapCartesian from './components/echarts/heatmapcartesian'
 ReactDOM.render((
     <Router history={hashHistory}>
         <Route path="/" component={Index}>
-            <IndexRoute component={AreaStack} />
+            <IndexRoute component={UserMgt} />
             <Route path="AreaStack" component={AreaStack} />
             <Route path="HeatmapCartesian" component={HeatmapCartesian} />
             <Route path="userMgt" component={UserMgt} />

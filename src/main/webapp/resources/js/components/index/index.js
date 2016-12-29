@@ -17,15 +17,15 @@ export default class Index extends React.Component{
     return (
 			<div className="main-div">
         <Row>
-          <Col span={20} offset={2}>
+          <Col span={24} offset={0}>
             <div className="main-top">Java Web工程Demo</div>
           </Col>
         </Row>
         <Row>
-          <Col span={4} offset={2}>
+          <Col span={4} offset={0}>
             <SiderMenu location={this.props.location} />
           </Col>
-          <Col span={16} >
+          <Col span={20} >
             <div className="content-div">
               {this.props.children}
             </div>

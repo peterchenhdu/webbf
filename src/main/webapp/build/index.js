@@ -42,7 +42,7 @@ webpackJsonp([0],[
 	    _react2.default.createElement(
 	        _reactRouter.Route,
 	        { path: '/', component: _index2.default },
-	        _react2.default.createElement(_reactRouter.IndexRoute, { component: _areastack2.default }),
+	        _react2.default.createElement(_reactRouter.IndexRoute, { component: _usermgt2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: 'AreaStack', component: _areastack2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: 'HeatmapCartesian', component: _heatmapcartesian2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: 'userMgt', component: _usermgt2.default })
@@ -325,7 +325,7 @@ webpackJsonp([0],[
 	          null,
 	          _react2.default.createElement(
 	            _col2.default,
-	            { span: 20, offset: 2 },
+	            { span: 24, offset: 0 },
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'main-top' },
@@ -338,12 +338,12 @@ webpackJsonp([0],[
 	          null,
 	          _react2.default.createElement(
 	            _col2.default,
-	            { span: 4, offset: 2 },
+	            { span: 4, offset: 0 },
 	            _react2.default.createElement(_sidermenu2.default, { location: this.props.location })
 	          ),
 	          _react2.default.createElement(
 	            _col2.default,
-	            { span: 16 },
+	            { span: 20 },
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'content-div' },
@@ -1096,7 +1096,7 @@ webpackJsonp([0],[
 
 
 	// module
-	exports.push([module.id, ".main-div .main-top {\r\n  border: 1px solid #000;\r\n  height: 90px;\r\n  text-align: center;\r\n  line-height: 90px;\r\n  font-size: 24px;\r\n  font-weight: 700;\r\n}\r\n\r\n.main-div .content-div {\r\n  padding: 20px;\r\n}\r\n", ""]);
+	exports.push([module.id, "body {\r\n\r\n}\r\n\r\n.main-div .main-top {\r\n  color:#FFF;\r\n  height: 90px;\r\n  text-align: center;\r\n  line-height: 90px;\r\n  font-size: 24px;\r\n  font-weight: 700;\r\n\r\n  background-image: -webkit-gradient(linear,left top,right top,from(#1383D5),to(#00b4aa));\r\n  background-image: -webkit-linear-gradient(left,#1383D5,#00b4aa);\r\n  background-image: -moz-linear-gradient(left,#1383D5,#00b4aa);\r\n  background-image: linear-gradient(to right,#1383D5,#00b4aa);\r\n}\r\n\r\n.main-div .content-div {\r\n  padding: 30px;\r\n\r\n}\r\n", ""]);
 
 	// exports
 
@@ -1148,7 +1148,7 @@ webpackJsonp([0],[
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(SiderMenu).call(this, props));
 
 	    _this.state = {
-	      current: 'AreaStack',
+	      current: 'userMgt',
 	      openKeys: []
 	    };
 	    return _this;
@@ -1171,44 +1171,11 @@ webpackJsonp([0],[
 	        { onClick: this.handleClick.bind(this),
 	          style: { width: '100%' },
 	          penKeys: this.state.openKeys,
-	          theme: 'dark',
-	          defaultOpenKeys: ['sub2', 'sub4'],
+	          theme: 'light',
+	          defaultOpenKeys: ['sub2', 'sub4', "sub1"],
 	          selectedKeys: [this.state.current],
 	          mode: 'inline'
 	        },
-	        _react2.default.createElement(
-	          SubMenu,
-	          { key: 'sub1', title: _react2.default.createElement(
-	              'span',
-	              null,
-	              _react2.default.createElement(_icon2.default, { type: 'mail' }),
-	              _react2.default.createElement(
-	                'span',
-	                null,
-	                '导航一'
-	              )
-	            ) },
-	          _react2.default.createElement(
-	            _menu2.default.Item,
-	            { key: '1' },
-	            '选项1'
-	          ),
-	          _react2.default.createElement(
-	            _menu2.default.Item,
-	            { key: '2' },
-	            '选项2'
-	          ),
-	          _react2.default.createElement(
-	            _menu2.default.Item,
-	            { key: '3' },
-	            '选项3'
-	          ),
-	          _react2.default.createElement(
-	            _menu2.default.Item,
-	            { key: '4' },
-	            '选项4'
-	          )
-	        ),
 	        _react2.default.createElement(
 	          SubMenu,
 	          { key: 'sub2', title: _react2.default.createElement(
@@ -1263,6 +1230,39 @@ webpackJsonp([0],[
 	            _menu2.default.Item,
 	            { key: '12' },
 	            '选项12'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          SubMenu,
+	          { key: 'sub1', title: _react2.default.createElement(
+	              'span',
+	              null,
+	              _react2.default.createElement(_icon2.default, { type: 'mail' }),
+	              _react2.default.createElement(
+	                'span',
+	                null,
+	                '导航一'
+	              )
+	            ) },
+	          _react2.default.createElement(
+	            _menu2.default.Item,
+	            { key: '1' },
+	            '选项1'
+	          ),
+	          _react2.default.createElement(
+	            _menu2.default.Item,
+	            { key: '2' },
+	            '选项2'
+	          ),
+	          _react2.default.createElement(
+	            _menu2.default.Item,
+	            { key: '3' },
+	            '选项3'
+	          ),
+	          _react2.default.createElement(
+	            _menu2.default.Item,
+	            { key: '4' },
+	            '选项4'
 	          )
 	        )
 	      );
@@ -6018,8 +6018,8 @@ webpackJsonp([0],[
 	        key: 'autoResize',
 	        value: function autoResize() {
 	            var areastack = document.getElementById('areastack-chart');
-	            areastack.style.width = 5 * window.innerWidth / 6 - 240 + 'px';
-	            areastack.style.height = window.innerHeight - 90 - 200 + 'px';
+	            areastack.style.width = '100%';
+	            areastack.style.height = '500px';
 	        }
 	    }, {
 	        key: 'componentDidMount',
@@ -105350,8 +105350,8 @@ webpackJsonp([0],[
 	        key: 'autoResize',
 	        value: function autoResize() {
 	            var chartdiv = document.getElementById('heatmap-chart');
-	            chartdiv.style.width = 5 * window.innerWidth / 6 - 240 + 'px';
-	            chartdiv.style.height = window.innerHeight - 90 - 200 + 'px';
+	            chartdiv.style.width = '100%';
+	            chartdiv.style.height = '500px';
 	        }
 	    }, {
 	        key: 'componentDidMount',
