@@ -13,10 +13,14 @@
 
 
 ##index
-<img src="https://github.com/peterchenhdu/webbf/blob/master/doc/pic-index.jpg">
+![index][index-image]
+
+<img src="">
 ##增删改查(ant design user mgt)
 <img src="https://github.com/peterchenhdu/webbf/blob/master/doc/pic-adduser.jpg">
 ##图表 echarts
 <img src="https://github.com/peterchenhdu/webbf/blob/master/doc/pic-chart.jpg">
 ##ant design组件
 <img src="https://github.com/peterchenhdu/webbf/blob/master/doc/pic-chart2.jpg">
+
+[index-image]: https://github.com/peterchenhdu/webbf/blob/master/doc/pic-index.jpg
