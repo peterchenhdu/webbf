@@ -13,12 +13,10 @@
 
 
 ##index
-<img src="https://github.com/peterchenhdu/webbf/blob/master/doc/index.jpg">
+<img src="https://github.com/peterchenhdu/webbf/blob/master/doc/pic-index.jpg">
 ##增删改查(ant design user mgt)
-<img src="https://github.com/peterchenhdu/webbf/blob/master/doc/antd-usermgt.jpg">
-##demo(react-bootstrap、jqury、ajax)
-<img src="https://github.com/peterchenhdu/webbf/blob/master/doc/usermgt.jpg">
+<img src="https://github.com/peterchenhdu/webbf/blob/master/doc/pic-adduser.jpg">
 ##图表 echarts
-<img src="https://github.com/peterchenhdu/webbf/blob/master/doc/chart.jpg">
+<img src="https://github.com/peterchenhdu/webbf/blob/master/doc/pic-chart.jpg">
 ##ant design组件
-<img src="https://github.com/peterchenhdu/webbf/blob/master/doc/antd.jpg">
+<img src="https://github.com/peterchenhdu/webbf/blob/master/doc/pic-chart2.jpg">
