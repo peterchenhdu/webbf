@@ -1,0 +1,9 @@
+language: java
+
+jdk:
+  - oraclejdk7
+
+notifications:
+  email:
+  - 928651551@qq.com
+
