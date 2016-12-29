@@ -9,7 +9,7 @@ export default class HeatmapCartesian extends React.Component{
   autoResize() {
     var chartdiv = document.getElementById('heatmap-chart');
     chartdiv.style.width = (5*window.innerWidth/6 - 240)+'px';
-    chartdiv.style.height = (window.innerHeight - 90)+'px';
+    chartdiv.style.height = (window.innerHeight - 90 - 200)+'px';
   }
   componentDidMount() {
     this.autoResize();

@@ -10,10 +10,7 @@ var options = {
 
 module.exports = {
     entry: {
-        user:path.join(__dirname, 'resources/js/user.js'),
-        chartdemo:path.join(__dirname, 'resources/js/chartdemo.js'),
-        antddemo:path.join(__dirname, 'resources/js/antddemo.js'),
-        index:path.join(__dirname, 'resources/js/index.js'),
+        index:path.join(__dirname, 'resources/js/indexEntry.js'),
         vendors: ['react','reflux','react-mixin']
     },
     output: {

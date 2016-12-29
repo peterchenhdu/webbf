@@ -14,14 +14,14 @@ export default class AreaStack extends React.Component{
       data: {},
       datatype : 'json',
       success : function(data) {
-  
+
 		  this.chartData.emailList = data.emailList;
 		  this.chartData.allianceList = data.allianceList;
 		  this.chartData.vedioList = data.vedioList;
 		  this.chartData.directList = data.directList;
 		  this.chartData.searchList = data.searchList;
 		  this.chartData.xTitleList = data.xTitleList;
-   
+
       }.bind(this),
 	  error: function(jqXHR, textStatus, errorThrown) {
             alert(jqXHR.status + ' ' + jqXHR.responseText);
@@ -32,7 +32,7 @@ export default class AreaStack extends React.Component{
   autoResize() {
     var areastack = document.getElementById('areastack-chart');
     areastack.style.width = (5*window.innerWidth/6 - 240)+'px';
-    areastack.style.height = (window.innerHeight - 90)+'px';
+    areastack.style.height = (window.innerHeight - 90 - 200)+'px';
   }
 
 

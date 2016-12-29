@@ -12,13 +12,7 @@ export default class Index extends React.Component{
     super(props);
   }
 
-
-
   render() {
-
-
-
-
 
     return (
 			<div className="main-div">
