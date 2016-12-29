@@ -47,3 +47,7 @@ Temporary Items
 .apdisk
 /logs/
 /target/
+/.externalToolBuilders/
+/.settings/
+.project
+.classpath

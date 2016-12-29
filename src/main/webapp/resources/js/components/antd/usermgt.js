@@ -141,7 +141,7 @@ export default class UserMgt extends React.Component{
       render: (text, record) => (
         <span>
           <a href="javascript:void(0)" onClick={function(record){
-            alert(record.key)
+            alert('用户id为' + record.key)
           }.bind(this, record)}>修改</a>
         </span>
       ),

@@ -11,7 +11,7 @@ var options = {
 module.exports = {
     entry: {
         index:path.join(__dirname, 'resources/js/indexEntry.js'),
-        vendors: ['react','reflux','react-mixin']
+        vendors: ['react','reflux','react-mixin','react-dom','jquery','echarts','antd']
     },
     output: {
         path: path.join(__dirname, 'build'),
@@ -54,7 +54,7 @@ module.exports = {
         // this keeps the outputed bundle **always** valid
         new webpack.NoErrorsPlugin(),
         //这个使用uglifyJs压缩你的js代码
-        //new webpack.optimize.UglifyJsPlugin({minimize: true}),
+        new webpack.optimize.UglifyJsPlugin({minimize:true, compress:{warnings: false}, exclude:/^index.js$/i}),
         new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js')
     ]
 };
