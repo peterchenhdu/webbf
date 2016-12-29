@@ -1,15 +1,15 @@
-# webbf [![build status][travis-image]][travis-url]
+# Java Web工程例子
+[![build status][travis-image]][travis-url]
 [travis-image]: https://travis-ci.org/peterchenhdu/webbf.svg?branch=master
 [travis-url]: https://travis-ci.org/peterchenhdu/webbf
 
-# Java Web工程例子
-
-###后端：spring + spring mvc + mybatis + maven；
+######后端：spring + spring mvc + mybatis + maven；
 涉及定时任务quartz、ehcache缓存、RESTful API、邮件发送...
-###前端：react + webpack
+######前端：react + webpack;
 涉及ES6、jquery、react-router、ant design等内容, 有个reflux的示例【user模块，但未使用】</br>
 
-###只是demo，提供下思路，供参考及后续扩展,有兴趣的可以一起完善~~~
+######只是demo，提供下思路，供参考及后续扩展,有兴趣的可以一起完善~~~
+
 ##如何运行：
 后端：执行maven命令：clean tomcat:run</br>
 前端：查看src/main/webapp/目录下的readme文件，输入npm run build命令构建即可，后续修改完前端代码后，刷新浏览器可看到修改后的效果；</br>
