@@ -1,7 +1,7 @@
 {
-  "name": "EPDC",
-  "version": "1.0.0",
-  "description": "web project",
+  "name": "webbf",
+  "version": "v0.1-alpha",
+  "description": "java web project",
   "dependencies": {
     "antd": "^1.6.4",
     "babel-core": "^6.4.0",
