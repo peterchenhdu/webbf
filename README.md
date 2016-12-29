@@ -12,14 +12,13 @@
 前端：查看src/main/webapp/目录下的readme文件，输入npm run build命令构建即可，后续修改完前端代码后，刷新浏览器可看到修改后的效果；</br>
 
 
-##index
+##主页
 ![index][index-image]
-
-##增删改查(ant design user mgt)
+##用户管理(add modal)
 ![index][adduser-image]
-##图表 echarts
+##图表1
 ![index][chart1-image]
-##ant design组件
+##图标2
 ![index][chart2-image]
 
 [index-image]: https://github.com/peterchenhdu/webbf/blob/master/doc/pic-index.jpg
