@@ -10428,7 +10428,7 @@ webpackJsonp([3],{
 
 
 	// module
-	exports.push([module.id, "@CHARSET \"UTF-8\";\n#user-mgt {\n\tmargin-left: 100px;\n\tmargin-top: 50px;\n}\n#user-mgt .user-box {\n\tmargin-bottom: 5px;\n}\n#user-mgt .user-box span{\n\twidth: 150px;\n\tdisplay: inline-block;\n}\n.w700 {\n\tfont-weight: 700;\n}\n\n.float-right {\n\tfloat: right;\n}\n.user-mgtbox {\n\twidth: 660px;\n\tborder: 1px solid rgb(158, 158, 158);\n\tpadding: 20px;\n}\n.user-mgtbox .tools-bar {\n\tmargin-bottom: 10px;\n}\n", ""]);
+	exports.push([module.id, "@CHARSET \"UTF-8\";\r\n#user-mgt {\r\n\tmargin-left: 100px;\r\n\tmargin-top: 50px;\r\n}\r\n#user-mgt .user-box {\r\n\tmargin-bottom: 5px;\r\n}\r\n#user-mgt .user-box span{\r\n\twidth: 150px;\r\n\tdisplay: inline-block;\r\n}\r\n.w700 {\r\n\tfont-weight: 700;\r\n}\r\n\r\n.float-right {\r\n\tfloat: right;\r\n}\r\n.user-mgtbox {\r\n\twidth: 660px;\r\n\tborder: 1px solid rgb(158, 158, 158);\r\n\tpadding: 20px;\r\n}\r\n.user-mgtbox .tools-bar {\r\n\tmargin-bottom: 10px;\r\n}\r\n", ""]);
 
 	// exports
 

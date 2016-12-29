@@ -10,33 +10,13 @@ export default class Index extends React.Component{
 
   constructor(props){
     super(props);
-    this.state = {current:'AreaStack'}
   }
 
-  handleClick(e) {
-    console.log('click ', e);
-    this.setState({
-      current: e.key
-    });
-    //alert(e.key);
-  }
+
 
   render() {
 
-    var content;
-    switch (this.state.current) {
-      case 'AreaStack':
-        content = <AreaStack />;
-        break;
-      case 'HeatmapCartesian':
-        content = <HeatmapCartesian />;
-        break;
-      case 'userMgt':
-        content = <UserMgt />;
-        break;
-      default:
-        content = <AreaStack />;
-    }
+
 
 
 
@@ -49,11 +29,11 @@ export default class Index extends React.Component{
         </Row>
         <Row>
           <Col span={4} offset={2}>
-            <SiderMenu clickEvent={this.handleClick.bind(this)} current={this.state.current}/>
+            <SiderMenu location={this.props.location} />
           </Col>
           <Col span={16} >
             <div className="content-div">
-              {content}
+              {this.props.children}
             </div>
           </Col>
         </Row>

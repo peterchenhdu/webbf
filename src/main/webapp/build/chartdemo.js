@@ -492,7 +492,7 @@ webpackJsonp([1],[
 
 
 	// module
-	exports.push([module.id, "@CHARSET \"UTF-8\";\n.chart {\n  width: 600px;\n  height:400px;\n}\n", ""]);
+	exports.push([module.id, "@CHARSET \"UTF-8\";\r\n.chart {\r\n  width: 600px;\r\n  height:400px;\r\n}\r\n", ""]);
 
 	// exports
 

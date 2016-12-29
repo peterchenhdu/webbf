@@ -96,7 +96,7 @@ webpackJsonp([0],[
 
 
 	// module
-	exports.push([module.id, "@CHARSET \"UTF-8\";\n.antd-calendar {\n  width: 600px;\n  height:400px;\n  display: inline-block;\n}\n.antd-ib {\n  display: inline-block;\n}\n", ""]);
+	exports.push([module.id, "@CHARSET \"UTF-8\";\r\n.antd-calendar {\r\n  width: 600px;\r\n  height:400px;\r\n  display: inline-block;\r\n}\r\n.antd-ib {\r\n  display: inline-block;\r\n}\r\n", ""]);
 
 	// exports
 

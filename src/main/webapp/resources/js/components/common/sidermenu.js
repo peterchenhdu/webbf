@@ -5,15 +5,28 @@ const SubMenu = Menu.SubMenu;
 export default class SiderMenu extends React.Component {
   constructor(props) {
     super(props);
+    this.state={
+      current: 'AreaStack',
+      openKeys: []
+    };
+  }
+
+  handleClick(e) {
+      window.location.hash = e.key;
+      this.setState({
+          current: e.key,
+          openKeys: e.keyPath.slice(1)
+      });
   }
 
   render() {
     return (
-      <Menu onClick={this.props.clickEvent}
+      <Menu onClick={this.handleClick.bind(this)}
         style={{ width: '100%' }}
+        penKeys = {this.state.openKeys}
         theme={'dark'}
         defaultOpenKeys={['sub2','sub4']}
-        selectedKeys={[this.props.current]}
+        selectedKeys={[this.state.current]}
         mode="inline"
       >
         <SubMenu key="sub1" title={<span><Icon type="mail" /><span>导航一</span></span>}>
