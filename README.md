@@ -1,4 +1,8 @@
-# webbf Java Web工程例子
+# webbf [![build status][travis-image]][travis-url]
+[travis-image]: https://travis-ci.org/peterchenhdu/webbf.svg?branch=master
+[travis-url]: https://travis-ci.org/peterchenhdu/webbf
+
+# Java Web工程例子
 
 ###后端：spring + spring mvc + mybatis + maven；
 涉及定时任务quartz、ehcache缓存、RESTful API、邮件发送...
