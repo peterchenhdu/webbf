@@ -1,179 +1,67 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
 	         http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>cn.edu.hdu.webbf</groupId>
-	<artifactId>webbf</artifactId>
-	<packaging>war</packaging>
-	<version>v0.1-alpha</version>
-	<name>webbf Maven Webapp</name>
-	<url>http://maven.apache.org</url>
-	<properties>
-		<spring-version>4.3.4.RELEASE</spring-version>
-		<mybatis-version>3.2.8</mybatis-version>
-	</properties>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>cn.edu.hdu</groupId>
+  <artifactId>webbf-parent</artifactId>
+  <packaging>pom</packaging>
+  <version>1.0.0</version>
+  <name>webbf</name>
 
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.11</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
-			<scope>provided</scope>
-		</dependency>
-		<!-- http://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
-		<!-- Simple Logging Facade for Java，简单日志门面 ，允许最终用户在部署其应用时使用其所希望的日志系统，本身并不是日志解决方案 -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.7.21</version>
-		</dependency>
-		<!-- http://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.7.21</version>
-		</dependency>
-		<!-- http://mvnrepository.com/artifact/log4j/log4j -->
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
-		</dependency>
-		<!-- http://mvnrepository.com/artifact/com.google.code.gson/gson -->
-		<dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-			<version>2.6.2</version>
-		</dependency>
-		<!-- http://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>3.4</version>
-		</dependency>
+  <properties>
+    <aspectjweaver.version>1.8.7</aspectjweaver.version>
+    <commons.lang3.version>3.4</commons.lang3.version>
+    <druid.version>1.0.15</druid.version>
+    <ehcache.version>2.9.1</ehcache.version>
+    <freemarker.version>2.3.23</freemarker.version>
+    <gson.version>2.6.2</gson.version>
+    <httpclient.version>4.4.1</httpclient.version>
+    <java.encoding>UTF-8</java.encoding>
+    <java.version>1.7</java.version>
+    <javax.mail.version>1.4.7</javax.mail.version>
+    <javax.servlet.api.version>3.1.0</javax.servlet.api.version>
+    <junit.version>4.11</junit.version>
+    <log4j.version>1.2.17</log4j.version>
+    <mybatis.version>3.2.8</mybatis.version>
+    <mybatis.spring.version>1.2.5</mybatis.spring.version>
+    <mysql.connector.java.version>5.1.38</mysql.connector.java.version>
+    <quartz.version>2.2.3</quartz.version>
+    <slf4j.version>1.7.21</slf4j.version>
+    <spring.version>4.3.4.RELEASE</spring.version>
+    <webbf.version>1.0.0</webbf.version>
+  </properties>
 
-		<!--spring -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-			<version>${spring-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>${spring-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-tx</artifactId>
-			<version>${spring-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context-support</artifactId>
-			<version>${spring-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-			<version>${spring-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-jdbc</artifactId>
-			<version>${spring-version}</version>
-		</dependency>
+  <modules>
+    <module>webbf-auth</module>
+    <module>webbf-back</module>
+    <module>webbf-common</module>
+    <module>webbf-dao</module>
+    <module>webbf-doc</module>
+    <module>webbf-front</module>
+    <module>webbf-service</module>
+  </modules>
 
-		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjweaver</artifactId>
-			<version>1.8.7</version>
-		</dependency>
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>druid</artifactId>
-			<version>1.0.15</version>
-		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.38</version>
-		</dependency>
-		<dependency>
-			<groupId>org.mybatis</groupId>
-			<artifactId>mybatis</artifactId>
-			<version>${mybatis-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.mybatis</groupId>
-			<artifactId>mybatis-spring</artifactId>
-			<version>1.2.5</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>4.4.1</version>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz -->
-		<dependency>
-			<groupId>org.quartz-scheduler</groupId>
-			<artifactId>quartz</artifactId>
-			<version>2.2.3</version>
-		</dependency>
-
-
-		<!-- https://mvnrepository.com/artifact/net.sf.ehcache/ehcache -->
-		<dependency>
-			<groupId>net.sf.ehcache</groupId>
-			<artifactId>ehcache</artifactId>
-			<version>2.9.1</version>
-		</dependency>
-
-		<!-- JavaMail -->
-		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>javax.mail-api</artifactId>
-			<version>1.5.5</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>mail</artifactId>
-			<version>1.4.7</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.freemarker</groupId>
-			<artifactId>freemarker</artifactId>
-			<version>2.3.23</version>
-		</dependency>
-
-	</dependencies>
-	<build>
-		<finalName>webbf</finalName>
-		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.0</version>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-					<encoding>UTF-8</encoding>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.tomcat.maven</groupId>
-				<artifactId>tomcat7-maven-plugin</artifactId>
-				<version>2.1</version>
-			</plugin>
-		</plugins>
-	</build>
+  <build>
+    <finalName>webbf</finalName>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.0</version>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <version>2.1</version>
+        <configuration>   
+            <contextReloadable>true</contextReloadable>  
+            <uriEncoding>UTF-8</uriEncoding>  
+        </configuration>  
+      </plugin>
+    </plugins>
+  </build>
 </project>
