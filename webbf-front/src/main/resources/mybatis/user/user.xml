@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.hdu.webbf.dao.IUserDao">
+
+  <sql id="userColumns">
+    id,
+    name,
+    address
+  </sql>
+
+  <select id="query" parameterType="java.util.Map" resultType="cn.edu.hdu.webbf.model.User">
+    SELECT
+    <include refid="userColumns" />
+    FROM
+    user
+    WHERE
+    1=1
+    <if test="id != null">
+      and id=#{id}
+    </if>
+    <if test="name != null">
+      and name=#{name}
+    </if>
+    <if test="offset != null and  limit != null">
+      ORDER BY id asc limit #{offset} , #{limit}
+    </if>
+
+  </select>
+
+  <insert id="saveUser" parameterType="java.util.Map" useGeneratedKeys="true" flushCache="false">
+    insert into user (
+    name,
+    address
+    ) values (
+    #{name},
+    #{address}
+    )
+    <selectKey resultType="long" order="AFTER" keyProperty="id">
+      SELECT * from user where id = LAST_INSERT_ID()
+    </selectKey>
+  </insert>
+
+  <delete id="deleteUser" parameterType="java.util.Map" flushCache="false">
+    delete from user
+    where
+    id = #{id}
+  </delete>
+
+  <update id="updateUser" parameterType="cn.edu.hdu.webbf.model.User">
+    update user SET
+    name=#{name},
+    address=#{address}
+    WHERE id=#{id}
+  </update>
+
+</mapper>

@@ -1,0 +1,42 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+	         http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+		<groupId>cn.edu.hdu</groupId>
+        <artifactId>webbf-parent</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>webbf-doc</artifactId>
+	<packaging>pom</packaging>
+	<name>webbf-doc</name>
+
+	<dependencies>
+		
+	</dependencies>
+	<build>
+        <finalName>webbf-doc</finalName>
+        <plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-assembly-plugin</artifactId>
+						<version>2.2.1</version>
+						<configuration>							
+							<appendAssemblyId>true</appendAssemblyId>
+							<descriptors>
+								<descriptor>doc-zip.xml</descriptor>
+							</descriptors>
+						</configuration>
+						<executions>
+							<execution>
+								<id>make-assembly</id>
+								<phase>package</phase>
+								<goals>
+									<goal>single</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+        </plugins>
+    </build>
+</project>
