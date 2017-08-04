@@ -23,7 +23,7 @@
 ## 图标2
 ![index][chart2-image]
 
-[index-image]: https://github.com/peterchenhdu/webbf/blob/trunk/doc/pic-index.jpg
-[adduser-image]: https://github.com/peterchenhdu/webbf/blob/trunk/doc/pic-adduser.jpg
-[chart1-image]: https://github.com/peterchenhdu/webbf/blob/trunk/doc/pic-chart.jpg
-[chart2-image]: https://github.com/peterchenhdu/webbf/blob/trunk/doc/pic-chart2.jpg
+[index-image]: https://github.com/peterchenhdu/webbf/blob/trunk/webbf-doc/images/pic-index.jpg
+[adduser-image]: https://github.com/peterchenhdu/webbf/blob/trunk/webbf-doc/images/pic-adduser.jpg
+[chart1-image]: https://github.com/peterchenhdu/webbf/blob/trunk/webbf-doc/images/pic-chart.jpg
+[chart2-image]: https://github.com/peterchenhdu/webbf/blob/trunk/webbf-doc/images/pic-chart2.jpg
