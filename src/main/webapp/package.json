@@ -1,6 +1,6 @@
 {
   "name": "webbf",
-  "version": "v0.1-alpha",
+  "version": "0.1.0",
   "description": "java web project",
   "dependencies": {
     "antd": "^1.6.4",
