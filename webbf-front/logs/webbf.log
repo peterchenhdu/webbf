@@ -1,0 +1,301 @@
+[15:13:21][INFO][cn.edu.hdu.webbf.core.listener.InitialListener]- start contextInitialized. 
+[15:13:21][INFO][org.springframework.web.context.ContextLoader]- Root WebApplicationContext: initialization started 
+[15:13:21][INFO][org.springframework.web.context.support.XmlWebApplicationContext]- Refreshing Root WebApplicationContext: startup date [Fri Aug 04 15:13:21 CST 2017]; root of context hierarchy 
+[15:13:22][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/spring.xml] 
+[15:13:22][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/dao.xml] 
+[15:13:22][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/transaction.xml] 
+[15:13:22][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/quartz.xml] 
+[15:13:22][INFO][org.springframework.context.support.PropertySourcesPlaceholderConfigurer]- Loading properties file from class path resource [config.properties] 
+[15:13:22][INFO][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]- JSR-330 'javax.inject.Inject' annotation found and supported for autowiring 
+[15:13:23][INFO][org.quartz.impl.StdSchedulerFactory]- Using default implementation for ThreadExecutor 
+[15:13:23][INFO][org.quartz.core.SchedulerSignalerImpl]- Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl 
+[15:13:23][INFO][org.quartz.core.QuartzScheduler]- Quartz Scheduler v.2.2.3 created. 
+[15:13:23][INFO][org.quartz.simpl.RAMJobStore]- RAMJobStore initialized. 
+[15:13:23][INFO][org.quartz.core.QuartzScheduler]- Scheduler meta-data: Quartz Scheduler (v2.2.3) 'org.springframework.scheduling.quartz.SchedulerFactoryBean#0' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+ 
+[15:13:23][INFO][org.quartz.impl.StdSchedulerFactory]- Quartz scheduler 'org.springframework.scheduling.quartz.SchedulerFactoryBean#0' initialized from an externally provided properties instance. 
+[15:13:23][INFO][org.quartz.impl.StdSchedulerFactory]- Quartz scheduler version: 2.2.3 
+[15:13:23][INFO][org.quartz.core.QuartzScheduler]- JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@6fd1ea75 
+[15:13:23][INFO][org.springframework.context.support.DefaultLifecycleProcessor]- Starting beans in phase 2147483647 
+[15:13:23][INFO][org.springframework.scheduling.quartz.SchedulerFactoryBean]- Starting Quartz Scheduler now 
+[15:13:23][INFO][org.quartz.core.QuartzScheduler]- Scheduler org.springframework.scheduling.quartz.SchedulerFactoryBean#0_$_NON_CLUSTERED started. 
+[15:13:23][INFO][org.springframework.web.context.ContextLoader]- Root WebApplicationContext: initialization completed in 2128 ms 
+[15:13:23][INFO][org.springframework.web.servlet.DispatcherServlet]- FrameworkServlet 'springMvc': initialization started 
+[15:13:23][INFO][org.springframework.web.context.support.XmlWebApplicationContext]- Refreshing WebApplicationContext for namespace 'springMvc-servlet': startup date [Fri Aug 04 15:13:23 CST 2017]; parent: Root WebApplicationContext 
+[15:13:23][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/spring-mvc.xml] 
+[15:13:24][INFO][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]- JSR-330 'javax.inject.Inject' annotation found and supported for autowiring 
+[15:13:24][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]- Mapped "{[/addatas],methods=[GET],produces=[application/json;charset=utf-8]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> cn.edu.hdu.webbf.controller.chartdata.AccessDataController.getAdData() 
+[15:13:24][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]- Mapped "{[/users/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public org.springframework.http.ResponseEntity<cn.edu.hdu.webbf.model.User> cn.edu.hdu.webbf.controller.user.UserController.getUserById(java.lang.Long) 
+[15:13:24][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]- Mapped "{[/users],methods=[GET],produces=[application/json;charset=utf-8]}" onto public org.springframework.http.ResponseEntity<java.util.List<cn.edu.hdu.webbf.model.User>> cn.edu.hdu.webbf.controller.user.UserController.getUserList(long,long) 
+[15:13:24][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]- Mapped "{[/users],methods=[POST],consumes=[application/json;charset=utf-8]}" onto public org.springframework.http.ResponseEntity<cn.edu.hdu.webbf.model.User> cn.edu.hdu.webbf.controller.user.UserController.saveUser(cn.edu.hdu.webbf.model.User,org.springframework.web.util.UriComponentsBuilder) 
+[15:13:24][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]- Mapped "{[/users/{id}],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public org.springframework.http.ResponseEntity<cn.edu.hdu.webbf.model.User> cn.edu.hdu.webbf.controller.user.UserController.deleteUser(java.lang.Long) 
+[15:13:24][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]- Mapped "{[/users/{id}],methods=[PUT],consumes=[application/json;charset=utf-8]}" onto public org.springframework.http.ResponseEntity<cn.edu.hdu.webbf.model.User> cn.edu.hdu.webbf.controller.user.UserController.updateUser(long,cn.edu.hdu.webbf.model.User) 
+[15:13:24][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]- Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMvc-servlet': startup date [Fri Aug 04 15:13:23 CST 2017]; parent: Root WebApplicationContext 
+[15:13:25][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]- Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMvc-servlet': startup date [Fri Aug 04 15:13:23 CST 2017]; parent: Root WebApplicationContext 
+[15:13:25][INFO][org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver]- Detected @ExceptionHandler methods in BFExceptionHandler 
+[15:13:25][INFO][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]- Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0' 
+[15:13:25][INFO][org.springframework.cache.ehcache.EhCacheManagerFactoryBean]- Initializing EhCache CacheManager 
+[15:13:26][INFO][org.springframework.web.servlet.DispatcherServlet]- FrameworkServlet 'springMvc': initialization completed in 2296 ms 
+[16:18:35][ERROR][cn.edu.hdu.webbf.core.quartzjobs.AddUserJob]- java.lang.RuntimeException: couldn't load properties file '/D:/Git/webbf/webbf-front/target/classes/config.properties' 
+java.lang.RuntimeException: couldn't load properties file '/D:/Git/webbf/webbf-front/target/classes/config.properties'
+	at cn.edu.hdu.webbf.util.ProjectConfigUtil.getProperties(ProjectConfigUtil.java:69)
+	at cn.edu.hdu.webbf.util.ProjectConfigUtil.getConfig(ProjectConfigUtil.java:28)
+	at cn.edu.hdu.webbf.core.quartzjobs.AddUserJob.executeInternal(AddUserJob.java:53)
+	at org.springframework.scheduling.quartz.QuartzJobBean.execute(QuartzJobBean.java:75)
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:202)
+	at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573)
+Caused by: java.io.FileNotFoundException: D:\Git\webbf\webbf-front\target\classes\config.properties (系统找不到指定的文件。)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at cn.edu.hdu.webbf.util.ProjectConfigUtil.getProperties(ProjectConfigUtil.java:63)
+	... 5 more
+[17:05:54][INFO][cn.edu.hdu.webbf.core.listener.InitialListener]- start contextInitialized. 
+[17:05:54][INFO][org.springframework.web.context.ContextLoader]- Root WebApplicationContext: initialization started 
+[17:05:54][INFO][org.springframework.web.context.support.XmlWebApplicationContext]- Refreshing Root WebApplicationContext: startup date [Fri Aug 04 17:05:54 CST 2017]; root of context hierarchy 
+[17:05:54][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/spring.xml] 
+[17:05:55][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/dao.xml] 
+[17:05:55][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/transaction.xml] 
+[17:05:55][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/quartz.xml] 
+[17:05:55][INFO][org.springframework.context.support.PropertySourcesPlaceholderConfigurer]- Loading properties file from class path resource [config.properties] 
+[17:05:55][INFO][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]- JSR-330 'javax.inject.Inject' annotation found and supported for autowiring 
+[17:05:56][INFO][org.quartz.impl.StdSchedulerFactory]- Using default implementation for ThreadExecutor 
+[17:05:56][INFO][org.quartz.core.SchedulerSignalerImpl]- Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl 
+[17:05:56][INFO][org.quartz.core.QuartzScheduler]- Quartz Scheduler v.2.2.3 created. 
+[17:05:56][INFO][org.quartz.simpl.RAMJobStore]- RAMJobStore initialized. 
+[17:05:56][INFO][org.quartz.core.QuartzScheduler]- Scheduler meta-data: Quartz Scheduler (v2.2.3) 'org.springframework.scheduling.quartz.SchedulerFactoryBean#0' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+ 
+[17:05:56][INFO][org.quartz.impl.StdSchedulerFactory]- Quartz scheduler 'org.springframework.scheduling.quartz.SchedulerFactoryBean#0' initialized from an externally provided properties instance. 
+[17:05:56][INFO][org.quartz.impl.StdSchedulerFactory]- Quartz scheduler version: 2.2.3 
+[17:05:56][INFO][org.quartz.core.QuartzScheduler]- JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@231df705 
+[17:05:56][INFO][org.springframework.context.support.DefaultLifecycleProcessor]- Starting beans in phase 2147483647 
+[17:05:56][INFO][org.springframework.scheduling.quartz.SchedulerFactoryBean]- Starting Quartz Scheduler now 
+[17:05:56][INFO][org.quartz.core.QuartzScheduler]- Scheduler org.springframework.scheduling.quartz.SchedulerFactoryBean#0_$_NON_CLUSTERED started. 
+[17:05:56][INFO][org.springframework.web.context.ContextLoader]- Root WebApplicationContext: initialization completed in 1670 ms 
+[17:05:56][INFO][org.springframework.web.servlet.DispatcherServlet]- FrameworkServlet 'springMvc': initialization started 
+[17:05:56][INFO][org.springframework.web.context.support.XmlWebApplicationContext]- Refreshing WebApplicationContext for namespace 'springMvc-servlet': startup date [Fri Aug 04 17:05:56 CST 2017]; parent: Root WebApplicationContext 
+[17:05:56][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/spring-mvc.xml] 
+[17:05:56][INFO][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]- JSR-330 'javax.inject.Inject' annotation found and supported for autowiring 
+[17:05:57][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]- Mapped "{[/addatas],methods=[GET],produces=[application/json;charset=utf-8]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> cn.edu.hdu.webbf.controller.chartdata.AccessDataController.getAdData() 
+[17:05:57][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]- Mapped "{[/users],methods=[POST],consumes=[application/json;charset=utf-8]}" onto public org.springframework.http.ResponseEntity<cn.edu.hdu.webbf.model.User> cn.edu.hdu.webbf.controller.user.UserController.saveUser(cn.edu.hdu.webbf.model.User,org.springframework.web.util.UriComponentsBuilder) 
+[17:05:57][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]- Mapped "{[/users/{id}],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public org.springframework.http.ResponseEntity<cn.edu.hdu.webbf.model.User> cn.edu.hdu.webbf.controller.user.UserController.deleteUser(java.lang.Long) 
+[17:05:57][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]- Mapped "{[/users/{id}],methods=[PUT],consumes=[application/json;charset=utf-8]}" onto public org.springframework.http.ResponseEntity<cn.edu.hdu.webbf.model.User> cn.edu.hdu.webbf.controller.user.UserController.updateUser(long,cn.edu.hdu.webbf.model.User) 
+[17:05:57][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]- Mapped "{[/users/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public org.springframework.http.ResponseEntity<cn.edu.hdu.webbf.model.User> cn.edu.hdu.webbf.controller.user.UserController.getUserById(java.lang.Long) 
+[17:05:57][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]- Mapped "{[/users],methods=[GET],produces=[application/json;charset=utf-8]}" onto public org.springframework.http.ResponseEntity<java.util.List<cn.edu.hdu.webbf.model.User>> cn.edu.hdu.webbf.controller.user.UserController.getUserList(long,long) 
+[17:05:57][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]- Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMvc-servlet': startup date [Fri Aug 04 17:05:56 CST 2017]; parent: Root WebApplicationContext 
+[17:05:57][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]- Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMvc-servlet': startup date [Fri Aug 04 17:05:56 CST 2017]; parent: Root WebApplicationContext 
+[17:05:57][INFO][org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver]- Detected @ExceptionHandler methods in BFExceptionHandler 
+[17:05:57][INFO][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]- Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0' 
+[17:05:58][INFO][org.springframework.cache.ehcache.EhCacheManagerFactoryBean]- Initializing EhCache CacheManager 
+[17:05:58][INFO][org.springframework.web.servlet.DispatcherServlet]- FrameworkServlet 'springMvc': initialization completed in 2180 ms 
+[17:23:41][INFO][cn.edu.hdu.webbf.core.listener.InitialListener]- start contextInitialized. 
+[17:23:41][INFO][org.springframework.web.context.ContextLoader]- Root WebApplicationContext: initialization started 
+[17:23:41][INFO][org.springframework.web.context.support.XmlWebApplicationContext]- Refreshing Root WebApplicationContext: startup date [Fri Aug 04 17:23:41 CST 2017]; root of context hierarchy 
+[17:23:41][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/spring.xml] 
+[17:23:42][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/dao.xml] 
+[17:23:42][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/transaction.xml] 
+[17:23:42][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/quartz.xml] 
+[17:23:42][INFO][org.springframework.context.support.PropertySourcesPlaceholderConfigurer]- Loading properties file from class path resource [config.properties] 
+[17:23:43][INFO][org.quartz.impl.StdSchedulerFactory]- Using default implementation for ThreadExecutor 
+[17:23:43][INFO][org.quartz.core.SchedulerSignalerImpl]- Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl 
+[17:23:43][INFO][org.quartz.core.QuartzScheduler]- Quartz Scheduler v.2.2.3 created. 
+[17:23:43][INFO][org.quartz.simpl.RAMJobStore]- RAMJobStore initialized. 
+[17:23:43][INFO][org.quartz.core.QuartzScheduler]- Scheduler meta-data: Quartz Scheduler (v2.2.3) 'org.springframework.scheduling.quartz.SchedulerFactoryBean#0' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+ 
+[17:23:43][INFO][org.quartz.impl.StdSchedulerFactory]- Quartz scheduler 'org.springframework.scheduling.quartz.SchedulerFactoryBean#0' initialized from an externally provided properties instance. 
+[17:23:43][INFO][org.quartz.impl.StdSchedulerFactory]- Quartz scheduler version: 2.2.3 
+[17:23:43][INFO][org.quartz.core.QuartzScheduler]- JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@1df23cfe 
+[17:23:43][INFO][org.springframework.context.support.DefaultLifecycleProcessor]- Starting beans in phase 2147483647 
+[17:23:43][INFO][org.springframework.scheduling.quartz.SchedulerFactoryBean]- Starting Quartz Scheduler now 
+[17:23:43][INFO][org.quartz.core.QuartzScheduler]- Scheduler org.springframework.scheduling.quartz.SchedulerFactoryBean#0_$_NON_CLUSTERED started. 
+[17:23:43][INFO][org.springframework.web.context.ContextLoader]- Root WebApplicationContext: initialization completed in 1909 ms 
+[17:23:43][INFO][org.springframework.web.servlet.DispatcherServlet]- FrameworkServlet 'springMvc': initialization started 
+[17:23:43][INFO][org.springframework.web.context.support.XmlWebApplicationContext]- Refreshing WebApplicationContext for namespace 'springMvc-servlet': startup date [Fri Aug 04 17:23:43 CST 2017]; parent: Root WebApplicationContext 
+[17:23:43][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/spring-mvc.xml] 
+[17:23:44][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]- Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMvc-servlet': startup date [Fri Aug 04 17:23:43 CST 2017]; parent: Root WebApplicationContext 
+[17:23:44][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]- Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMvc-servlet': startup date [Fri Aug 04 17:23:43 CST 2017]; parent: Root WebApplicationContext 
+[17:23:44][INFO][org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver]- Detected @ExceptionHandler methods in BFExceptionHandler 
+[17:23:44][INFO][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]- Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0' 
+[17:23:44][INFO][org.springframework.cache.ehcache.EhCacheManagerFactoryBean]- Initializing EhCache CacheManager 
+[17:23:44][INFO][org.springframework.web.servlet.DispatcherServlet]- FrameworkServlet 'springMvc': initialization completed in 1275 ms 
+[17:31:28][INFO][cn.edu.hdu.webbf.core.listener.InitialListener]- start contextInitialized. 
+[17:31:28][INFO][org.springframework.web.context.ContextLoader]- Root WebApplicationContext: initialization started 
+[17:31:28][INFO][org.springframework.web.context.support.XmlWebApplicationContext]- Refreshing Root WebApplicationContext: startup date [Fri Aug 04 17:31:28 CST 2017]; root of context hierarchy 
+[17:31:28][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/spring.xml] 
+[17:31:28][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/dao.xml] 
+[17:31:28][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/transaction.xml] 
+[17:31:28][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/quartz.xml] 
+[17:31:28][INFO][org.springframework.context.support.PropertySourcesPlaceholderConfigurer]- Loading properties file from class path resource [config.properties] 
+[17:31:29][INFO][org.quartz.impl.StdSchedulerFactory]- Using default implementation for ThreadExecutor 
+[17:31:29][INFO][org.quartz.core.SchedulerSignalerImpl]- Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl 
+[17:31:29][INFO][org.quartz.core.QuartzScheduler]- Quartz Scheduler v.2.2.3 created. 
+[17:31:29][INFO][org.quartz.simpl.RAMJobStore]- RAMJobStore initialized. 
+[17:31:29][INFO][org.quartz.core.QuartzScheduler]- Scheduler meta-data: Quartz Scheduler (v2.2.3) 'org.springframework.scheduling.quartz.SchedulerFactoryBean#0' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+ 
+[17:31:29][INFO][org.quartz.impl.StdSchedulerFactory]- Quartz scheduler 'org.springframework.scheduling.quartz.SchedulerFactoryBean#0' initialized from an externally provided properties instance. 
+[17:31:29][INFO][org.quartz.impl.StdSchedulerFactory]- Quartz scheduler version: 2.2.3 
+[17:31:29][INFO][org.quartz.core.QuartzScheduler]- JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@2f13e112 
+[17:31:29][INFO][org.springframework.context.support.DefaultLifecycleProcessor]- Starting beans in phase 2147483647 
+[17:31:29][INFO][org.springframework.scheduling.quartz.SchedulerFactoryBean]- Starting Quartz Scheduler now 
+[17:31:29][INFO][org.quartz.core.QuartzScheduler]- Scheduler org.springframework.scheduling.quartz.SchedulerFactoryBean#0_$_NON_CLUSTERED started. 
+[17:31:29][INFO][org.springframework.web.context.ContextLoader]- Root WebApplicationContext: initialization completed in 1655 ms 
+[17:31:29][INFO][org.springframework.web.servlet.DispatcherServlet]- FrameworkServlet 'springMvc': initialization started 
+[17:31:29][INFO][org.springframework.web.context.support.XmlWebApplicationContext]- Refreshing WebApplicationContext for namespace 'springMvc-servlet': startup date [Fri Aug 04 17:31:29 CST 2017]; parent: Root WebApplicationContext 
+[17:31:29][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/spring-mvc.xml] 
+[17:31:30][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]- Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMvc-servlet': startup date [Fri Aug 04 17:31:29 CST 2017]; parent: Root WebApplicationContext 
+[17:31:30][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]- Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMvc-servlet': startup date [Fri Aug 04 17:31:29 CST 2017]; parent: Root WebApplicationContext 
+[17:31:30][INFO][org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver]- Detected @ExceptionHandler methods in BFExceptionHandler 
+[17:31:30][INFO][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]- Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0' 
+[17:31:30][INFO][org.springframework.cache.ehcache.EhCacheManagerFactoryBean]- Initializing EhCache CacheManager 
+[17:31:31][INFO][org.springframework.web.servlet.DispatcherServlet]- FrameworkServlet 'springMvc': initialization completed in 1211 ms 
+[17:36:11][INFO][cn.edu.hdu.webbf.core.listener.InitialListener]- start contextInitialized. 
+[17:36:11][INFO][org.springframework.web.context.ContextLoader]- Root WebApplicationContext: initialization started 
+[17:36:12][INFO][org.springframework.web.context.support.XmlWebApplicationContext]- Refreshing Root WebApplicationContext: startup date [Fri Aug 04 17:36:12 CST 2017]; root of context hierarchy 
+[17:36:12][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/spring.xml] 
+[17:36:12][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/dao.xml] 
+[17:36:12][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/transaction.xml] 
+[17:36:12][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/quartz.xml] 
+[17:36:12][INFO][org.springframework.context.support.PropertySourcesPlaceholderConfigurer]- Loading properties file from class path resource [config.properties] 
+[17:36:13][INFO][org.quartz.impl.StdSchedulerFactory]- Using default implementation for ThreadExecutor 
+[17:36:13][INFO][org.quartz.core.SchedulerSignalerImpl]- Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl 
+[17:36:13][INFO][org.quartz.core.QuartzScheduler]- Quartz Scheduler v.2.2.3 created. 
+[17:36:13][INFO][org.quartz.simpl.RAMJobStore]- RAMJobStore initialized. 
+[17:36:13][INFO][org.quartz.core.QuartzScheduler]- Scheduler meta-data: Quartz Scheduler (v2.2.3) 'org.springframework.scheduling.quartz.SchedulerFactoryBean#0' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+ 
+[17:36:13][INFO][org.quartz.impl.StdSchedulerFactory]- Quartz scheduler 'org.springframework.scheduling.quartz.SchedulerFactoryBean#0' initialized from an externally provided properties instance. 
+[17:36:13][INFO][org.quartz.impl.StdSchedulerFactory]- Quartz scheduler version: 2.2.3 
+[17:36:13][INFO][org.quartz.core.QuartzScheduler]- JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@5c1f7fd0 
+[17:36:13][INFO][org.springframework.context.support.DefaultLifecycleProcessor]- Starting beans in phase 2147483647 
+[17:36:13][INFO][org.springframework.scheduling.quartz.SchedulerFactoryBean]- Starting Quartz Scheduler now 
+[17:36:13][INFO][org.quartz.core.QuartzScheduler]- Scheduler org.springframework.scheduling.quartz.SchedulerFactoryBean#0_$_NON_CLUSTERED started. 
+[17:36:13][INFO][org.springframework.web.context.ContextLoader]- Root WebApplicationContext: initialization completed in 1684 ms 
+[17:36:13][INFO][org.springframework.web.servlet.DispatcherServlet]- FrameworkServlet 'springMvc': initialization started 
+[17:36:13][INFO][org.springframework.web.context.support.XmlWebApplicationContext]- Refreshing WebApplicationContext for namespace 'springMvc-servlet': startup date [Fri Aug 04 17:36:13 CST 2017]; parent: Root WebApplicationContext 
+[17:36:13][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/spring-mvc.xml] 
+[17:36:14][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]- Mapped "{[/addatas],methods=[GET],produces=[application/json;charset=utf-8]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> cn.edu.hdu.webbf.controller.chartdata.AccessDataController.getAdData() 
+[17:36:14][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]- Mapped "{[/users],methods=[GET],produces=[application/json;charset=utf-8]}" onto public org.springframework.http.ResponseEntity<java.util.List<cn.edu.hdu.webbf.model.User>> cn.edu.hdu.webbf.controller.user.UserController.getUserList(long,long) 
+[17:36:14][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]- Mapped "{[/users/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public org.springframework.http.ResponseEntity<cn.edu.hdu.webbf.model.User> cn.edu.hdu.webbf.controller.user.UserController.getUserById(java.lang.Long) 
+[17:36:14][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]- Mapped "{[/users/{id}],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public org.springframework.http.ResponseEntity<cn.edu.hdu.webbf.model.User> cn.edu.hdu.webbf.controller.user.UserController.deleteUser(java.lang.Long) 
+[17:36:14][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]- Mapped "{[/users],methods=[POST],consumes=[application/json;charset=utf-8]}" onto public org.springframework.http.ResponseEntity<cn.edu.hdu.webbf.model.User> cn.edu.hdu.webbf.controller.user.UserController.saveUser(cn.edu.hdu.webbf.model.User,org.springframework.web.util.UriComponentsBuilder) 
+[17:36:14][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]- Mapped "{[/users/{id}],methods=[PUT],consumes=[application/json;charset=utf-8]}" onto public org.springframework.http.ResponseEntity<cn.edu.hdu.webbf.model.User> cn.edu.hdu.webbf.controller.user.UserController.updateUser(long,cn.edu.hdu.webbf.model.User) 
+[17:36:14][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]- Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMvc-servlet': startup date [Fri Aug 04 17:36:13 CST 2017]; parent: Root WebApplicationContext 
+[17:36:14][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]- Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMvc-servlet': startup date [Fri Aug 04 17:36:13 CST 2017]; parent: Root WebApplicationContext 
+[17:36:14][INFO][org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver]- Detected @ExceptionHandler methods in BFExceptionHandler 
+[17:36:14][INFO][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]- Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0' 
+[17:36:14][INFO][org.springframework.cache.ehcache.EhCacheManagerFactoryBean]- Initializing EhCache CacheManager 
+[17:36:15][INFO][org.springframework.web.servlet.DispatcherServlet]- FrameworkServlet 'springMvc': initialization completed in 1556 ms 
+[17:37:06][INFO][cn.edu.hdu.webbf.core.listener.InitialListener]- start contextInitialized. 
+[17:37:07][INFO][org.springframework.web.context.ContextLoader]- Root WebApplicationContext: initialization started 
+[17:37:07][INFO][org.springframework.web.context.support.XmlWebApplicationContext]- Refreshing Root WebApplicationContext: startup date [Fri Aug 04 17:37:07 CST 2017]; root of context hierarchy 
+[17:37:07][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/spring.xml] 
+[17:37:07][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/dao.xml] 
+[17:37:07][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/transaction.xml] 
+[17:37:07][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/quartz.xml] 
+[17:37:07][INFO][org.springframework.context.support.PropertySourcesPlaceholderConfigurer]- Loading properties file from class path resource [config.properties] 
+[17:37:08][INFO][org.quartz.impl.StdSchedulerFactory]- Using default implementation for ThreadExecutor 
+[17:37:08][INFO][org.quartz.core.SchedulerSignalerImpl]- Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl 
+[17:37:08][INFO][org.quartz.core.QuartzScheduler]- Quartz Scheduler v.2.2.3 created. 
+[17:37:08][INFO][org.quartz.simpl.RAMJobStore]- RAMJobStore initialized. 
+[17:37:08][INFO][org.quartz.core.QuartzScheduler]- Scheduler meta-data: Quartz Scheduler (v2.2.3) 'org.springframework.scheduling.quartz.SchedulerFactoryBean#0' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+ 
+[17:37:08][INFO][org.quartz.impl.StdSchedulerFactory]- Quartz scheduler 'org.springframework.scheduling.quartz.SchedulerFactoryBean#0' initialized from an externally provided properties instance. 
+[17:37:08][INFO][org.quartz.impl.StdSchedulerFactory]- Quartz scheduler version: 2.2.3 
+[17:37:08][INFO][org.quartz.core.QuartzScheduler]- JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@735397d4 
+[17:37:08][INFO][org.springframework.context.support.DefaultLifecycleProcessor]- Starting beans in phase 2147483647 
+[17:37:08][INFO][org.springframework.scheduling.quartz.SchedulerFactoryBean]- Starting Quartz Scheduler now 
+[17:37:08][INFO][org.quartz.core.QuartzScheduler]- Scheduler org.springframework.scheduling.quartz.SchedulerFactoryBean#0_$_NON_CLUSTERED started. 
+[17:37:08][INFO][org.springframework.web.context.ContextLoader]- Root WebApplicationContext: initialization completed in 1706 ms 
+[17:37:08][INFO][org.springframework.web.servlet.DispatcherServlet]- FrameworkServlet 'springMvc': initialization started 
+[17:37:08][INFO][org.springframework.web.context.support.XmlWebApplicationContext]- Refreshing WebApplicationContext for namespace 'springMvc-servlet': startup date [Fri Aug 04 17:37:08 CST 2017]; parent: Root WebApplicationContext 
+[17:37:08][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/spring-mvc.xml] 
+[17:37:09][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]- Mapped "{[/addatas],methods=[GET],produces=[application/json;charset=utf-8]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> cn.edu.hdu.webbf.controller.chartdata.AccessDataController.getAdData() 
+[17:37:09][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]- Mapped "{[/users/{id}],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public org.springframework.http.ResponseEntity<cn.edu.hdu.webbf.model.User> cn.edu.hdu.webbf.controller.user.UserController.deleteUser(java.lang.Long) 
+[17:37:09][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]- Mapped "{[/users],methods=[POST],consumes=[application/json;charset=utf-8]}" onto public org.springframework.http.ResponseEntity<cn.edu.hdu.webbf.model.User> cn.edu.hdu.webbf.controller.user.UserController.saveUser(cn.edu.hdu.webbf.model.User,org.springframework.web.util.UriComponentsBuilder) 
+[17:37:09][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]- Mapped "{[/users/{id}],methods=[PUT],consumes=[application/json;charset=utf-8]}" onto public org.springframework.http.ResponseEntity<cn.edu.hdu.webbf.model.User> cn.edu.hdu.webbf.controller.user.UserController.updateUser(long,cn.edu.hdu.webbf.model.User) 
+[17:37:09][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]- Mapped "{[/users],methods=[GET],produces=[application/json;charset=utf-8]}" onto public org.springframework.http.ResponseEntity<java.util.List<cn.edu.hdu.webbf.model.User>> cn.edu.hdu.webbf.controller.user.UserController.getUserList(long,long) 
+[17:37:09][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]- Mapped "{[/users/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public org.springframework.http.ResponseEntity<cn.edu.hdu.webbf.model.User> cn.edu.hdu.webbf.controller.user.UserController.getUserById(java.lang.Long) 
+[17:37:09][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]- Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMvc-servlet': startup date [Fri Aug 04 17:37:08 CST 2017]; parent: Root WebApplicationContext 
+[17:37:09][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]- Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMvc-servlet': startup date [Fri Aug 04 17:37:08 CST 2017]; parent: Root WebApplicationContext 
+[17:37:09][INFO][org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver]- Detected @ExceptionHandler methods in BFExceptionHandler 
+[17:37:09][INFO][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]- Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0' 
+[17:37:09][INFO][org.springframework.cache.ehcache.EhCacheManagerFactoryBean]- Initializing EhCache CacheManager 
+[17:37:10][INFO][org.springframework.web.servlet.DispatcherServlet]- FrameworkServlet 'springMvc': initialization completed in 1653 ms 
+[17:37:38][INFO][cn.edu.hdu.webbf.core.listener.InitialListener]- start contextInitialized. 
+[17:37:38][INFO][org.springframework.web.context.ContextLoader]- Root WebApplicationContext: initialization started 
+[17:37:39][INFO][org.springframework.web.context.support.XmlWebApplicationContext]- Refreshing Root WebApplicationContext: startup date [Fri Aug 04 17:37:39 CST 2017]; root of context hierarchy 
+[17:37:39][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/spring.xml] 
+[17:37:39][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/dao.xml] 
+[17:37:39][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/transaction.xml] 
+[17:37:39][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/quartz.xml] 
+[17:37:39][INFO][org.springframework.context.support.PropertySourcesPlaceholderConfigurer]- Loading properties file from class path resource [config.properties] 
+[17:37:40][INFO][org.quartz.impl.StdSchedulerFactory]- Using default implementation for ThreadExecutor 
+[17:37:40][INFO][org.quartz.core.SchedulerSignalerImpl]- Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl 
+[17:37:40][INFO][org.quartz.core.QuartzScheduler]- Quartz Scheduler v.2.2.3 created. 
+[17:37:40][INFO][org.quartz.simpl.RAMJobStore]- RAMJobStore initialized. 
+[17:37:40][INFO][org.quartz.core.QuartzScheduler]- Scheduler meta-data: Quartz Scheduler (v2.2.3) 'org.springframework.scheduling.quartz.SchedulerFactoryBean#0' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+ 
+[17:37:40][INFO][org.quartz.impl.StdSchedulerFactory]- Quartz scheduler 'org.springframework.scheduling.quartz.SchedulerFactoryBean#0' initialized from an externally provided properties instance. 
+[17:37:40][INFO][org.quartz.impl.StdSchedulerFactory]- Quartz scheduler version: 2.2.3 
+[17:37:40][INFO][org.quartz.core.QuartzScheduler]- JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@63dee89b 
+[17:37:40][INFO][org.springframework.context.support.DefaultLifecycleProcessor]- Starting beans in phase 2147483647 
+[17:37:40][INFO][org.springframework.scheduling.quartz.SchedulerFactoryBean]- Starting Quartz Scheduler now 
+[17:37:40][INFO][org.quartz.core.QuartzScheduler]- Scheduler org.springframework.scheduling.quartz.SchedulerFactoryBean#0_$_NON_CLUSTERED started. 
+[17:37:40][INFO][org.springframework.web.context.ContextLoader]- Root WebApplicationContext: initialization completed in 1904 ms 
+[17:37:40][INFO][org.springframework.web.servlet.DispatcherServlet]- FrameworkServlet 'springMvc': initialization started 
+[17:37:40][INFO][org.springframework.web.context.support.XmlWebApplicationContext]- Refreshing WebApplicationContext for namespace 'springMvc-servlet': startup date [Fri Aug 04 17:37:40 CST 2017]; parent: Root WebApplicationContext 
+[17:37:40][INFO][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]- Loading XML bean definitions from class path resource [spring/spring-mvc.xml] 
+[17:37:41][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]- Mapped "{[/addatas],methods=[GET],produces=[application/json;charset=utf-8]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> cn.edu.hdu.webbf.controller.chartdata.AccessDataController.getAdData() 
+[17:37:41][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]- Mapped "{[/users/{id}],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public org.springframework.http.ResponseEntity<cn.edu.hdu.webbf.model.User> cn.edu.hdu.webbf.controller.user.UserController.deleteUser(java.lang.Long) 
+[17:37:41][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]- Mapped "{[/users],methods=[POST],consumes=[application/json;charset=utf-8]}" onto public org.springframework.http.ResponseEntity<cn.edu.hdu.webbf.model.User> cn.edu.hdu.webbf.controller.user.UserController.saveUser(cn.edu.hdu.webbf.model.User,org.springframework.web.util.UriComponentsBuilder) 
+[17:37:41][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]- Mapped "{[/users/{id}],methods=[PUT],consumes=[application/json;charset=utf-8]}" onto public org.springframework.http.ResponseEntity<cn.edu.hdu.webbf.model.User> cn.edu.hdu.webbf.controller.user.UserController.updateUser(long,cn.edu.hdu.webbf.model.User) 
+[17:37:41][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]- Mapped "{[/users],methods=[GET],produces=[application/json;charset=utf-8]}" onto public org.springframework.http.ResponseEntity<java.util.List<cn.edu.hdu.webbf.model.User>> cn.edu.hdu.webbf.controller.user.UserController.getUserList(long,long) 
+[17:37:41][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]- Mapped "{[/users/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public org.springframework.http.ResponseEntity<cn.edu.hdu.webbf.model.User> cn.edu.hdu.webbf.controller.user.UserController.getUserById(java.lang.Long) 
+[17:37:41][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]- Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMvc-servlet': startup date [Fri Aug 04 17:37:40 CST 2017]; parent: Root WebApplicationContext 
+[17:37:42][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]- Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMvc-servlet': startup date [Fri Aug 04 17:37:40 CST 2017]; parent: Root WebApplicationContext 
+[17:37:42][INFO][org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver]- Detected @ExceptionHandler methods in BFExceptionHandler 
+[17:37:42][INFO][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]- Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0' 
+[17:37:42][INFO][org.springframework.cache.ehcache.EhCacheManagerFactoryBean]- Initializing EhCache CacheManager 
+[17:37:42][INFO][org.springframework.web.servlet.DispatcherServlet]- FrameworkServlet 'springMvc': initialization completed in 1887 ms 

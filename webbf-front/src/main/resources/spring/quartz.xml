@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean name="addUserJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="cn.edu.hdu.webbf.core.quartzjobs.AddUserJob" />
+		<!--  do not work
+        <property name="jobDataMap">
+            <map>
+                <entry key="userService" value-ref="userService" />
+            </map>
+        </property>-->
+        <property name="durability" value="true" />
+        
+	</bean>
+
+
+	<bean id="cron5SecTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="addUserJob" />
+		<property name="cronExpression" value="${fiveSecFreq}" />
+	</bean>
+
+
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="jobDetails">
+			<list>
+				<ref bean="addUserJob" />
+			</list>
+		</property>
+
+		<property name="triggers">
+			<list>
+				<ref bean="cron5SecTrigger" />
+			</list>
+		</property>
+	</bean>
+</beans>

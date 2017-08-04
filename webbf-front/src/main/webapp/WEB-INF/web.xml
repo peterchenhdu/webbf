@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		 xmlns="http://java.sun.com/xml/ns/javaee" 
+		 xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
+		 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+		      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
+		 id="WebApp_ID" version="3.0">
+		 
+  <display-name>webbf</display-name>
+  
+     <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+  
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:spring/spring.xml</param-value>
+  </context-param>
+  <listener>
+    <listener-class>cn.edu.hdu.webbf.core.listener.InitialListener</listener-class>
+  </listener>
+  
+  <!-- 
+	<filter>
+	   <filter-name>CAS Authentication Filter</filter-name>  
+	   <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	   <init-param>
+	        <param-name>targetBeanName</param-name>
+	        <param-value>authenticationFilter</param-value>
+	    </init-param>
+	</filter>
+	<filter-mapping>
+	    <filter-name>CAS Authentication Filter</filter-name>
+	    <url-pattern>*</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+	    <filter-name>CAS Validation Filter</filter-name>
+	    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	    <init-param>
+	        <param-name>targetBeanName</param-name>
+	        <param-value>validationFilter</param-value>
+	    </init-param>
+	</filter>
+	<filter-mapping>
+	    <filter-name>CAS Validation Filter</filter-name>
+	    <url-pattern>*</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+	    <filter-name>CAS HttpServletRequest Wrapper Filter</filter-name>     
+	    <filter-class>org.jasig.cas.client.util.HttpServletRequestWrapperFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	    <filter-name>CAS HttpServletRequest Wrapper Filter</filter-name>
+	    <url-pattern>*</url-pattern>
+	</filter-mapping>
+   -->
+   
+  <servlet>
+    <servlet-name>springMvc</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:spring/spring-mvc.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>springMvc</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>UrlServlet</servlet-name>
+    <servlet-class>cn.edu.hdu.webbf.core.servlet.UrlServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UrlServlet</servlet-name>
+    <url-pattern>/Layout</url-pattern>
+  </servlet-mapping>
+  
+
+  <session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
+  
+
+</web-app>

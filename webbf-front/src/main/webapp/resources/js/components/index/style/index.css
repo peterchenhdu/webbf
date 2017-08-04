@@ -1,0 +1,22 @@
+body {
+
+}
+
+.main-div .main-top {
+  color:#FFF;
+  height: 90px;
+  text-align: center;
+  line-height: 90px;
+  font-size: 24px;
+  font-weight: 700;
+
+  background-image: -webkit-gradient(linear,left top,right top,from(#1383D5),to(#00b4aa));
+  background-image: -webkit-linear-gradient(left,#1383D5,#00b4aa);
+  background-image: -moz-linear-gradient(left,#1383D5,#00b4aa);
+  background-image: linear-gradient(to right,#1383D5,#00b4aa);
+}
+
+.main-div .content-div {
+  padding: 30px;
+
+}
