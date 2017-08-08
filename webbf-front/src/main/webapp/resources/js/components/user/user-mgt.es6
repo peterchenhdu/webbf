@@ -1,11 +1,11 @@
 import React from 'react'
 import Reflux from 'reflux'
 import ReactMixin from 'react-mixin'
-import ToolsBar from './tools-bar.es6'
-import AddUserModal from './add-user-modal.es6'
-import User from './user.es6'
-import store from '../../stores/user/user-store.es6'
-import actions from '../../actions/user/user-actions.es6'
+import ToolsBar from './tools-bar'
+import AddUserModal from './add-user-modal'
+import User from './user'
+import store from '../../stores/user/user-store'
+import actions from '../../actions/user/user-actions'
 import $ from 'jquery'          //jquery
 
 export default class UserMgt extends React.Component{
@@ -27,7 +27,7 @@ export default class UserMgt extends React.Component{
   }
 
   addUser(){
-    //搴旇鍏堝垽鏂緭鍏ユ牎楠屾槸鍚︽垚鍔燂紝姝ゅ鐪佺暐
+    //应该先判断输入校验是否成功，此处省略
     actions.addUser($("#username").val(), $("#address").val());
 
   }
@@ -51,7 +51,7 @@ export default class UserMgt extends React.Component{
       rows.push(<User id={userList[i].id} name={userList[i].name} address={userList[i].address} handleDeleteUser={this.handleDeleteUser}/>);
     }
     if(rows.length == 0 && this.state.filterText!=""){
-      rows.push(<p>鏃犳煡璇㈢粨鏋�.</p>);
+      rows.push(<p>无查询结果.</p>);
     }
 
     return (
@@ -60,12 +60,12 @@ export default class UserMgt extends React.Component{
 
          <ToolsBar filterText={this.state.filterText} filterTextChange={this.handleChange} addUserEvent={this.openAddModal}/>
 
-         <div className="user-box w700"><span>ID</span><span>鍚嶅瓧</span><span>鍦板潃</span><span>鎿嶄綔</span></div>
+         <div className="user-box w700"><span>ID</span><span>名字</span><span>地址</span><span>操作</span></div>
          {rows}
       </div>
     );
   }
 }
 
-// ES6 mixin鍐欐硶锛岄�氳繃mixin灏唖tore鐨勪笌缁勪欢杩炴帴锛屽姛鑳芥槸鐩戝惉store甯︽潵鐨剆tate鍙樺寲骞跺埛鏂板埌this.state
+// ES6 mixin写法，通过mixin将store的与组件连接，功能是监听store带来的state变化并刷新到this.state
 ReactMixin.onClass(UserMgt, Reflux.connect(store));

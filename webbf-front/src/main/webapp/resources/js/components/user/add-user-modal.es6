@@ -6,7 +6,7 @@ import FormGroup from 'react-bootstrap/lib/FormGroup'
 import ControlLabel from 'react-bootstrap/lib/ControlLabel'
 import FormControl  from 'react-bootstrap/lib/FormControl'
 import HelpBlock from 'react-bootstrap/lib/HelpBlock'
-import ValidationUtil from '../../util/Validation-util.es6'
+import ValidationUtil from '../../util/Validation-util'
 
 export default class AddUserModal extends React.Component{
   constructor(props){
@@ -15,7 +15,7 @@ export default class AddUserModal extends React.Component{
   }
 
   handleChangeName(e) {
-    //姝ゅ姣旇緝绠�鍗曪紝鐪佺暐浜哸ction
+    //此处比较简单，省略了action
     this.setState({ nameValue: e.target.value })
   }
 
@@ -27,27 +27,27 @@ export default class AddUserModal extends React.Component{
     return (
       <Modal show={this.props.showAddUserModal} onHide={this.props.closeAddModalEvent}>
         <Modal.Header closeButton>
-          <Modal.Title>鏂板鐢ㄦ埛</Modal.Title>
+          <Modal.Title>新增用户</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <form>
           <FormGroup controlId="username" validationState={ValidationUtil.getValidationState(this.state.nameValue,5,3,0)}>
-            <ControlLabel>鍚嶅瓧</ControlLabel>
+            <ControlLabel>名字</ControlLabel>
             <FormControl type="text" value={this.state.value} placeholder="Enter text" onChange={this.handleChangeName.bind(this)}/>
             <FormControl.Feedback />
-            <HelpBlock>寤鸿闀垮害澶т簬5涓瓧绗�.</HelpBlock>
+            <HelpBlock>建议长度大于5个字符.</HelpBlock>
           </FormGroup>
           <FormGroup controlId="address" validationState={ValidationUtil.getValidationState(this.state.addressValue,5,3,0)}>
-            <ControlLabel>鍦板潃</ControlLabel>
+            <ControlLabel>地址</ControlLabel>
             <FormControl type="text" value={this.state.value} placeholder="Enter text" onChange={this.handleChangeAddress.bind(this)}/>
             <FormControl.Feedback />
-            <HelpBlock>寤鸿闀垮害澶т簬5涓瓧绗�.</HelpBlock>
+            <HelpBlock>建议长度大于5个字符.</HelpBlock>
           </FormGroup>
         </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button bsStyle="primary" onClick={this.props.addUserEvent}>淇濆瓨</Button>
-          <Button onClick={this.props.closeAddModalEvent}>鍏抽棴</Button>
+          <Button bsStyle="primary" onClick={this.props.addUserEvent}>保存</Button>
+          <Button onClick={this.props.closeAddModalEvent}>关闭</Button>
         </Modal.Footer>
       </Modal>
     );
